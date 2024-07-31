@@ -1,0 +1,2247 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "accessibility.settings-link.pre-ventura" : {
+      "comment" : "First draft: Open 'Security & Privacy' Preferences || Notes: The string for Ventura and later is defined in Interface Builder",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open 'Security & Privacy' Preferences"
+          }
+        }
+      }
+    },
+    "already-using-defaults-toast.3" : {
+      "comment" : "First draft: You're __already using__ the default setting for mice with __3 buttons__",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're __already using__ the default setting for mice with __3 buttons__"
+          }
+        }
+      }
+    },
+    "already-using-defaults-toast.5" : {
+      "comment" : "First draft: You're __already using__ the default setting for mice with __5 buttons__",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're __already using__ the default setting for mice with __5 buttons__"
+          }
+        }
+      }
+    },
+    "app-version" : {
+      "comment" : "First draft: Version %@ || Note: %@ will be replaced by the app version, e.g. '3.0.0 (22027)'",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.backward" : {
+      "comment" : "First draft: <Rewind key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Rewind key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.capslock" : {
+      "comment" : "First draft: ⇪",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⇪"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.forward" : {
+      "comment" : "First draft: <Fast-Forward key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Fast-Forward key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.globe" : {
+      "comment" : "First draft: <Emoji Picker key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Emoji Picker key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.light.max" : {
+      "comment" : "First draft: <Increase Keyboard Brightness key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Increase Keyboard Brightness key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.light.min" : {
+      "comment" : "First draft: <Decrease Keyboard Brightness key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Decrease Keyboard Brightness key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.magnifyingglass" : {
+      "comment" : "First draft: <Spotlight key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Spotlight key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.mic" : {
+      "comment" : "First draft: <Dictation key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Dictation key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.moon" : {
+      "comment" : "First draft: <Do Not Disturb key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Do Not Disturb key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.playpause" : {
+      "comment" : "First draft: <Play or Pause key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Play or Pause key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.power" : {
+      "comment" : "First draft: <Power key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Power key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.rectangle.3.group" : {
+      "comment" : "First draft: <Mission Control key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Mission Control key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.speaker" : {
+      "comment" : "First draft: <Mute key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Mute key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.speaker.wave.1" : {
+      "comment" : "First draft: <Decrease Volume key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Decrease Volume key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.speaker.wave.3" : {
+      "comment" : "First draft: <Increase Volume key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Increase Volume key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.square.grid.3x2" : {
+      "comment" : "First draft: <Launchpad key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Launchpad key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.sun.max" : {
+      "comment" : "First draft: <Increase Brightness key>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Increase Brightness key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.sun.min" : {
+      "comment" : "First draft: <Decrease Brightness key> || Example usage: Works like pressing '<Decrease Brightness Key>' on an Apple keyboard. || Note: Unlike in the interface builder `.strings` files, in `Localizable.strings`, <> doesn't mean that the text is unused. I think the usage of <> here is a little weird, so let me know if you have a better idea!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Decrease Brightness key>"
+          }
+        }
+      }
+    },
+    "apple-key-fallback.unknown-key" : {
+      "comment" : "First draft: <Key without description>",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Key without description>"
+          }
+        }
+      }
+    },
+    "beta-alert.back" : {
+      "comment" : "First draft: Cancel",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "beta-alert.body" : {
+      "comment" : "First draft: Beta versions can have many issues.\nDon't forget to give feedback when you run into one.\nThanks!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beta versions can have many issues.\nDon't forget to give feedback when you run into one.\nThanks!"
+          }
+        }
+      }
+    },
+    "beta-alert.confirm" : {
+      "comment" : "First draft: Get Beta Versions",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Beta Versions"
+          }
+        }
+      }
+    },
+    "beta-alert.title" : {
+      "comment" : "First draft: Get Beta Versions?",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Beta Versions?"
+          }
+        }
+      }
+    },
+    "button-modifier.1" : {
+      "comment" : "First draft: Click %@ + || Note: %@ will be a button name || Example where %@ is 'Button 4': Click Button 4 + Double Click and Drag Button 5",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click %@ +"
+          }
+        }
+      }
+    },
+    "button-modifier.2" : {
+      "comment" : "First draft: Double Click %@ + ",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double Click %@ +"
+          }
+        }
+      }
+    },
+    "button-modifier.3" : {
+      "comment" : "First draft: Triple Click %@ + ",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triple Click %@ +"
+          }
+        }
+      }
+    },
+    "button-string.middle" : {
+      "comment" : "First draft: Middle Button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Middle Button"
+          }
+        }
+      }
+    },
+    "button-string.numbered" : {
+      "comment" : "First Draft: Button %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button %@"
+          }
+        }
+      }
+    },
+    "button-string.primary" : {
+      "comment" : "First draft: Primary Button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primary Button"
+          }
+        }
+      }
+    },
+    "button-string.secondary" : {
+      "comment" : "First draft: Secondary Button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Secondary Button"
+          }
+        }
+      }
+    },
+    "button-string.tool.middle" : {
+      "comment" : "First draft: Middle Mouse Button (also called Scroll Wheel Button or Mouse Button 3) || Example usage: Open links in a new tab, paste text in the Terminal, and more.\n \nWorks like clicking the Middle Mouse Button (also called the Scroll Wheel Button or Mouse Button 3) on a standard mouse.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Middle Mouse Button (also called Scroll Wheel Button or Mouse Button 3)"
+          }
+        }
+      }
+    },
+    "button-string.tool.numbered" : {
+      "comment" : "First draft: Mouse Button %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mouse Button %@"
+          }
+        }
+      }
+    },
+    "button-string.tool.primary" : {
+      "comment" : "First draft: Primary Mouse Button (also called Left Mouse Button or Mouse Button 1)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primary Mouse Button (also called Left Mouse Button or Mouse Button 1)"
+          }
+        }
+      }
+    },
+    "button-string.tool.secondary" : {
+      "comment" : "First draft: Secondary Mouse Button (also called Right Mouse Button or Mouse Button 2)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Secondary Mouse Button (also called Right Mouse Button or Mouse Button 2)"
+          }
+        }
+      }
+    },
+    "buy-mouse-alert.body" : {
+      "comment" : "First draft: Get a mouse with 5+ buttons to unlock the full potential of Mac Mouse Fix!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get a mouse with 5+ buttons to unlock the full potential of Mac Mouse Fix!"
+          }
+        }
+      }
+    },
+    "buy-mouse-alert.ok" : {
+      "comment" : "First draft: OK",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "buy-mouse-alert.title" : {
+      "comment" : "First draft: Your mouse only has 3 buttons",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your mouse only has 3 buttons"
+          }
+        }
+      }
+    },
+    "capture-toast.buttons.captured.body" : {
+      "comment" : "Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings. || Note: The core idea that we want to convey here is that, from now on, the button is being 'intercepted' by Mac Mouse Fix. We used the word 'capture' instead of 'intercept' since it sounds friendlier in English. In your language, you might want to use something closer to 'intercept'.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ %#@captured@"
+          },
+          "substitutions" : {
+            "captured" : {
+              "formatSpecifier" : "d",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "is now captured by Mac Mouse Fix."
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "are now captured by Mac Mouse Fix."
+                    }
+                  },
+                  "zero" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "capture-toast.buttons.captured.hint" : {
+      "comment" : "Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%#@hint@"
+          },
+          "substitutions" : {
+            "hint" : {
+              "formatSpecifier" : "d",
+              "variations" : {
+                "plural" : {
+                  "onee" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "Other apps can't see the button anymore."
+                    }
+                  },
+                  "otherr" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "Other apps can't see these buttons anymore."
+                    }
+                  },
+                  "zero" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "capture-toast.buttons.link" : {
+      "comment" : "First draft: [Learn More](https://github.com/noah-nuebling/mac-mouse-fix/discussions/112)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[Learn More](https://github.com/noah-nuebling/mac-mouse-fix/discussions/112)"
+          }
+        }
+      }
+    },
+    "capture-toast.buttons.uncaptured.body" : {
+      "comment" : "Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ %#@uncaptured@"
+          },
+          "substitutions" : {
+            "uncaptured" : {
+              "formatSpecifier" : "d",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "is no longer captured by Mac Mouse Fix."
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "are no longer captured by Mac Mouse Fix."
+                    }
+                  },
+                  "zero" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "capture-toast.buttons.uncaptured.hint" : {
+      "comment" : "Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%#@hint@"
+          },
+          "substitutions" : {
+            "hint" : {
+              "formatSpecifier" : "d",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "The button now works as if Mac Mouse Fix was disabled."
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "These buttons now work as if Mac Mouse Fix was disabled."
+                    }
+                  },
+                  "zero" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "capture-toast.scroll.captured.body" : {
+      "comment" : "First draft: **Scrolling** is now captured by Mac Mouse Fix.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Scrolling** is now captured by Mac Mouse Fix."
+          }
+        }
+      }
+    },
+    "capture-toast.scroll.captured.hint" : {
+      "comment" : "First draft: ",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "capture-toast.scroll.link" : {
+      "comment" : "First draft: [Learn More](https://github.com/noah-nuebling/mac-mouse-fix/discussions/112)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[Learn More](https://github.com/noah-nuebling/mac-mouse-fix/discussions/112)"
+          }
+        }
+      }
+    },
+    "capture-toast.scroll.uncaptured.body" : {
+      "comment" : "First draft: **Scrolling** is no longer captured by Mac Mouse Fix.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Scrolling** is no longer captured by Mac Mouse Fix."
+          }
+        }
+      }
+    },
+    "capture-toast.scroll.uncaptured.hint" : {
+      "comment" : "First draft: Scrolling now works as if Mac Mouse Fix was disabled.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scrolling now works as if Mac Mouse Fix was disabled."
+          }
+        }
+      }
+    },
+    "Chocolate" : {
+      "extractionState" : "manual"
+    },
+    "drag-effect.dock-swipe" : {
+      "comment" : "First draft: Spaces & Mission Control",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spaces & Mission Control"
+          }
+        }
+      }
+    },
+    "drag-effect.dock-swipe.hint" : {
+      "comment" : "First draft: Move your mouse:\n - Up to show Mission Control\n - Down to show Application Windows\n - Left or Right to move between Spaces\n \nWorks like swiping with 3 fingers on an Apple Trackpad",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move your mouse:\n - Up to show Mission Control\n - Down to show Application Windows\n - Left or Right to move between Spaces\n \nWorks like swiping with 3 fingers on an Apple Trackpad"
+          }
+        }
+      }
+    },
+    "drag-effect.scroll-swipe" : {
+      "comment" : "First draft: Scroll & Navigate",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scroll & Navigate"
+          }
+        }
+      }
+    },
+    "drag-effect.scroll-swipe.hint" : {
+      "comment" : "First draft: Scroll freely by moving your mouse in any direction\n \nAlso Navigate between pages in Safari, delete messages in Mail and more by moving your mouse left and right\n \nWorks like swiping with 2 fingers on an Apple Trackpad",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scroll freely by moving your mouse in any direction\n \nAlso Navigate between pages in Safari, delete messages in Mail and more by moving your mouse left and right\n \nWorks like swiping with 2 fingers on an Apple Trackpad"
+          }
+        }
+      }
+    },
+    "effect.app-expose" : {
+      "comment" : "First draft: Application Windows || Note: Under macOS Sonoma, this feature is called 'App Exposé' in Trackpad settings, but 'Application Windows' in Keyboard Shortcut settings and all other places I found.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Application Windows"
+          }
+        }
+      }
+    },
+    "effect.app-expose.hint" : {
+      "comment" : "First draft: Show all windows of the active app",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show all windows of the active app"
+          }
+        }
+      }
+    },
+    "effect.apple-keys-submenu" : {
+      "comment" : "First draft:  Exclusive Keys",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Exclusive Keys"
+          }
+        }
+      }
+    },
+    "effect.apple-keys-submenu.hint" : {
+      "comment" : "First draft: Choose keys that are only available on Apple keyboards",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose keys that are only available on Apple keyboards"
+          }
+        }
+      }
+    },
+    "effect.apple-shortcut.hint" : {
+      "comment" : "First draft: Works like pressing '%@' on an Apple keyboard",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Works like pressing '%@' on an Apple keyboard"
+          }
+        }
+      }
+    },
+    "effect.back" : {
+      "comment" : "First draft: Back",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        }
+      }
+    },
+    "effect.back.hint" : {
+      "comment" : "First draft: Go back one page in Safari and other apps",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go back one page in Safari and other apps"
+          }
+        }
+      }
+    },
+    "effect.desktop" : {
+      "comment" : "First draft: Show Desktop",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Desktop"
+          }
+        }
+      }
+    },
+    "effect.desktop.hint" : {
+      "comment" : "First draft: Show the desktop",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the desktop"
+          }
+        }
+      }
+    },
+    "effect.forward" : {
+      "comment" : "First draft: Forward",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forward"
+          }
+        }
+      }
+    },
+    "effect.forward.hint" : {
+      "comment" : "First draft: Go forward one page in Safari and other apps",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go forward one page in Safari and other apps"
+          }
+        }
+      }
+    },
+    "effect.launchpad" : {
+      "comment" : "First draft: Launchpad",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launchpad"
+          }
+        }
+      }
+    },
+    "effect.launchpad.hint" : {
+      "comment" : "First draft: Open Launchpad",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Launchpad"
+          }
+        }
+      }
+    },
+    "effect.left-space" : {
+      "comment" : "First draft: Move Left a Space",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move Left a Space"
+          }
+        }
+      }
+    },
+    "effect.left-space.hint" : {
+      "comment" : "First draft: Move one Space to the left",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move one Space to the left"
+          }
+        }
+      }
+    },
+    "effect.look-up" : {
+      "comment" : "First draft: Look Up & Quick Look",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look Up & Quick Look"
+          }
+        }
+      }
+    },
+    "effect.look-up.hint" : {
+      "comment" : "First draft: Look up words in the Dictionary, Quick Look files in Finder, and more.\n \nWorks like a Force click on an Apple Trackpad.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look up words in the Dictionary, Quick Look files in Finder, and more.\n \nWorks like a Force click on an Apple Trackpad."
+          }
+        }
+      }
+    },
+    "effect.middle-click" : {
+      "comment" : "First draft: Middle Click",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Middle Click"
+          }
+        }
+      }
+    },
+    "effect.middle-click.hint" : {
+      "comment" : "First draft: Open links in a new tab, paste text in the Terminal, and more.\n \nWorks like clicking %@ on a standard mouse.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open links in a new tab, paste text in the Terminal, and more.\n \nWorks like clicking %@ on a standard mouse."
+          }
+        }
+      }
+    },
+    "effect.mission-control" : {
+      "comment" : "First draft: Mission Control",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mission Control"
+          }
+        }
+      }
+    },
+    "effect.mission-control.hint" : {
+      "comment" : "First draft: Show Mission Control",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Mission Control"
+          }
+        }
+      }
+    },
+    "effect.primary-click" : {
+      "comment" : "First draft: Primary Click",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primary Click"
+          }
+        }
+      }
+    },
+    "effect.primary-click.hint" : {
+      "comment" : "First draft: Works like clicking %@ on a standard mouse.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Works like clicking %@ on a standard mouse."
+          }
+        }
+      }
+    },
+    "effect.record-shortcut" : {
+      "comment" : "First draft: Keyboard Shortcut...",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyboard Shortcut..."
+          }
+        }
+      }
+    },
+    "effect.record-shortcut.hint" : {
+      "comment" : "First draft: Type a keyboard shortcut, then use it from your mouse",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type a keyboard shortcut, then use it from your mouse"
+          }
+        }
+      }
+    },
+    "effect.right-space" : {
+      "comment" : "First draft: Move Right a Space",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move Right a Space"
+          }
+        }
+      }
+    },
+    "effect.right-space.hint" : {
+      "comment" : "First draft: Move one Space to the right",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move one Space to the right"
+          }
+        }
+      }
+    },
+    "effect.secondary-click" : {
+      "comment" : "First draft: Secondary Click",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Secondary Click"
+          }
+        }
+      }
+    },
+    "effect.secondary-click.hint" : {
+      "comment" : "First draft: Works like clicking %@ on a standard mouse.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Works like clicking %@ on a standard mouse."
+          }
+        }
+      }
+    },
+    "effect.shortcut.hint" : {
+      "comment" : "First draft: Works like pressing '%@' on your keyboard",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Works like pressing '%@' on your keyboard"
+          }
+        }
+      }
+    },
+    "effect.smart-zoom" : {
+      "comment" : "First draft: Smart Zoom",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smart Zoom"
+          }
+        }
+      }
+    },
+    "effect.smart-zoom.hint" : {
+      "comment" : "First draft: Zoom in or out in Safari and other apps.\n \nWorks like a two-finger double tap on an Apple Trackpad.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoom in or out in Safari and other apps.\n \nWorks like a two-finger double tap on an Apple Trackpad."
+          }
+        }
+      }
+    },
+    "enable-timeout-toast" : {
+      "comment" : "First draft: If you have **problems enabling** the app, click&nbsp;[here](https://github.com/noah-nuebling/mac-mouse-fix/discussions/861).",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you have **problems enabling** the app, click&nbsp;[here](https://github.com/noah-nuebling/mac-mouse-fix/discussions/861)."
+          }
+        }
+      }
+    },
+    "forbidden-capture-toast.1" : {
+      "comment" : "First draft: **Primary Mouse Button** can't be used\nPlease try another button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Primary Mouse Button** can't be used\nPlease try another button"
+          }
+        }
+      }
+    },
+    "forbidden-capture-toast.2" : {
+      "comment" : "First draft: **Secondary Mouse Button** can't be used\nPlease try another button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Secondary Mouse Button** can't be used\nPlease try another button"
+          }
+        }
+      }
+    },
+    "free-country" : {
+      "comment" : "First draft: Mac Mouse Fix is currently free in your country (%@)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac Mouse Fix is currently free in your country (%@)"
+          }
+        }
+      }
+    },
+    "is-disabled-toast" : {
+      "comment" : "First draft: Mac Mouse Fix was **disabled** in System Settings\n\nTo enable Mac Mouse Fix:\n\n1. Go to [Login Items Settings](x-apple.systempreferences:com.apple.LoginItems-Settings.extension)\n2. Switch on 'Mac Mouse Fix.app'",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac Mouse Fix was **disabled** in System Settings\n\nTo enable Mac Mouse Fix:\n\n1. Go to [Login Items Settings](x-apple.systempreferences:com.apple.LoginItems-Settings.extension)\n2. Switch on 'Mac Mouse Fix.app'"
+          }
+        }
+      }
+    },
+    "is-strange-helper-alert.body" : {
+      "comment" : "First draft: Mac Mouse Fix can't be enabled because there's __another version__ of Mac Mouse Fix present on your computer\n\nTo enable Mac Mouse Fix:\n\n1. Delete the [other version](%@)\n2. Empty the Bin\n3. Restart your Mac\n4. Try again!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac Mouse Fix can't be enabled because there's __another version__ of Mac Mouse Fix present on your computer\n\nTo enable Mac Mouse Fix:\n\n1. Delete the [other version](%@)\n2. Empty the Bin\n3. Restart your Mac\n4. Try again!"
+          }
+        }
+      }
+    },
+    "is-strange-helper-alert.title" : {
+      "comment" : "First draft: Enabling Failed",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabling Failed"
+          }
+        }
+      }
+    },
+    "join-list" : {
+      "comment" : "First draft: ,  || Note: This string joins elements in a list except the second-to-last and last one. || Note: The first draft contains a space after the comma.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ", "
+          }
+        }
+      }
+    },
+    "join-list.last" : {
+      "comment" : "First draft: %@ and %@ || Note: This format string joins the second-to-last element and the last elements in a list of items",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ and %@"
+          }
+        }
+      }
+    },
+    "license-button.activate" : {
+      "comment" : "First draft: Activate License",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activate License"
+          }
+        }
+      }
+    },
+    "license-button.deactivate" : {
+      "comment" : "First draft: Deactivate License",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deactivate License"
+          }
+        }
+      }
+    },
+    "license-toast.activate" : {
+      "comment" : "First draft: Your license has been **activated**! 🎉",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your license has been **activated**! 🎉"
+          }
+        }
+      }
+    },
+    "license-toast.activation-overload" : {
+      "comment" : "First draft: This license has been activated **%d** times. The maximum is **%d**.\n\nBecause of this, the license has been invalidated. This is to prevent piracy. If you have other reasons for activating the license this many times, please excuse the inconvenience.\n\nJust [reach out](mailto:noah.n.public@gmail.com) and I will provide you with a new license! Thanks for understanding.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This license has been activated **%d** times. The maximum is **%d**.\n\nBecause of this, the license has been invalidated. This is to prevent piracy. If you have other reasons for activating the license this many times, please excuse the inconvenience.\n\nJust [reach out](mailto:noah.n.public@gmail.com) and I will provide you with a new license! Thanks for understanding."
+          }
+        }
+      }
+    },
+    "license-toast.already-active" : {
+      "comment" : "First draft: This license is **already activated**!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This license is **already activated**!"
+          }
+        }
+      }
+    },
+    "license-toast.deactivate" : {
+      "comment" : "First draft: Your license has been **deactivated**",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your license has been **deactivated**"
+          }
+        }
+      }
+    },
+    "license-toast.free-country" : {
+      "comment" : "First draft: This license __could not be activated__ but Mac Mouse Fix is currently __free in your country__!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This license __could not be activated__ but Mac Mouse Fix is currently __free in your country__!"
+          }
+        }
+      }
+    },
+    "license-toast.gumroad-error" : {
+      "comment" : "First draft: **An error with the licensing server occured**\n\nIt says:\n\n%@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**An error with the licensing server occured**\n\nIt says:\n\n%@"
+          }
+        }
+      }
+    },
+    "license-toast.no-internet" : {
+      "comment" : "First draft: **There is no connection to the internet**\n\nTry activating your license again when your computer is online.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**There is no connection to the internet**\n\nTry activating your license again when your computer is online."
+          }
+        }
+      }
+    },
+    "license-toast.unknown-error" : {
+      "comment" : "First draft: **An unknown error occurred:**\n\n%@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**An unknown error occurred:**\n\n%@"
+          }
+        }
+      }
+    },
+    "license-toast.unknown-key" : {
+      "comment" : "First draft: **'%@'** is not a known license key\n\nPlease try a different key",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**'%@'** is not a known license key\n\nPlease try a different key"
+          }
+        }
+      }
+    },
+    "license-toast.unknown-reason" : {
+      "comment" : "First draft: Activating your license failed for **unknown reasons**\n\nPlease write a **Bug Report** [here](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activating your license failed for **unknown reasons**\n\nPlease write a **Bug Report** [here](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report)"
+          }
+        }
+      }
+    },
+    "macos-scrolling-hint" : {
+      "comment" : "First draft: Set speed under\n[%@ > Mouse > Scrolling Speed](%@)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set speed under\n[%@ > Mouse > Scrolling Speed](%@)"
+          }
+        }
+      }
+    },
+    "mail-alert.back" : {
+      "comment" : "First draft: Back",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        }
+      }
+    },
+    "mail-alert.body" : {
+      "comment" : "First draft: I read and appreciate all emails, even though I can't respond to all",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I read and appreciate all emails, even though I can't respond to all"
+          }
+        }
+      }
+    },
+    "mail-alert.send" : {
+      "comment" : "First draft: Write Email",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write Email"
+          }
+        }
+      }
+    },
+    "mail-alert.title" : {
+      "comment" : "First draft: Write an Email?",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write an Email?"
+          }
+        }
+      }
+    },
+    "modifer-key.tool.command" : {
+      "comment" : "First draft: Command (⌘)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Command (⌘)"
+          }
+        }
+      }
+    },
+    "modifer-key.tool.control" : {
+      "comment" : "First draft: Control (^)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Control (^)"
+          }
+        }
+      }
+    },
+    "modifer-key.tool.option" : {
+      "comment" : "First draft: Option (⌥)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Option (⌥)"
+          }
+        }
+      }
+    },
+    "modifer-key.tool.shift" : {
+      "comment" : "First draft: Shift (⇧)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shift (⇧)"
+          }
+        }
+      }
+    },
+    "natural-scrolling-hint" : {
+      "comment" : "First draft: Content tracks finger movement",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Content tracks finger movement"
+          }
+        }
+      }
+    },
+    "precise-scrolling-hint" : {
+      "comment" : "First draft: Scroll precisely, even without a keyboard modifier,\nbymoving the scroll wheel _slowly_ || Note: The line break (\n) is there so the layout of the Scroll tab doesn't become too wide which looks weird. You can set it to your own taste.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scroll precisely, even without a keyboard modifier,\nby moving the scroll wheel _slowly_"
+          }
+        }
+      }
+    },
+    "restore-buttons-alert.back" : {
+      "comment" : "First draft: Cancel",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "restore-buttons-alert.commit" : {
+      "comment" : "First draft: Restore",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore"
+          }
+        }
+      }
+    },
+    "restore-buttons-alert.hint" : {
+      "comment" : "First draft: Your __%@__ mouse says it has __%d__ buttons",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your __%@__ mouse says it has __%d__ buttons"
+          }
+        }
+      }
+    },
+    "restore-buttons-alert.radio1" : {
+      "comment" : "First draft: Mouse with 3 buttons",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mouse with 3 buttons"
+          }
+        }
+      }
+    },
+    "restore-buttons-alert.radio2" : {
+      "comment" : "First draft: Mouse with 5+ buttons",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mouse with 5+ buttons"
+          }
+        }
+      }
+    },
+    "restore-buttons-alert.title" : {
+      "comment" : "First draft: Restore Default for ...",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore Default for ..."
+          }
+        }
+      }
+    },
+    "restore-default-buttons-popover.body" : {
+      "comment" : "First draft:  __Click here__ to load the recommended settings\nfor your __%@__ mouse || Note: The \n linebreak is so the popover doesn't become too wide. You can set it to your taste. || Note: In English, there needs to be a space at the start of this string otherwise the whole string will be bold. This might be a Ventura Bug",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " __Click here__ to load the recommended settings\nfor your __%@__ mouse"
+          }
+        }
+      }
+    },
+    "revive-toast" : {
+      "comment" : "First draft: __Enabled__ Mac Mouse Fix for %1@\nIt had been disabled from the Menu Bar %2@ || Note: %1@ will be replaced by the list of enabled features, %2@ will be replaced by the menubar icon",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "__Enabled__ Mac Mouse Fix for %1@\nIt had been disabled from the Menu Bar %2@"
+          }
+        }
+      }
+    },
+    "revive-toast.feature-buttons" : {
+      "comment" : "First draft: __Buttons__",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " __Buttons__"
+          }
+        }
+      }
+    },
+    "revive-toast.feature-scrolling" : {
+      "comment" : "First draft: __Scrolling__",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "__Scrolling__"
+          }
+        }
+      }
+    },
+    "scroll-effect.4-pinch" : {
+      "comment" : "First draft: Desktop & Launchpad",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desktop & Launchpad"
+          }
+        }
+      }
+    },
+    "scroll-effect.4-pinch.hint" : {
+      "comment" : "First draft: Scroll up for Launchpad and down to show the Desktop\n \nWorks like Pinching with 4 fingers on an Apple Trackpad",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scroll up for Launchpad and down to show the Desktop\n \nWorks like Pinching with 4 fingers on an Apple Trackpad"
+          }
+        }
+      }
+    },
+    "scroll-effect.app-switcher" : {
+      "comment" : "First draft: App Switcher",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Switcher"
+          }
+        }
+      }
+    },
+    "scroll-effect.app-switcher.hint" : {
+      "comment" : "First draft: Quickly switch between open apps\n \nWorks like holding Command (⌘) and then pressing Tab (⇥) on your keyboard",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quickly switch between open apps\n \nWorks like holding Command (⌘) and then pressing Tab (⇥) on your keyboard"
+          }
+        }
+      }
+    },
+    "scroll-effect.horizontal" : {
+      "comment" : "First draft: Horizontal Scroll",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horizontal Scroll"
+          }
+        }
+      }
+    },
+    "scroll-effect.horizontal.hint" : {
+      "comment" : "First draft: Scroll left and right, navigate between pages in Safari, delete messages in Mail and more\n \nWorks like swiping horizontally with 2 fingers on an Apple Trackpad",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scroll left and right, navigate between pages in Safari, delete messages in Mail and more\n \nWorks like swiping horizontally with 2 fingers on an Apple Trackpad"
+          }
+        }
+      }
+    },
+    "scroll-effect.precise" : {
+      "comment" : "First draft: Precise Scroll",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Precise Scroll"
+          }
+        }
+      }
+    },
+    "scroll-effect.precise.hint" : {
+      "comment" : "First draft: Scroll small distances and use sensitive UI elements with precision",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scroll small distances and use sensitive UI elements with precision"
+          }
+        }
+      }
+    },
+    "scroll-effect.rotate" : {
+      "comment" : "First draft: Rotate",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotate"
+          }
+        }
+      }
+    },
+    "scroll-effect.rotate.hint" : {
+      "comment" : "First draft: Rotate content in Apple Maps and other apps\n \nWorks like twisting with 2 fingers on an Apple Trackpad",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotate content in Apple Maps and other apps\n \nWorks like twisting with 2 fingers on an Apple Trackpad"
+          }
+        }
+      }
+    },
+    "scroll-effect.spaces" : {
+      "comment" : "First draft: Move Between Spaces",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move Between Spaces"
+          }
+        }
+      }
+    },
+    "scroll-effect.spaces.hint" : {
+      "comment" : "First draft: Scroll up to move left a Space and down to move right a Space\n \nWorks like swiping horizontally with 3 fingers on an Apple Trackpad",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scroll up to move left a Space and down to move right a Space\n \nWorks like swiping horizontally with 3 fingers on an Apple Trackpad"
+          }
+        }
+      }
+    },
+    "scroll-effect.swift" : {
+      "comment" : "First draft: Swift Scroll",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swift Scroll"
+          }
+        }
+      }
+    },
+    "scroll-effect.swift.hint" : {
+      "comment" : "First draft: Scroll long distances with minimal effort",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scroll long distances with minimal effort"
+          }
+        }
+      }
+    },
+    "scroll-effect.zoom" : {
+      "comment" : "First draft: Zoom In or Out",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoom In or Out"
+          }
+        }
+      }
+    },
+    "scroll-effect.zoom.hint" : {
+      "comment" : "First draft: Zoom in or out in Safari, Maps and other apps\n \nWorks like pinching to zoom on an Apple trackpad",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoom in or out in Safari, Maps and other apps\n \nWorks like pinching to zoom on an Apple trackpad"
+          }
+        }
+      }
+    },
+    "Strawberry" : {
+      "extractionState" : "manual"
+    },
+    "system-settings-name" : {
+      "comment" : "First draft: System Settings",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System Settings"
+          }
+        }
+      }
+    },
+    "system-settings-name.pre-ventura" : {
+      "comment" : "First draft: System Preferences",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System Preferences"
+          }
+        }
+      }
+    },
+    "thanks.01" : {
+      "comment" : "First draft: ⭐️ Thank you for buying Mac Mouse Fix!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⭐️ Thank you for buying Mac Mouse Fix!"
+          }
+        }
+      }
+    },
+    "thanks.02" : {
+      "comment" : "First draft: 🌟 Thanks for purchasing Mac Mouse Fix!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🌟 Thanks for purchasing Mac Mouse Fix!"
+          }
+        }
+      }
+    },
+    "thanks.03" : {
+      "comment" : "First draft: 🚀 Thanks for supporting Mac Mouse Fix!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🚀 Thanks for supporting Mac Mouse Fix!"
+          }
+        }
+      }
+    },
+    "thanks.04" : {
+      "comment" : "First draft: 🙌 Thanks for buying Mac Mouse Fix!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🙌 Thank you for buying Mac Mouse Fix!"
+          }
+        }
+      }
+    },
+    "thanks.05" : {
+      "comment" : "First draft: 🧠 Great purchasing decision! ;)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🧠 Great purchasing decision! ;)"
+          }
+        }
+      }
+    },
+    "thanks.06" : {
+      "comment" : "First draft: 🔥 Awesome taste in mouse fixing software! ;)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔥 Awesome taste in mouse fixing software! ;)"
+          }
+        }
+      }
+    },
+    "thanks.07" : {
+      "comment" : "First draft: 💙",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💙"
+          }
+        }
+      }
+    },
+    "thanks.08" : {
+      "comment" : "First draft: :) <- My face when I saw you bought Mac Mouse Fix",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ":) <- My face when I saw you bought Mac Mouse Fix"
+          }
+        }
+      }
+    },
+    "thanks.09" : {
+      "comment" : "First draft: 👽 Share it with your Spacebook friends!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "👽 Share it with your Spacebook friends!"
+          }
+        }
+      }
+    },
+    "thanks.10" : {
+      "comment" : "First draft: 🏂 Duckgang for life!! || Note: A lot of these are very personal. And weird. They are also super rare. Feel free to change them to anything you feel like to leave a little easter egg!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🏂 Duckgang for life!!"
+          }
+        }
+      }
+    },
+    "thanks.11" : {
+      "comment" : "First draft: 🚜 Watch where you're going :P",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🚜 Watch where you're going :P"
+          }
+        }
+      }
+    },
+    "thanks.12" : {
+      "comment" : "First draft: 🐁 Not these mice, mom!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🐁 Not these mice, mom!"
+          }
+        }
+      }
+    },
+    "thanks.13" : {
+      "comment" : "First draft: 🐹 We should get him a bow tie.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🐹 We should get him a bow tie."
+          }
+        }
+      }
+    },
+    "thanks.14" : {
+      "comment" : "First draft: 🇹🇷 Ey Kanka, tebrikler tebrikler!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇹🇷 Ey Kanka, tebrikler tebrikler!"
+          }
+        }
+      }
+    },
+    "thanks.15" : {
+      "comment" : "First draft: 🥛 Whole milk of course! It's your birthday after all.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🥛 Whole milk of course! It's your birthday after all."
+          }
+        }
+      }
+    },
+    "thanks.16" : {
+      "comment" : "First draft: 🎸 Not John Mayer (yet). Nevertheless mayor of hearts.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎸 Not John Mayer (yet). Nevertheless mayor of hearts."
+          }
+        }
+      }
+    },
+    "thanks.17" : {
+      "comment" : "First draft: 💃 1NEIN8NEIN",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💃 1NEIN8NEIN"
+          }
+        }
+      }
+    },
+    "thanks.18" : {
+      "comment" : "First draft: 🦄 You may not want to save the world, but you're already saving mine :)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🦄 You may not want to save the world, but you're already saving mine :)"
+          }
+        }
+      }
+    },
+    "thanks.19" : {
+      "comment" : "First draft: 🏜️ Dankeschön, meine Frau...",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🏜️ Dankeschön, meine Frau..."
+          }
+        }
+      }
+    },
+    "thanks.20" : {
+      "comment" : "First draft: 🌍 Universal Studios is probably not that great anyways... :)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🌍 Universal Studios is probably not that great anyways... :)"
+          }
+        }
+      }
+    },
+    "thanks.21" : {
+      "comment" : "First draft: 🐠 What... are... you?",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🐠 What... are... you?"
+          }
+        }
+      }
+    },
+    "thanks.22" : {
+      "comment" : "First draft: 🖤",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🖤"
+          }
+        }
+      }
+    },
+    "thanks.23" : {
+      "comment" : "First draft: 🤍",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🤍"
+          }
+        }
+      }
+    },
+    "thanks.24" : {
+      "comment" : "First draft: 😎 Oh you're using Mac Mouse Fix? You must be pretty cool.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "😎 Oh you're using Mac Mouse Fix? You must be pretty cool."
+          }
+        }
+      }
+    },
+    "thanks.25" : {
+      "comment" : "First draft: 🌏 First the mice, then the world!! >:)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🌏 First the mice, then the world!! >:)"
+          }
+        }
+      }
+    },
+    "trial-counter.active" : {
+      "comment" : "First draft: Free day **%d/%d**",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free day **%d/%d**"
+          }
+        }
+      }
+    },
+    "trial-counter.expired" : {
+      "comment" : "First draft: Free days are over",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free days are over"
+          }
+        }
+      }
+    },
+    "trial-notif.activate-license-button" : {
+      "comment" : "First draft: Activate License",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activate License"
+          }
+        }
+      }
+    },
+    "trial-notif.body" : {
+      "comment" : "First draft: Hi there! You've been using Mac Mouse Fix for **%d days** now. I hope you're enjoying it!\n\nIf you want to keep using Mac Mouse Fix, you can [buy it now](%@).",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hi there! You've been using Mac Mouse Fix for **%d days** now. I hope you're enjoying it!\n\nIf you want to keep using Mac Mouse Fix, you can [buy it now](%@)."
+          }
+        }
+      }
+    },
+    "trigger.click.1" : {
+      "comment" : "First draft: Click %@ || Note: %@ will be a button name || Example where %@ is 'Button 5': ⌥⌘ Double Click Button 4 + Click Button 5 || Note: Most of the substrings that are used to build the Action Table Trigger Strings (this is one of those substrings) are capitalized in English because it's common to use 'title case' there. In your language, 'title case' might not be a thing, and so you might not want to capitalize these strings. The first letter of the trigger string will be programmatically capitalized in any language.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click %@"
+          }
+        }
+      }
+    },
+    "trigger.click.2" : {
+      "comment" : "First draft: Double Click %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double Click %@"
+          }
+        }
+      }
+    },
+    "trigger.click.3" : {
+      "comment" : "First draft: Triple Click %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triple Click %@"
+          }
+        }
+      }
+    },
+    "trigger.drag-particle" : {
+      "comment" : "First draft: Drag || Note: This substring will be emphasized in drag trigger strings like 'Double Click and Drag %@'. Make sure that spelling and capitalization matches exactly for the emphasis to work.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drag"
+          }
+        }
+      }
+    },
+    "trigger.drag.1" : {
+      "comment" : "First draft: Click and Drag %@ || Note: %@ will be a button name || example where %@ is 'Button 5': ⌥⌘ Triple Click Button 4 + Click and Drag Button 5",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click and Drag %@"
+          }
+        }
+      }
+    },
+    "trigger.drag.2" : {
+      "comment" : "First draft: Double Click and Drag %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double Click and Drag %@"
+          }
+        }
+      }
+    },
+    "trigger.drag.3" : {
+      "comment" : "First draft: Triple Click and Drag %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triple Click and Drag %@"
+          }
+        }
+      }
+    },
+    "trigger.drag.flags" : {
+      "comment" : "First draft: and Drag || Note: This will be used for Drag Actions that only need keyboard modifiers to be activated - not mouse buttons || Example: ⌥⌘ and Drag",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "and Drag"
+          }
+        }
+      }
+    },
+    "trigger.hold.1" : {
+      "comment" : "First draft: Hold %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold %@"
+          }
+        }
+      }
+    },
+    "trigger.hold.2" : {
+      "comment" : "First draft: Double Click and Hold %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double Click and Hold %@"
+          }
+        }
+      }
+    },
+    "trigger.hold.3" : {
+      "comment" : "First draft: Triple Click and Hold %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triple Click and Hold %@"
+          }
+        }
+      }
+    },
+    "trigger.scroll-particle" : {
+      "comment" : "First draft: Scroll || Note: This substring will be emphasized in scroll trigger strings like 'Triple Click and Scroll %@'. Make sure that spelling and capitalization matches exactly for the emphasis to work.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scroll"
+          }
+        }
+      }
+    },
+    "trigger.scroll.1" : {
+      "comment" : "First draft: Click and Scroll %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click and Scroll %@"
+          }
+        }
+      }
+    },
+    "trigger.scroll.2" : {
+      "comment" : "First draft: Double Click and Scroll %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double Click and Scroll %@"
+          }
+        }
+      }
+    },
+    "trigger.scroll.3" : {
+      "comment" : "First draft: Triple Click and Scroll %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triple Click and Scroll %@"
+          }
+        }
+      }
+    },
+    "trigger.scroll.flags" : {
+      "comment" : "First draft: and Scroll || Example: ⌥⌘ and Scroll",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "and Scroll"
+          }
+        }
+      }
+    },
+    "type-shortcut-prompt" : {
+      "comment" : "First draft: Type a Keyboard Shortcut",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type a Keyboard Shortcut"
+          }
+        }
+      }
+    },
+    "Vanilla" : {
+      "extractionState" : "manual"
+    }
+  },
+  "version" : "1.0"
+}

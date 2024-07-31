@@ -1,0 +1,1970 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="App/UI/Accessibility/Base.lproj/AuthorizeAccessibilityView.xib" source-language="en" target-language="vi" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A5202i"/>
+    </header>
+    <body>
+      <trans-unit id="0lz-be-kpl.title" xml:space="preserve">
+        <source>Accessibility Access allows Mac Mouse Fix to intercept signals from your mouse and keyboard</source>
+        <target state="translated">Nhận quyền truy cập Trợ năng cho phép Mac Mouse Fix can thiệp vào tín hiệu từ chuột và bàn phím</target>
+        <note>Class = "NSTextFieldCell"; title = "Accessibility Access allows Mac Mouse Fix to intercept signals from your mouse and keyboard"; ObjectID = "0lz-be-kpl";</note>
+      </trans-unit>
+      <trans-unit id="04N-yp-Qg1.title" xml:space="preserve">
+        <source>Help</source>
+        <target state="translated">Trợ giúp</target>
+        <note>Class = "NSTextFieldCell"; title = "Help"; ObjectID = "04N-yp-Qg1";</note>
+      </trans-unit>
+      <trans-unit id="9qp-gN-SZZ.title" xml:space="preserve">
+        <source>Open 'Privacy &amp; Security' Settings</source>
+        <target state="translated">Mở cài đặt 'Riêng tư &amp; Bảo Mật' Settings</target>
+        <note>Class = "NSTextFieldCell"; title = "Open 'Privacy &amp; Security' Settings"; ObjectID = "9qp-gN-SZZ";</note>
+      </trans-unit>
+      <trans-unit id="46z-Nd-nh4.title" xml:space="preserve">
+        <source>Switch on 'Mac Mouse Fix Helper'</source>
+        <target state="translated">Bật 'Mac Mouse Fix Helper'</target>
+        <note>Class = "NSTextFieldCell"; title = "Switch on 'Mac Mouse Fix Helper'"; ObjectID = "46z-Nd-nh4";</note>
+      </trans-unit>
+      <trans-unit id="72q-sS-xMS.title" xml:space="preserve">
+        <source>1.</source>
+        <target state="translated">1.</target>
+        <note>Class = "NSTextFieldCell"; title = "1."; ObjectID = "72q-sS-xMS";</note>
+      </trans-unit>
+      <trans-unit id="OSk-Cl-izW.title" xml:space="preserve">
+        <source>Grant Accessibility Access to Mac Mouse Fix</source>
+        <target state="translated">Cấp quyền truy cập Trợ năng cho Mac Mouse Fix</target>
+        <note>Class = "NSTextFieldCell"; title = "Grant Accessibility Access to Mac Mouse Fix"; ObjectID = "OSk-Cl-izW";</note>
+      </trans-unit>
+      <trans-unit id="RIR-VN-l6s.title" xml:space="preserve">
+        <source>2.</source>
+        <target state="translated">2.</target>
+        <note>Class = "NSTextFieldCell"; title = "2."; ObjectID = "RIR-VN-l6s";</note>
+      </trans-unit>
+      <trans-unit id="fK8-8z-KQn.ibShadowedToolTip" xml:space="preserve">
+        <source>Hold Shift (⇧) and click this icon to reveal 'Mac Mouse Fix Helper.app' in Finder</source>
+        <target state="translated">Giữ Shift (⇧) and kích vào biểu tượng này để hiện 'Mac Mouse Fix Helper.app' trong Finder</target>
+        <note>Class = "NSImageView"; ibShadowedToolTip = "Hold Shift (⇧) and click this icon to reveal 'Mac Mouse Fix Helper.app' in Finder"; ObjectID = "fK8-8z-KQn";</note>
+      </trans-unit>
+      <trans-unit id="u9c-up-oQG.title" xml:space="preserve">
+        <source>Cancel</source>
+        <target state="translated">Hủy bỏ</target>
+        <note>Class = "NSButtonCell"; title = "Cancel"; ObjectID = "u9c-up-oQG";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="App/UI/Accessibility/InfoPlist.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A5202i"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>Mac Mouse Fix</source>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
+        <source>Copyright © 2019-2023 Noah Nuebling (MMF License)</source>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="App/UI/LicenseSheet/Base.lproj/LicenseSheetController.xib" source-language="en" target-language="vi" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A5202i"/>
+    </header>
+    <body>
+      <trans-unit id="7yY-kF-Q7q.title" xml:space="preserve">
+        <source>Back</source>
+        <target state="translated">Quay lại</target>
+        <note>Class = "NSButtonCell"; title = "Back"; ObjectID = "7yY-kF-Q7q";</note>
+      </trans-unit>
+      <trans-unit id="IK8-Rj-beO.title" xml:space="preserve">
+        <source>&lt;Activate License&gt;</source>
+        <target state="translated">&lt;Kích hoạt bản quyền&gt;</target>
+        <note>Class = "NSButtonCell"; title = "&lt;Activate License&gt;"; ObjectID = "IK8-Rj-beO";</note>
+      </trans-unit>
+      <trans-unit id="JJv-GH-7io.placeholderString" xml:space="preserve">
+        <source>Enter Your License Key</source>
+        <target state="translated">Nhập khóa kích hoạt của bạn</target>
+        <note>Class = "NSTextFieldCell"; placeholderString = "Enter Your License Key"; ObjectID = "JJv-GH-7io";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="App/UI/Main/Base.lproj/Main.storyboard" source-language="en" target-language="vi" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A5202i"/>
+    </header>
+    <body>
+      <trans-unit id="1TU-wL-skT.title" xml:space="preserve">
+        <source>Undo</source>
+        <target state="translated">Hoàn tác</target>
+        <note>Class = "NSMenuItem"; title = "Undo"; ObjectID = "1TU-wL-skT";</note>
+      </trans-unit>
+      <trans-unit id="1dS-BH-DIv.title" xml:space="preserve">
+        <source>Pointer</source>
+        <target state="translated">Trỏ chuột</target>
+        <note>Class = "NSViewController"; title = "Pointer"; ObjectID = "1dS-BH-DIv"; Note = "Pointer Tab Title";</note>
+      </trans-unit>
+      <trans-unit id="1nK-vb-jNz.title" xml:space="preserve">
+        <source>&lt;Scroll precisely by moving the scroll wheel slowly&gt;</source>
+        <target state="translated">&lt;Cuộn chính xác khi cuộn thật chậm&gt;</target>
+        <note>Class = "NSTextFieldCell"; title = "&lt;Scroll precisely by moving the scroll wheel slowly&gt;"; ObjectID = "1nK-vb-jNz";</note>
+      </trans-unit>
+      <trans-unit id="2Uv-W7-hzJ.title" xml:space="preserve">
+        <source>View Guides or Ask the Community...</source>
+        <target state="translated">Xem hướng dẫn hoặc hỏi tại cộng đồng...</target>
+        <note>Class = "NSMenuItem"; title = "View Guides or Ask the Community..."; ObjectID = "2Uv-W7-hzJ";</note>
+      </trans-unit>
+      <trans-unit id="3a9-XG-oHg.title" xml:space="preserve">
+        <source>Acceleration:</source>
+        <target state="translated">Tăng tốc:</target>
+        <note>Class = "NSTextFieldCell"; title = "Acceleration:"; ObjectID = "3a9-XG-oHg"; Note = "Pointer &gt; Acceleration Label";</note>
+      </trans-unit>
+      <trans-unit id="3pt-ka-lxV.title" xml:space="preserve">
+        <source>Check for Updates...</source>
+        <target state="translated">Kiểm tra cập nhật...</target>
+        <note>Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "3pt-ka-lxV";</note>
+      </trans-unit>
+      <trans-unit id="4Cx-DN-qX3.title" xml:space="preserve">
+        <source>&lt;Mission Control and Spaces&gt;</source>
+        <target state="translated">&lt;Mission Control and Spaces&gt;</target>
+        <note>Class = "NSMenuItem"; title = "&lt;Mission Control and Spaces&gt;"; ObjectID = "4Cx-DN-qX3";</note>
+      </trans-unit>
+      <trans-unit id="4gx-d0-WNb.title" xml:space="preserve">
+        <source>Off</source>
+        <target state="translated">Tắt</target>
+        <note>Class = "NSMenuItem"; title = "Off"; ObjectID = "4gx-d0-WNb"; Note = "Scrolling &gt; Smoothness &gt; Off Option";</note>
+      </trans-unit>
+      <trans-unit id="4hf-tQ-y76.title" xml:space="preserve">
+        <source>Precision</source>
+        <target state="translated">Chính xác</target>
+        <note>Class = "NSButtonCell"; title = "Precision"; ObjectID = "4hf-tQ-y76"; Note = "Scrolling &gt; Precise Scrolling Toggle";</note>
+      </trans-unit>
+      <trans-unit id="5yb-g8-Kcg.title" xml:space="preserve">
+        <source>Write a Feature Request</source>
+        <target state="translated">Đề xuất tính năng mới</target>
+        <note>Class = "NSTextFieldCell"; title = "Write a Feature Request"; ObjectID = "5yb-g8-Kcg";</note>
+      </trans-unit>
+      <trans-unit id="6Nj-Ed-W5T.title" xml:space="preserve">
+        <source>Scroll Horizontally</source>
+        <target state="translated">Cuộn ngang</target>
+        <note>Class = "NSTextFieldCell"; title = "Scroll Horizontally"; ObjectID = "6Nj-Ed-W5T"; Note = "Scrolling &gt; Keyboard Modifiers &gt; Scroll Horizontally Label";</note>
+      </trans-unit>
+      <trans-unit id="6Yt-gG-Nf9.title" xml:space="preserve">
+        <source>Edit</source>
+        <target state="translated">Chỉnh sửa</target>
+        <note>Class = "NSMenuItem"; title = "Edit"; ObjectID = "6Yt-gG-Nf9";</note>
+      </trans-unit>
+      <trans-unit id="6es-it-kDs.title" xml:space="preserve">
+        <source>Delete</source>
+        <target state="translated">Xóa</target>
+        <note>Class = "NSMenuItem"; title = "Delete"; ObjectID = "6es-it-kDs";</note>
+      </trans-unit>
+      <trans-unit id="8pi-FV-zYE.title" xml:space="preserve">
+        <source>Acknowledgements</source>
+        <target state="translated">Sự ghi nhận</target>
+        <note>Class = "NSTextFieldCell"; title = "Acknowledgements"; ObjectID = "8pi-FV-zYE";</note>
+      </trans-unit>
+      <trans-unit id="17P-PJ-tV1.title" xml:space="preserve">
+        <source>Regular</source>
+        <target state="translated">Bình thường</target>
+        <note>Class = "NSMenuItem"; title = "Regular"; ObjectID = "17P-PJ-tV1"; Note = "Scrolling &gt; Smoothness &gt; Regular Option";</note>
+      </trans-unit>
+      <trans-unit id="79J-Zg-ebA.title" xml:space="preserve">
+        <source>&lt;Version - (-)&gt;</source>
+        <target state="translated">&lt;Phiên bản - (-)&gt;</target>
+        <note>Class = "NSTextFieldCell"; title = "&lt;Version - (-)&gt;"; ObjectID = "79J-Zg-ebA";</note>
+      </trans-unit>
+      <trans-unit id="97W-3h-SSc.title" xml:space="preserve">
+        <source>High</source>
+        <target state="translated">Cao</target>
+        <note>Class = "NSMenuItem"; title = "High"; ObjectID = "97W-3h-SSc"; Note = "Scrolling &gt; Smoothness &gt; High Option";</note>
+      </trans-unit>
+      <trans-unit id="A6t-UZ-2DE.title" xml:space="preserve">
+        <source>Scroll Precisely</source>
+        <target state="translated">Cuộn chính xác</target>
+        <note>Class = "NSTextFieldCell"; title = "Scroll Precisely"; ObjectID = "A6t-UZ-2DE"; Note = "Scrolling &gt; Keyboard Modifiers &gt; Scroll Precisely Label";</note>
+      </trans-unit>
+      <trans-unit id="AHn-zX-g4d.title" xml:space="preserve">
+        <source>Move between pages in Safari by scrolling horizontally, and more</source>
+        <target state="translated">Di chuyển giữa các trang của Safari và hơn nữa bằng cách cuộn ngang</target>
+        <note>Class = "NSTextFieldCell"; title = "Move between pages in Safari by scrolling horizontally, and more"; ObjectID = "AHn-zX-g4d"; Note = "Scrolling &gt; Trackpad Interactions &gt; Hint";</note>
+      </trans-unit>
+      <trans-unit id="AYu-sK-qS6.title" xml:space="preserve">
+        <source>Main Menu</source>
+        <target state="translated">Trang chính</target>
+        <note>Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6";</note>
+      </trans-unit>
+      <trans-unit id="AqN-zN-yDS.title" xml:space="preserve">
+        <source>Lets you quickly turn off or on features like
+smooth scrolling</source>
+        <target state="translated">Cho phép bạn tắt hoặc bật nhanh các tính năng như
+cuộn mượt mà</target>
+        <note>Class = "NSTextFieldCell"; title = "Lets you quickly turn off or on features like\nsmooth scrolling"; ObjectID = "AqN-zN-yDS";</note>
+      </trans-unit>
+      <trans-unit id="Bnm-ze-Mca.title" xml:space="preserve">
+        <source>Hide Mac Mouse Fix</source>
+        <target state="translated">Ẩn Mac Mouse Fix</target>
+        <note>Class = "NSMenuItem"; title = "Hide Mac Mouse Fix"; ObjectID = "Bnm-ze-Mca";</note>
+      </trans-unit>
+      <trans-unit id="DNu-D4-tBY.title" xml:space="preserve">
+        <source>Low</source>
+        <target state="translated">Thấp</target>
+        <note>Class = "NSTextFieldCell"; title = "Low"; ObjectID = "DNu-D4-tBY"; Note = "Pointer &gt; Sensitivity Slider &gt; Low Label";</note>
+      </trans-unit>
+      <trans-unit id="DVS-lH-VBH.title" xml:space="preserve">
+        <source>Help</source>
+        <target state="translated">Trợ giúp</target>
+        <note>Class = "NSMenu"; title = "Help"; ObjectID = "DVS-lH-VBH";</note>
+      </trans-unit>
+      <trans-unit id="DtT-YF-gUn.title" xml:space="preserve">
+        <source>Set acceleration under 
+System Preferences &gt; Mouse &gt; Tracking speed </source>
+        <target state="translated">Cài đặt tăng tốc tại 
+Cài đặt hệ thống &gt; Chuột &gt; Tốc độ di chuyển</target>
+        <note>Class = "NSTextFieldCell"; title = "Set acceleration under \nSystem Preferences &gt; Mouse &gt; Tracking speed "; ObjectID = "DtT-YF-gUn"; Note = "Pointer &gt; Acceleration &gt; macOS Option &gt; Hint";</note>
+      </trans-unit>
+      <trans-unit id="E0q-4e-axc.title" xml:space="preserve">
+        <source>Medium</source>
+        <target state="translated">Vừa</target>
+        <note>Class = "NSMenuItem"; title = "Medium"; ObjectID = "E0q-4e-axc"; Note = "Scrolling &gt; Scroll Speed &gt; Medium Option";</note>
+      </trans-unit>
+      <trans-unit id="ENz-Ny-4ax.title" xml:space="preserve">
+        <source>Scroll Swiftly</source>
+        <target state="translated">Cuộn nhanh</target>
+        <note>Class = "NSTextFieldCell"; title = "Scroll Swiftly"; ObjectID = "ENz-Ny-4ax"; Note = "Scrolling &gt; Keyboard Modifiers &gt; Scroll Swiftly Label";</note>
+      </trans-unit>
+      <trans-unit id="FT8-zP-xsg.title" xml:space="preserve">
+        <source>Low</source>
+        <target state="translated">Thấp</target>
+        <note>Class = "NSMenuItem"; title = "Low"; ObjectID = "FT8-zP-xsg"; Note = "Scrolling &gt; Scroll Speed &gt; Low Option";</note>
+      </trans-unit>
+      <trans-unit id="Fp4-bf-cbR.title" xml:space="preserve">
+        <source>Help</source>
+        <target state="translated">Trợ giúp</target>
+        <note>Class = "NSMenuItem"; title = "Help"; ObjectID = "Fp4-bf-cbR";</note>
+      </trans-unit>
+      <trans-unit id="Gr8-qh-oGd.title" xml:space="preserve">
+        <source>Services</source>
+        <target state="translated">Dịch vụ</target>
+        <note>Class = "NSMenuItem"; title = "Services"; ObjectID = "Gr8-qh-oGd";</note>
+      </trans-unit>
+      <trans-unit id="H4T-Rp-t33.title" xml:space="preserve">
+        <source>Zoom In or Out</source>
+        <target state="translated">Phóng to hoặc thu nhỏ</target>
+        <note>Class = "NSTextFieldCell"; title = "Zoom In or Out"; ObjectID = "H4T-Rp-t33"; Note = "Scrolling &gt; Keyboard Modifiers &gt; Zoom In or Out Label";</note>
+      </trans-unit>
+      <trans-unit id="Hur-83-2a2.title" xml:space="preserve">
+        <source>Options...</source>
+        <target state="translated">Tùy chỉnh...</target>
+        <note>Class = "NSButtonCell"; title = "Options..."; ObjectID = "Hur-83-2a2"; Note = "Buttons &gt; Options... Button";</note>
+      </trans-unit>
+      <trans-unit id="IJF-sN-Wfw.title" xml:space="preserve">
+        <source>Redo</source>
+        <target state="translated">Làm lại</target>
+        <note>Class = "NSMenuItem"; title = "Redo"; ObjectID = "IJF-sN-Wfw";</note>
+      </trans-unit>
+      <trans-unit id="ILO-GQ-vNk.title" xml:space="preserve">
+        <source>Show in Menu Bar</source>
+        <target state="translated">Hiển thị trên Thanh Menu</target>
+        <note>Class = "NSButtonCell"; title = "Show in Menu Bar"; ObjectID = "ILO-GQ-vNk"; Note = "General &gt; Show in Menu Bar Toggle";</note>
+      </trans-unit>
+      <trans-unit id="IQv-IB-iLA.title" xml:space="preserve">
+        <source>Mac Mouse Fix</source>
+        <target state="translated">Mac Mouse Fix</target>
+        <note>Class = "NSWindow"; title = "Mac Mouse Fix"; ObjectID = "IQv-IB-iLA"; Note = "Mac Mouse Fix Window Title";</note>
+      </trans-unit>
+      <trans-unit id="InY-TB-ky6.title" xml:space="preserve">
+        <source>Window</source>
+        <target state="translated">Cửa sổ</target>
+        <note>Class = "NSMenu"; title = "Window"; ObjectID = "InY-TB-ky6";</note>
+      </trans-unit>
+      <trans-unit id="LTC-zW-sTp.title" xml:space="preserve">
+        <source>Edit</source>
+        <target state="translated">Chỉnh sửa</target>
+        <note>Class = "NSMenu"; title = "Edit"; ObjectID = "LTC-zW-sTp";</note>
+      </trans-unit>
+      <trans-unit id="Mck-5W-5lv.title" xml:space="preserve">
+        <source>Get Beta Versions</source>
+        <target state="translated">Nhận phiên bản thử nghiệm</target>
+        <note>Class = "NSButtonCell"; title = "Get Beta Versions"; ObjectID = "Mck-5W-5lv"; Note = "General &gt; Get Beta Versions Toggle";</note>
+      </trans-unit>
+      <trans-unit id="Mjk-wy-Z7C.label" xml:space="preserve">
+        <source>Buttons</source>
+        <target state="translated">Nút</target>
+        <note>Class = "NSTabViewItem"; label = "Buttons"; ObjectID = "Mjk-wy-Z7C"; Note = "Toolbar &gt; Buttons Tab Button";</note>
+      </trans-unit>
+      <trans-unit id="N7H-9j-DIr.title" xml:space="preserve">
+        <source>Move the mouse pointer inside the '+' field, then *Click* a mouse button to assign an action to it.
+You can also *Double Click*, *Click and Drag* and [more]().</source>
+        <target state="translated">Di chuyển con trỏ chuột vào trong ô '+', sau đó _kích_ một nút của chuột để gáng một hành động cho nó.  Bạn cũng có thể _kích đôi_, _kích và kéo_ và [nhiều hành động khác](). Đừng ngại khám phá nhé.</target>
+        <note>Class = "NSTextFieldCell"; title = "Move the mouse pointer inside the '+' field, then *Click* a mouse button to assign an action to it.\nYou can also *Double Click*, *Click and Drag* and [more]()."; ObjectID = "N7H-9j-DIr"; Note = "Buttons &gt; Add Field Hint || It's better to use * instead of _ for emphasis. _ causes problems in some languages like Chinese.";</note>
+      </trans-unit>
+      <trans-unit id="N65-aN-Hxp.title" xml:space="preserve">
+        <source>Trackpad Simulation</source>
+        <target state="translated">Giả lập trackpad</target>
+        <note>Class = "NSButtonCell"; title = "Trackpad Simulation"; ObjectID = "N65-aN-Hxp"; Note = "Scroll &gt; Trackpad Interactions";</note>
+      </trans-unit>
+      <trans-unit id="NdF-Gb-mOK.title" xml:space="preserve">
+        <source>Minimize</source>
+        <target state="translated">Thu nhỏ</target>
+        <note>Class = "NSMenuItem"; title = "Minimize"; ObjectID = "NdF-Gb-mOK";</note>
+      </trans-unit>
+      <trans-unit id="Ozk-o9-C4a.title" xml:space="preserve">
+        <source>Visit the Website</source>
+        <target state="translated">Ghé thăm trang web</target>
+        <note>Class = "NSTextFieldCell"; title = "Visit the Website"; ObjectID = "Ozk-o9-C4a";</note>
+      </trans-unit>
+      <trans-unit id="PdO-dH-G7Y.title" xml:space="preserve">
+        <source>Off</source>
+        <target state="translated">Tắt</target>
+        <note>Class = "NSMenuItem"; title = "Off"; ObjectID = "PdO-dH-G7Y"; Note = "Pointer &gt; Acceleration &gt; Off Option";</note>
+      </trans-unit>
+      <trans-unit id="Pxm-4w-iO7.title" xml:space="preserve">
+        <source>&lt;Box&gt;</source>
+        <target state="translated">&lt;Ô&gt;</target>
+        <note>Class = "NSBox"; title = "&lt;Box&gt;"; ObjectID = "Pxm-4w-iO7";</note>
+      </trans-unit>
+      <trans-unit id="QKM-im-bk9.title" xml:space="preserve">
+        <source>&lt;⌘⇧⌥⌃ + Triple Click and Drag Button 3&gt;</source>
+        <target state="translated">&lt;⌘⇧⌥⌃ + Kích ba lần và kéo Nút số 3&gt;</target>
+        <note>Class = "NSTextFieldCell"; title = "&lt;⌘⇧⌥⌃ + Triple Click and Drag Button 3&gt;"; ObjectID = "QKM-im-bk9";</note>
+      </trans-unit>
+      <trans-unit id="QaW-cc-uzc.title" xml:space="preserve">
+        <source>Send Me an Email</source>
+        <target state="translated">Gửi email cho tác giả</target>
+        <note>Class = "NSTextFieldCell"; title = "Send Me an Email"; ObjectID = "QaW-cc-uzc";</note>
+      </trans-unit>
+      <trans-unit id="RV9-5T-rvb.title" xml:space="preserve">
+        <source>Enable Mac Mouse Fix</source>
+        <target state="translated">Kích hoạt Mac Mouse Fix</target>
+        <note>Class = "NSTextFieldCell"; title = "Enable Mac Mouse Fix"; ObjectID = "RV9-5T-rvb"; Note = "General &gt; Enable Mac Mouse Fix Label";</note>
+      </trans-unit>
+      <trans-unit id="Rlr-89-4fc.title" xml:space="preserve">
+        <source>Hide Others</source>
+        <target state="translated">Ẩn những mục khác</target>
+        <note>Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Rlr-89-4fc";</note>
+      </trans-unit>
+      <trans-unit id="S3S-2l-eNQ.title" xml:space="preserve">
+        <source>Close</source>
+        <target state="translated">Đóng</target>
+        <note>Class = "NSMenuItem"; title = "Close"; ObjectID = "S3S-2l-eNQ";</note>
+      </trans-unit>
+      <trans-unit id="S6k-al-LbR.title" xml:space="preserve">
+        <source>Paste</source>
+        <target state="translated">Dán</target>
+        <note>Class = "NSMenuItem"; title = "Paste"; ObjectID = "S6k-al-LbR";</note>
+      </trans-unit>
+      <trans-unit id="S55-uf-Xij.title" xml:space="preserve">
+        <source>&lt;0.6x&gt;</source>
+        <target state="translated">&lt;0.6x&gt;</target>
+        <note>Class = "NSButtonCell"; title = "&lt;0.6x&gt;"; ObjectID = "S55-uf-Xij";</note>
+      </trans-unit>
+      <trans-unit id="SaY-fF-d1s.title" xml:space="preserve">
+        <source>You'll be notified of updates when you open
+this window</source>
+        <target state="translated">Bạn sẽ được thông báo về các cập nhật khi bạn mở
+cửa sổ này</target>
+        <note>Class = "NSTextFieldCell"; title = "You'll be notified of updates when you open\nthis window"; ObjectID = "SaY-fF-d1s";</note>
+      </trans-unit>
+      <trans-unit id="SjO-Dq-CEX.title" xml:space="preserve">
+        <source>Smoothness:</source>
+        <target state="translated">Độ mượt</target>
+        <note>Class = "NSTextFieldCell"; title = "Smoothness:"; ObjectID = "SjO-Dq-CEX"; Note = "Scrolling &gt; Smoothness Label";</note>
+      </trans-unit>
+      <trans-unit id="TrI-uu-DEN.title" xml:space="preserve">
+        <source>Buy Me a Milkshake :)</source>
+        <target state="translated">Ủng hộ tôi một ly trà sữa 🧋</target>
+        <note>Class = "NSTextFieldCell"; title = "Buy Me a Milkshake :)"; ObjectID = "TrI-uu-DEN";</note>
+      </trans-unit>
+      <trans-unit id="UeD-ND-tYj.title" xml:space="preserve">
+        <source>Quit Mac Mouse Fix</source>
+        <target state="translated">Tắt Mac Mouse Fix</target>
+        <note>Class = "NSMenuItem"; title = "Quit Mac Mouse Fix"; ObjectID = "UeD-ND-tYj";</note>
+      </trans-unit>
+      <trans-unit id="WiZ-l0-Th5.title" xml:space="preserve">
+        <source>&lt;Text Cell&gt;</source>
+        <target state="translated">&lt;Ô chữ&gt;</target>
+        <note>Class = "NSTextFieldCell"; title = "&lt;Text Cell&gt;"; ObjectID = "WiZ-l0-Th5";</note>
+      </trans-unit>
+      <trans-unit id="X8q-Nk-Fwr.title" xml:space="preserve">
+        <source>Services</source>
+        <target state="translated">Dịch vụ</target>
+        <note>Class = "NSMenu"; title = "Services"; ObjectID = "X8q-Nk-Fwr";</note>
+      </trans-unit>
+      <trans-unit id="XAP-He-hda.title" xml:space="preserve">
+        <source>Sensitivity:</source>
+        <target state="translated">Độ nhạy:</target>
+        <note>Class = "NSTextFieldCell"; title = "Sensitivity:"; ObjectID = "XAP-He-hda"; Note = "Pointer &gt; Sensitivity Label";</note>
+      </trans-unit>
+      <trans-unit id="YBT-Ar-F4S.title" xml:space="preserve">
+        <source>Activate License...</source>
+        <target state="translated">Kích hoạt bản quyền...</target>
+        <note>Class = "NSMenuItem"; title = "Activate License..."; ObjectID = "YBT-Ar-F4S";</note>
+      </trans-unit>
+      <trans-unit id="YDr-ez-VKk.title" xml:space="preserve">
+        <source>Medium</source>
+        <target state="translated">Vừa</target>
+        <note>Class = "NSTextFieldCell"; title = "Medium"; ObjectID = "YDr-ez-VKk"; Note = "Pointer &gt; Sensitivity Slider &gt; Medium Label";</note>
+      </trans-unit>
+      <trans-unit id="Yyg-LD-A1v.title" xml:space="preserve">
+        <source>Mac Mouse Fix</source>
+        <target state="translated">Mac Mouse Fix</target>
+        <note>Class = "NSMenu"; title = "Mac Mouse Fix"; ObjectID = "Yyg-LD-A1v";</note>
+      </trans-unit>
+      <trans-unit id="ZMA-p0-2lf.title" xml:space="preserve">
+        <source>Check It Out on GitHub</source>
+        <target state="translated">Xem trên GitHub</target>
+        <note>Class = "NSTextFieldCell"; title = "Check It Out on GitHub"; ObjectID = "ZMA-p0-2lf";</note>
+      </trans-unit>
+      <trans-unit id="ZfY-xQ-tQl.title" xml:space="preserve">
+        <source>Zoom</source>
+        <target state="translated">Thu phóng</target>
+        <note>Class = "NSMenuItem"; title = "Zoom"; ObjectID = "ZfY-xQ-tQl";</note>
+      </trans-unit>
+      <trans-unit id="Zqs-Y4-U4Q.title" xml:space="preserve">
+        <source>&lt;Button X&gt;</source>
+        <target state="translated">&lt;Nút X&gt;</target>
+        <note>Class = "NSTextFieldCell"; title = "&lt;Button X&gt;"; ObjectID = "Zqs-Y4-U4Q";</note>
+      </trans-unit>
+      <trans-unit id="aZA-uL-uvx.title" xml:space="preserve">
+        <source>Bring All to Front</source>
+        <target state="translated">Mang tất cả lên trên</target>
+        <note>Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "aZA-uL-uvx";</note>
+      </trans-unit>
+      <trans-unit id="bGk-tB-fcH.title" xml:space="preserve">
+        <source>Mac Mouse Fix</source>
+        <target state="translated">Mac Mouse Fix</target>
+        <note>Class = "NSTextFieldCell"; title = "Mac Mouse Fix"; ObjectID = "bGk-tB-fcH";</note>
+      </trans-unit>
+      <trans-unit id="bIE-g7-3St.title" xml:space="preserve">
+        <source>High</source>
+        <target state="translated">Cao</target>
+        <note>Class = "NSMenuItem"; title = "High"; ObjectID = "bIE-g7-3St"; Note = "Scrolling &gt; Scroll Speed &gt; High Option";</note>
+      </trans-unit>
+      <trans-unit id="bJS-hB-0l3.title" xml:space="preserve">
+        <source>Medium</source>
+        <target state="translated">Vừa</target>
+        <note>Class = "NSMenuItem"; title = "Medium"; ObjectID = "bJS-hB-0l3"; Note = "Pointer &gt; Acceleration &gt; Medium Option";</note>
+      </trans-unit>
+      <trans-unit id="bQf-qv-mvB.title" xml:space="preserve">
+        <source>File a Bug Report</source>
+        <target state="translated">Gửi báo cáo lỗi</target>
+        <note>Class = "NSTextFieldCell"; title = "File a Bug Report"; ObjectID = "bQf-qv-mvB";</note>
+      </trans-unit>
+      <trans-unit id="bew-ni-FnZ.title" xml:space="preserve">
+        <source>Mac Mouse Fix will stay enabled after you close it</source>
+        <target state="translated">Mac Mouse Fix vẫn được bật khi bạn đóng nó</target>
+        <note>Class = "NSTextFieldCell"; title = "Mac Mouse Fix will stay enabled after you close it"; ObjectID = "bew-ni-FnZ";</note>
+      </trans-unit>
+      <trans-unit id="bgk-wr-o8T.title" xml:space="preserve">
+        <source>Don't remind me again</source>
+        <target state="translated">Không nhắc lại</target>
+        <note>Class = "NSButtonCell"; title = "Don't remind me again"; ObjectID = "bgk-wr-o8T";</note>
+      </trans-unit>
+      <trans-unit id="bsO-Hw-2ui.title" xml:space="preserve">
+        <source>&lt;Initial Tab Controller&gt;</source>
+        <target state="translated">&lt;Trình điều khiển thẻ ban đầu&gt;</target>
+        <note>Class = "NSViewController"; title = "&lt;Initial Tab Controller&gt;"; ObjectID = "bsO-Hw-2ui";</note>
+      </trans-unit>
+      <trans-unit id="buH-zX-xXu.title" xml:space="preserve">
+        <source>About</source>
+        <target state="translated">Giới thiệu</target>
+        <note>Class = "NSViewController"; title = "About"; ObjectID = "buH-zX-xXu"; Note = "About Tab Title";</note>
+      </trans-unit>
+      <trans-unit id="cnA-CV-nF3.title" xml:space="preserve">
+        <source>macOS</source>
+        <target state="translated">macOS</target>
+        <note>Class = "NSMenuItem"; title = "macOS"; ObjectID = "cnA-CV-nF3"; Note = "Pointer &gt; Acceleration &gt; macOS Option";</note>
+      </trans-unit>
+      <trans-unit id="cul-5Z-iUo.title" xml:space="preserve">
+        <source>&lt;Day 2/14 of your test period&gt;</source>
+        <target state="translated">&lt;Ngày 2/14 của thời gian dùng thử&gt;</target>
+        <note>Class = "NSTextFieldCell"; title = "&lt;Day 2/14 of your test period&gt;"; ObjectID = "cul-5Z-iUo";</note>
+      </trans-unit>
+      <trans-unit id="d0g-07-PaJ.title" xml:space="preserve">
+        <source>Buy Mac Mouse Fix...</source>
+        <target state="translated">Mua Mac Mouse Fix...</target>
+        <note>Class = "NSMenuItem"; title = "Buy Mac Mouse Fix..."; ObjectID = "d0g-07-PaJ";</note>
+      </trans-unit>
+      <trans-unit id="d9S-X9-qM1.title" xml:space="preserve">
+        <source>Buttons</source>
+        <target state="translated">Nút</target>
+        <note>Class = "NSViewController"; title = "Buttons"; ObjectID = "d9S-X9-qM1"; Note = "Buttons Tab Title";</note>
+      </trans-unit>
+      <trans-unit id="eLS-O0-A1x.title" xml:space="preserve">
+        <source>General</source>
+        <target state="translated">Chung</target>
+        <note>Class = "NSViewController"; title = "General"; ObjectID = "eLS-O0-A1x"; Note = "General Tab Title";</note>
+      </trans-unit>
+      <trans-unit id="eVc-l9-Z0h.title" xml:space="preserve">
+        <source>Get Help</source>
+        <target state="translated">Nhận trợ giúp</target>
+        <note>Class = "NSTextFieldCell"; title = "Get Help"; ObjectID = "eVc-l9-Z0h";</note>
+      </trans-unit>
+      <trans-unit id="fGs-UI-L0d.title" xml:space="preserve">
+        <source>Show All</source>
+        <target state="translated">Hiển thị tất cả</target>
+        <note>Class = "NSMenuItem"; title = "Show All"; ObjectID = "fGs-UI-L0d";</note>
+      </trans-unit>
+      <trans-unit id="fNA-5s-U4d.title" xml:space="preserve">
+        <source>Window</source>
+        <target state="translated">Cửa sổ</target>
+        <note>Class = "NSMenuItem"; title = "Window"; ObjectID = "fNA-5s-U4d";</note>
+      </trans-unit>
+      <trans-unit id="fW3-4Q-yB8.title" xml:space="preserve">
+        <source>macOS</source>
+        <target state="translated">macOS</target>
+        <note>Class = "NSMenuItem"; title = "macOS"; ObjectID = "fW3-4Q-yB8"; Note = "Scrolling &gt; Scroll Speed &gt; macOS Option";</note>
+      </trans-unit>
+      <trans-unit id="g5F-ZO-vGZ.title" xml:space="preserve">
+        <source>&lt;Click "__Restore Defaults...__" to load the recommended settings for 
+your __Logitech M720 Triathlon__.&gt;</source>
+        <target state="translated">&lt;Nhấp "__Khôi phục mặc định...__" để tải thiết lập mặc định cho 
+ __Logitech M720 Triathlon__ của bạn.&gt;</target>
+        <note>Class = "NSTextFieldCell"; title = "&lt;Click \"__Restore Defaults...__\" to load the recommended settings for \nyour __Logitech M720 Triathlon__.&gt;"; ObjectID = "g5F-ZO-vGZ";</note>
+      </trans-unit>
+      <trans-unit id="g9N-Za-8Ss.label" xml:space="preserve">
+        <source>&lt;Initial&gt;</source>
+        <target state="translated">&lt;Ban đầu&gt;</target>
+        <note>Class = "NSTabViewItem"; label = "&lt;Initial&gt;"; ObjectID = "g9N-Za-8Ss";</note>
+      </trans-unit>
+      <trans-unit id="gK0-1z-Pjv.title" xml:space="preserve">
+        <source>Reverse Direction</source>
+        <target state="translated">Đổi hướng</target>
+        <note>Class = "NSButtonCell"; title = "Reverse Direction"; ObjectID = "gK0-1z-Pjv"; Note = "Scrolling &gt; Reverse Scroll Direction Toggle";</note>
+      </trans-unit>
+      <trans-unit id="gOt-GR-IbE.headerCell.title" xml:space="preserve">
+        <source>&lt;Effect&gt;</source>
+        <target state="translated">&lt;Tác dụng&gt;</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "&lt;Effect&gt;"; ObjectID = "gOt-GR-IbE";</note>
+      </trans-unit>
+      <trans-unit id="hSC-BE-EZJ.title" xml:space="preserve">
+        <source>Mac Mouse Fix</source>
+        <target state="translated">Mac Mouse Fix</target>
+        <note>Class = "NSMenuItem"; title = "Mac Mouse Fix"; ObjectID = "hSC-BE-EZJ";</note>
+      </trans-unit>
+      <trans-unit id="hmb-DX-idO.title" xml:space="preserve">
+        <source>Low</source>
+        <target state="translated">Thấp</target>
+        <note>Class = "NSMenuItem"; title = "Low"; ObjectID = "hmb-DX-idO"; Note = "Pointer &gt; Acceleration &gt; Low Option";</note>
+      </trans-unit>
+      <trans-unit id="iFe-4y-9Xa.title" xml:space="preserve">
+        <source>Copy</source>
+        <target state="translated">Sao chép</target>
+        <note>Class = "NSMenuItem"; title = "Copy"; ObjectID = "iFe-4y-9Xa";</note>
+      </trans-unit>
+      <trans-unit id="jOM-dH-pdc.label" xml:space="preserve">
+        <source>Scrolling</source>
+        <target state="translated">Cuộn</target>
+        <note>Class = "NSTabViewItem"; label = "Scrolling"; ObjectID = "jOM-dH-pdc"; Note = "Toolbar &gt; Scrolling Tab Button";</note>
+      </trans-unit>
+      <trans-unit id="kK6-b5-Rfd.title" xml:space="preserve">
+        <source>&lt;Click and Drag Button 3&gt;</source>
+        <target state="translated">&lt;Nhấp và kéo nút số 3&gt;</target>
+        <note>Class = "NSMenuItem"; title = "&lt;Click and Drag Button 3&gt;"; ObjectID = "kK6-b5-Rfd";</note>
+      </trans-unit>
+      <trans-unit id="l7d-al-Y14.title" xml:space="preserve">
+        <source>Speed:</source>
+        <target state="translated">Tốc độ:</target>
+        <note>Class = "NSTextFieldCell"; title = "Speed:"; ObjectID = "l7d-al-Y14"; Note = "Scrolling &gt; Scroll Speed Label";</note>
+      </trans-unit>
+      <trans-unit id="lLu-45-nE3.label" xml:space="preserve">
+        <source>Pointer</source>
+        <target state="translated">Trỏ chuột</target>
+        <note>Class = "NSTabViewItem"; label = "Pointer"; ObjectID = "lLu-45-nE3"; Note = "Toolbar &gt; Pointer Tab Button";</note>
+      </trans-unit>
+      <trans-unit id="lrw-Lp-nQ4.title" xml:space="preserve">
+        <source>Restore Defaults...</source>
+        <target state="translated">Khôi phục mặc định...</target>
+        <note>Class = "NSButtonCell"; title = "Restore Defaults..."; ObjectID = "lrw-Lp-nQ4";</note>
+      </trans-unit>
+      <trans-unit id="mWQ-i7-vza.ibShadowedToolTip" xml:space="preserve">
+        <source>Hold Command (⌘) and Shift (⇧), then click this icon to reveal Mac Mouse Fix's configuration file in Finder</source>
+        <target state="translated">Hold Command (⌘) and Shift (⇧), then click this icon to reveal the Mac Mouse Fix configuration file in Finder</target>
+        <note>Class = "NSImageView"; ibShadowedToolTip = "Hold Command (⌘) and Shift (⇧), then click this icon to reveal Mac Mouse Fix's configuration file in Finder"; ObjectID = "mWQ-i7-vza";</note>
+      </trans-unit>
+      <trans-unit id="o3B-zA-fJm.headerCell.title" xml:space="preserve">
+        <source>&lt;Trigger&gt;</source>
+        <target state="translated">&lt;Trigger&gt;</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "&lt;Trigger&gt;"; ObjectID = "o3B-zA-fJm";</note>
+      </trans-unit>
+      <trans-unit id="oEX-Tp-9Cv.title" xml:space="preserve">
+        <source>Select All</source>
+        <target state="translated">Chọn tất cả</target>
+        <note>Class = "NSMenuItem"; title = "Select All"; ObjectID = "oEX-Tp-9Cv";</note>
+      </trans-unit>
+      <trans-unit id="pMz-a0-1UQ.title" xml:space="preserve">
+        <source>Created by Noah Nuebling</source>
+        <target state="translated">Phát triển bởi Noah Nuebling</target>
+        <note>Class = "NSTextFieldCell"; title = "Created by Noah Nuebling"; ObjectID = "pMz-a0-1UQ";</note>
+      </trans-unit>
+      <trans-unit id="qcW-e9-BqR.title" xml:space="preserve">
+        <source>Scrolling</source>
+        <target state="translated">Cuộn</target>
+        <note>Class = "NSViewController"; title = "Scrolling"; ObjectID = "qcW-e9-BqR"; Note = "Scrolling Tab Title";</note>
+      </trans-unit>
+      <trans-unit id="rFn-h3-0EN.title" xml:space="preserve">
+        <source>Cut</source>
+        <target state="translated">Cắt</target>
+        <note>Class = "NSMenuItem"; title = "Cut"; ObjectID = "rFn-h3-0EN";</note>
+      </trans-unit>
+      <trans-unit id="rIq-3r-6ck.label" xml:space="preserve">
+        <source>General</source>
+        <target state="translated">Chung</target>
+        <note>Class = "NSTabViewItem"; label = "General"; ObjectID = "rIq-3r-6ck"; Note = "Toolbar &gt; General Tab Button";</note>
+      </trans-unit>
+      <trans-unit id="sef-RZ-SeL.title" xml:space="preserve">
+        <source>High</source>
+        <target state="translated">Cao</target>
+        <note>Class = "NSMenuItem"; title = "High"; ObjectID = "sef-RZ-SeL"; Note = "Pointer &gt; Acceleration &gt; High Option";</note>
+      </trans-unit>
+      <trans-unit id="tdD-8Q-JB2.title" xml:space="preserve">
+        <source>Check for Updates</source>
+        <target state="translated">Kiểm tra cập nhật</target>
+        <note>Class = "NSButtonCell"; title = "Check for Updates"; ObjectID = "tdD-8Q-JB2"; Note = "General &gt; Check for Updates Toggle";</note>
+      </trans-unit>
+      <trans-unit id="u9F-yq-WC3.title" xml:space="preserve">
+        <source>About Mac Mouse Fix</source>
+        <target state="translated">Giới thiệu về Mac Mouse Fix</target>
+        <note>Class = "NSMenuItem"; title = "About Mac Mouse Fix"; ObjectID = "u9F-yq-WC3";</note>
+      </trans-unit>
+      <trans-unit id="vbN-zN-z2V.title" xml:space="preserve">
+        <source>Keyboard Modifiers:</source>
+        <target state="translated">Phím bổ sung</target>
+        <note>Class = "NSTextFieldCell"; title = "Keyboard Modifiers:"; ObjectID = "vbN-zN-z2V"; Note = "Scrolling &gt; Keyboard Modifiers Label";</note>
+      </trans-unit>
+      <trans-unit id="wJW-hQ-lUc.title" xml:space="preserve">
+        <source>High</source>
+        <target state="translated">Cao</target>
+        <note>Class = "NSTextFieldCell"; title = "High"; ObjectID = "wJW-hQ-lUc"; Note = "Pointer &gt; Sensitivity Slider &gt; High Label";</note>
+      </trans-unit>
+      <trans-unit id="wal-3r-ZZs.label" xml:space="preserve">
+        <source>About</source>
+        <target state="translated">Giới thiệu</target>
+        <note>Class = "NSTabViewItem"; label = "About"; ObjectID = "wal-3r-ZZs"; Note = "Toolbar &gt; About Tab Button";</note>
+      </trans-unit>
+      <trans-unit id="zwX-Pv-OOK.title" xml:space="preserve">
+        <source>&lt;Text Cell&gt;</source>
+        <target state="translated">&lt;Ô chữ&gt;</target>
+        <note>Class = "NSTextFieldCell"; title = "&lt;Text Cell&gt;"; ObjectID = "zwX-Pv-OOK";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="App/UI/Main/Tabs/ButtonTab/Options/Base.lproj/ButtonOptionsViewController.xib" source-language="en" target-language="vi" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A5202i"/>
+    </header>
+    <body>
+      <trans-unit id="COH-CF-CQd.title" xml:space="preserve">
+        <source>Done</source>
+        <target state="translated">Hoàn tất</target>
+        <note>Class = "NSButtonCell"; title = "Done"; ObjectID = "COH-CF-CQd";</note>
+      </trans-unit>
+      <trans-unit id="DQ6-Rq-6nC.title" xml:space="preserve">
+        <source>Recommended for Trackball Mice</source>
+        <target state="translated">Khuyến nghị cho Chuột bi xoay</target>
+        <note>Class = "NSTextFieldCell"; title = "Recommended for Trackball Mice"; ObjectID = "DQ6-Rq-6nC"; Note = "Locking the Mouse Pointer during 'Click and Drag' Gestures is \"Recommended for Trackball Mice\"";</note>
+      </trans-unit>
+      <trans-unit id="Mmp-uv-DmY.title" xml:space="preserve">
+        <source>Lock Mouse Pointer During 'Click and Drag' Gestures</source>
+        <target state="translated">Khóa vị trí con trỏ chuột khi nhấp và kéo</target>
+        <note>Class = "NSButtonCell"; title = "Lock Mouse Pointer During 'Click and Drag' Gestures"; ObjectID = "Mmp-uv-DmY";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Helper/UI/MenuBarItem/Base.lproj/MenuBarItem.xib" source-language="en" target-language="vi" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A5202i"/>
+    </header>
+    <body>
+      <trans-unit id="IsJ-q8-i95.title" xml:space="preserve">
+        <source>Buttons</source>
+        <target state="translated">Nút</target>
+        <note>Class = "NSMenuItem"; title = "Buttons"; ObjectID = "IsJ-q8-i95";</note>
+      </trans-unit>
+      <trans-unit id="JFP-3w-VSr.title" xml:space="preserve">
+        <source>&lt;App Compat hint&gt;</source>
+        <target state="translated">&lt;Gợi ý tương thích ứng dụng&gt;</target>
+        <note>Class = "NSMenuItem"; title = "&lt;App Compat hint&gt;"; ObjectID = "JFP-3w-VSr";</note>
+      </trans-unit>
+      <trans-unit id="KQ8-8Q-u6c.title" xml:space="preserve">
+        <source>Scrolling</source>
+        <target state="translated">Cuộn</target>
+        <note>Class = "NSMenuItem"; title = "Scrolling"; ObjectID = "KQ8-8Q-u6c";</note>
+      </trans-unit>
+      <trans-unit id="MGH-3e-48B.title" xml:space="preserve">
+        <source>&lt;App Compat title&gt;</source>
+        <target state="translated">&lt;Tiêu đề tương thích ứng dụng&gt;</target>
+        <note>Class = "NSMenuItem"; title = "&lt;App Compat title&gt;"; ObjectID = "MGH-3e-48B";</note>
+      </trans-unit>
+      <trans-unit id="UrY-I2-S82.title" xml:space="preserve">
+        <source>Enable for...</source>
+        <target state="translated">Bật cho...</target>
+        <note>Class = "NSTextFieldCell"; title = "Enable for..."; ObjectID = "UrY-I2-S82";</note>
+      </trans-unit>
+      <trans-unit id="lb0-HS-5Kv.title" xml:space="preserve">
+        <source>Open Mac Mouse Fix...</source>
+        <target state="translated">Mở Mac Mouse Fix...</target>
+        <note>Class = "NSMenuItem"; title = "Open Mac Mouse Fix..."; ObjectID = "lb0-HS-5Kv";</note>
+      </trans-unit>
+      <trans-unit id="qF8-UG-CW7.title" xml:space="preserve">
+        <source>Quickly disable Mac Mouse Fix features so you can work with apps that aren't compatible yet</source>
+        <target state="translated">Nhanh chóng tắt các tịnh năng của Mac Mouse Fix để bạn có thể thao tác với những ứng dụng chưa tương thích</target>
+        <note>Class = "NSTextFieldCell"; title = "Quickly disable Mac Mouse Fix features so you can work with apps that aren't compatible yet"; ObjectID = "qF8-UG-CW7";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Helper/UI/MenuBarItem/InfoPlist.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A5202i"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>Mac Mouse Fix Helper</source>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
+        <source>Copyright © 2019-2023 Noah Nuebling (MMF License)</source>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Shared/Localization/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A5202i"/>
+    </header>
+    <body>
+      <trans-unit id="Chocolate" xml:space="preserve">
+        <source>Chocolate</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Strawberry" xml:space="preserve">
+        <source>Strawberry</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Vanilla" xml:space="preserve">
+        <source>Vanilla</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="accessibility.settings-link.pre-ventura" xml:space="preserve">
+        <source>Open 'Security &amp; Privacy' Preferences</source>
+        <target state="translated">Mở thiết lập 'Security &amp; Privacy'</target>
+        <note>First draft: Open 'Security &amp; Privacy' Preferences || Notes: The string for Ventura and later is defined in Interface Builder</note>
+      </trans-unit>
+      <trans-unit id="already-using-defaults-toast.3" xml:space="preserve">
+        <source>You're __already using__ the default setting for mice with __3 buttons__</source>
+        <target state="translated">Bạn __đã và đang sử dụng__ thiết lập mặc định với chuột __3 nút__</target>
+        <note>First draft: You're __already using__ the default setting for mice with __3 buttons__</note>
+      </trans-unit>
+      <trans-unit id="already-using-defaults-toast.5" xml:space="preserve">
+        <source>You're __already using__ the default setting for mice with __5 buttons__</source>
+        <target state="translated">Bạn __đã và đang sử dụng__ thiết lập mặc định với chuột __5 nút__</target>
+        <note>First draft: You're __already using__ the default setting for mice with __5 buttons__</note>
+      </trans-unit>
+      <trans-unit id="app-version" xml:space="preserve">
+        <source>Version %@</source>
+        <target state="translated">Phiên bản %@</target>
+        <note>First draft: Version %@ || Note: %@ will be replaced by the app version, e.g. '3.0.0 (22027)'</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.backward" xml:space="preserve">
+        <source>&lt;Rewind key&gt;</source>
+        <target state="translated">&lt;Phím tua ngược&gt;</target>
+        <note>First draft: &lt;Rewind key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.capslock" xml:space="preserve">
+        <source>⇪</source>
+        <target state="translated">⇪</target>
+        <note>First draft: ⇪</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.forward" xml:space="preserve">
+        <source>&lt;Fast-Forward key&gt;</source>
+        <target state="translated">&lt;Phím tua nhanh&gt;</target>
+        <note>First draft: &lt;Fast-Forward key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.globe" xml:space="preserve">
+        <source>&lt;Emoji Picker key&gt;</source>
+        <target state="translated">&lt;Phím chọn emoji&gt;</target>
+        <note>First draft: &lt;Emoji Picker key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.light.max" xml:space="preserve">
+        <source>&lt;Increase Keyboard Brightness key&gt;</source>
+        <target state="translated">&lt;Phím tăng độ sáng bàn phím&gt;</target>
+        <note>First draft: &lt;Increase Keyboard Brightness key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.light.min" xml:space="preserve">
+        <source>&lt;Decrease Keyboard Brightness key&gt;</source>
+        <target state="translated">&lt;Phím giảm độ sáng bàn phím&gt;</target>
+        <note>First draft: &lt;Decrease Keyboard Brightness key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.magnifyingglass" xml:space="preserve">
+        <source>&lt;Spotlight key&gt;</source>
+        <target state="translated">&lt;Phím Spotlight&gt;</target>
+        <note>First draft: &lt;Spotlight key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.mic" xml:space="preserve">
+        <source>&lt;Dictation key&gt;</source>
+        <target state="translated">&lt;Phím chính tả&gt;</target>
+        <note>First draft: &lt;Dictation key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.moon" xml:space="preserve">
+        <source>&lt;Do Not Disturb key&gt;</source>
+        <target state="translated">&lt;Phím không làm phiền&gt;</target>
+        <note>First draft: &lt;Do Not Disturb key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.playpause" xml:space="preserve">
+        <source>&lt;Play or Pause key&gt;</source>
+        <target state="translated">&lt;Phím phát hoặc dừng&gt;</target>
+        <note>First draft: &lt;Play or Pause key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.power" xml:space="preserve">
+        <source>&lt;Power key&gt;</source>
+        <target state="translated">&lt;Phím nguồn&gt;</target>
+        <note>First draft: &lt;Power key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.rectangle.3.group" xml:space="preserve">
+        <source>&lt;Mission Control key&gt;</source>
+        <target state="translated">&lt;Phím điều khiển nhiệm vụ&gt;</target>
+        <note>First draft: &lt;Mission Control key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.speaker" xml:space="preserve">
+        <source>&lt;Mute key&gt;</source>
+        <target state="translated">&lt;Phím câm&gt;</target>
+        <note>First draft: &lt;Mute key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.speaker.wave.1" xml:space="preserve">
+        <source>&lt;Decrease Volume key&gt;</source>
+        <target state="translated">&lt;Phím giảm âm lượng&gt;</target>
+        <note>First draft: &lt;Decrease Volume key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.speaker.wave.3" xml:space="preserve">
+        <source>&lt;Increase Volume key&gt;</source>
+        <target state="translated">&lt;Phím tăng âm lượng&gt;</target>
+        <note>First draft: &lt;Increase Volume key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.square.grid.3x2" xml:space="preserve">
+        <source>&lt;Launchpad key&gt;</source>
+        <target state="translated">&lt;Phím Launchpad&gt;</target>
+        <note>First draft: &lt;Launchpad key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.sun.max" xml:space="preserve">
+        <source>&lt;Increase Brightness key&gt;</source>
+        <target state="translated">&lt;Phím tăng độ sáng&gt;</target>
+        <note>First draft: &lt;Increase Brightness key&gt;</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.sun.min" xml:space="preserve">
+        <source>&lt;Decrease Brightness key&gt;</source>
+        <target state="translated">&lt;Phím giảm độ sáng&gt;</target>
+        <note>First draft: &lt;Decrease Brightness key&gt; || Example usage: Works like pressing '&lt;Decrease Brightness Key&gt;' on an Apple keyboard. || Note: Unlike in the interface builder `.strings` files, in `Localizable.strings`, &lt;&gt; doesn't mean that the text is unused. I think the usage of &lt;&gt; here is a little weird, so let me know if you have a better idea!</note>
+      </trans-unit>
+      <trans-unit id="apple-key-fallback.unknown-key" xml:space="preserve">
+        <source>&lt;Key without description&gt;</source>
+        <target state="translated">&lt;Phím không có mô tả&gt;</target>
+        <note>First draft: &lt;Key without description&gt;</note>
+      </trans-unit>
+      <trans-unit id="beta-alert.back" xml:space="preserve">
+        <source>Cancel</source>
+        <target state="translated">Hủy</target>
+        <note>First draft: Cancel</note>
+      </trans-unit>
+      <trans-unit id="beta-alert.body" xml:space="preserve">
+        <source>Beta versions can have many issues.
+Don't forget to give feedback when you run into one.
+Thanks!</source>
+        <target state="translated">Phiên bản Beta có thể có nhiều lỗi
+Đừng quên báo cáo các sự cố nếu bạn gặp nhé.
+Cảm ơn bạn!</target>
+        <note>First draft: Beta versions can have many issues.
+Don't forget to give feedback when you run into one.
+Thanks!</note>
+      </trans-unit>
+      <trans-unit id="beta-alert.confirm" xml:space="preserve">
+        <source>Get Beta Versions</source>
+        <target state="translated">Nhận bản Beta</target>
+        <note>First draft: Get Beta Versions</note>
+      </trans-unit>
+      <trans-unit id="beta-alert.title" xml:space="preserve">
+        <source>Get Beta Versions?</source>
+        <target state="translated">Nhận bản Beta?</target>
+        <note>First draft: Get Beta Versions?</note>
+      </trans-unit>
+      <trans-unit id="button-modifier.1" xml:space="preserve">
+        <source>Click %@ +</source>
+        <target state="translated">Kích %@ +</target>
+        <note>First draft: Click %@ + || Note: %@ will be a button name || Example where %@ is 'Button 4': Click Button 4 + Double Click and Drag Button 5</note>
+      </trans-unit>
+      <trans-unit id="button-modifier.2" xml:space="preserve">
+        <source>Double Click %@ +</source>
+        <target state="translated">Kích đúp %@ +</target>
+        <note>First draft: Double Click %@ + </note>
+      </trans-unit>
+      <trans-unit id="button-modifier.3" xml:space="preserve">
+        <source>Triple Click %@ +</source>
+        <target state="translated">Kích ba lần %@ +</target>
+        <note>First draft: Triple Click %@ + </note>
+      </trans-unit>
+      <trans-unit id="button-string.middle" xml:space="preserve">
+        <source>Middle Button</source>
+        <target state="translated">Nút giữa</target>
+        <note>First draft: Middle Button</note>
+      </trans-unit>
+      <trans-unit id="button-string.numbered" xml:space="preserve">
+        <source>Button %@</source>
+        <target state="translated">Nút %@</target>
+        <note>First Draft: Button %@</note>
+      </trans-unit>
+      <trans-unit id="button-string.primary" xml:space="preserve">
+        <source>Primary Button</source>
+        <target state="translated">Nút chính</target>
+        <note>First draft: Primary Button</note>
+      </trans-unit>
+      <trans-unit id="button-string.secondary" xml:space="preserve">
+        <source>Secondary Button</source>
+        <target state="translated">Nút phụ</target>
+        <note>First draft: Secondary Button</note>
+      </trans-unit>
+      <trans-unit id="button-string.tool.middle" xml:space="preserve">
+        <source>Middle Mouse Button (also called Scroll Wheel Button or Mouse Button 3)</source>
+        <target state="translated">Nút giữa (còn gọi là Con lăn hoặc Nút số 3)</target>
+        <note>First draft: Middle Mouse Button (also called Scroll Wheel Button or Mouse Button 3) || Example usage: Open links in a new tab, paste text in the Terminal, and more.
+ 
+Works like clicking the Middle Mouse Button (also called the Scroll Wheel Button or Mouse Button 3) on a standard mouse.</note>
+      </trans-unit>
+      <trans-unit id="button-string.tool.numbered" xml:space="preserve">
+        <source>Mouse Button %@</source>
+        <target state="translated">Nút chuột %@</target>
+        <note>First draft: Mouse Button %@</note>
+      </trans-unit>
+      <trans-unit id="button-string.tool.primary" xml:space="preserve">
+        <source>Primary Mouse Button (also called Left Mouse Button or Mouse Button 1)</source>
+        <target state="translated">Nút chính (còn gọi là Nút chuột trái hoặc Nút số 1)</target>
+        <note>First draft: Primary Mouse Button (also called Left Mouse Button or Mouse Button 1)</note>
+      </trans-unit>
+      <trans-unit id="button-string.tool.secondary" xml:space="preserve">
+        <source>Secondary Mouse Button (also called Right Mouse Button or Mouse Button 2)</source>
+        <target state="translated">Nút phụ (còn gọi là Nút chuột phải hoặc Nút số 2)</target>
+        <note>First draft: Secondary Mouse Button (also called Right Mouse Button or Mouse Button 2)</note>
+      </trans-unit>
+      <trans-unit id="buy-mouse-alert.body" xml:space="preserve">
+        <source>Get a mouse with 5+ buttons to unlock the full potential of Mac Mouse Fix!</source>
+        <target state="translated">Sắm một con chuột với 5+ nút để khai thác hết tiềm năng của Mac Mouse Fix!</target>
+        <note>First draft: Get a mouse with 5+ buttons to unlock the full potential of Mac Mouse Fix!</note>
+      </trans-unit>
+      <trans-unit id="buy-mouse-alert.ok" xml:space="preserve">
+        <source>OK</source>
+        <target state="translated">Đồng ý</target>
+        <note>First draft: OK</note>
+      </trans-unit>
+      <trans-unit id="buy-mouse-alert.title" xml:space="preserve">
+        <source>Your mouse only has 3 buttons</source>
+        <target state="translated">Chuột của bạn chỉ có 3 nút</target>
+        <note>First draft: Your mouse only has 3 buttons</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.captured.body" xml:space="preserve">
+        <source>%@ %#@captured@</source>
+        <target state="translated">%@ %#@captured@</target>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings. || Note: The core idea that we want to convey here is that, from now on, the button is being 'intercepted' by Mac Mouse Fix. We used the word 'capture' instead of 'intercept' since it sounds friendlier in English. In your language, you might want to use something closer to 'intercept'.</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.captured.body|==|substitutions.captured.plural.one" xml:space="preserve">
+        <target state="translated">đã được ghi nhận bởi Mac Mouse Fix.</target>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings. || Note: The core idea that we want to convey here is that, from now on, the button is being 'intercepted' by Mac Mouse Fix. We used the word 'capture' instead of 'intercept' since it sounds friendlier in English. In your language, you might want to use something closer to 'intercept'.</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.captured.body|==|substitutions.captured.plural.other" xml:space="preserve">
+        <source>are now captured by Mac Mouse Fix.</source>
+        <target state="translated">đã được ghi nhận bởi Mac Mouse Fix.</target>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings. || Note: The core idea that we want to convey here is that, from now on, the button is being 'intercepted' by Mac Mouse Fix. We used the word 'capture' instead of 'intercept' since it sounds friendlier in English. In your language, you might want to use something closer to 'intercept'.</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.captured.body|==|substitutions.captured.plural.zero" xml:space="preserve">
+        <source/>
+        <target state="translated"/>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings. || Note: The core idea that we want to convey here is that, from now on, the button is being 'intercepted' by Mac Mouse Fix. We used the word 'capture' instead of 'intercept' since it sounds friendlier in English. In your language, you might want to use something closer to 'intercept'.</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.captured.hint" xml:space="preserve">
+        <source>%#@hint@</source>
+        <target state="translated">%#@hint@</target>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.captured.hint|==|substitutions.hint.plural.one" xml:space="preserve">
+        <target state="translated"/>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.captured.hint|==|substitutions.hint.plural.other" xml:space="preserve">
+        <source>Other apps can't see these buttons anymore.</source>
+        <target state="translated"/>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.captured.hint|==|substitutions.hint.plural.zero" xml:space="preserve">
+        <source/>
+        <target state="translated"/>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.link" xml:space="preserve">
+        <source>[Learn More](https://github.com/noah-nuebling/mac-mouse-fix/discussions/112)</source>
+        <target state="translated">[Đọc thêm](https://github.com/noah-nuebling/mac-mouse-fix/discussions/112)</target>
+        <note>First draft: [Learn More](https://github.com/noah-nuebling/mac-mouse-fix/discussions/112)</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.uncaptured.body" xml:space="preserve">
+        <source>%@ %#@uncaptured@</source>
+        <target state="translated">%@ %#@uncaptured@</target>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.uncaptured.body|==|substitutions.uncaptured.plural.one" xml:space="preserve">
+        <target state="translated">không còn ghi nhận bởi Mac Mouse Fix.</target>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.uncaptured.body|==|substitutions.uncaptured.plural.other" xml:space="preserve">
+        <source>are no longer captured by Mac Mouse Fix.</source>
+        <target state="translated">không còn ghi nhận bởi Mac Mouse Fix.</target>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.uncaptured.body|==|substitutions.uncaptured.plural.zero" xml:space="preserve">
+        <source/>
+        <target state="translated"/>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.uncaptured.hint" xml:space="preserve">
+        <source>%#@hint@</source>
+        <target state="translated">%#@hint@</target>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.uncaptured.hint|==|substitutions.hint.plural.one" xml:space="preserve">
+        <target state="translated"/>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.uncaptured.hint|==|substitutions.hint.plural.other" xml:space="preserve">
+        <source>These buttons now work as if Mac Mouse Fix was disabled.</source>
+        <target state="translated"/>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.buttons.uncaptured.hint|==|substitutions.hint.plural.zero" xml:space="preserve">
+        <source/>
+        <target state="translated"/>
+        <note>Note: Value for this key is defined in Localizable.stringsdict, not Localizable.strings</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.scroll.captured.body" xml:space="preserve">
+        <source>**Scrolling** is now captured by Mac Mouse Fix.</source>
+        <target state="translated">capture-toast.scroll.captured.body</target>
+        <note>First draft: **Scrolling** is now captured by Mac Mouse Fix.</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.scroll.captured.hint" xml:space="preserve">
+        <source/>
+        <target state="translated">capture-toast.scroll.captured.hint</target>
+        <note>First draft: </note>
+      </trans-unit>
+      <trans-unit id="capture-toast.scroll.link" xml:space="preserve">
+        <source>[Learn More](https://github.com/noah-nuebling/mac-mouse-fix/discussions/112)</source>
+        <target state="translated">[Đọc thêm](https://github.com/noah-nuebling/mac-mouse-fix/discussions/112)</target>
+        <note>First draft: [Learn More](https://github.com/noah-nuebling/mac-mouse-fix/discussions/112)</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.scroll.uncaptured.body" xml:space="preserve">
+        <source>**Scrolling** is no longer captured by Mac Mouse Fix.</source>
+        <target state="translated">capture-toast.scroll.uncaptured.body</target>
+        <note>First draft: **Scrolling** is no longer captured by Mac Mouse Fix.</note>
+      </trans-unit>
+      <trans-unit id="capture-toast.scroll.uncaptured.hint" xml:space="preserve">
+        <source>Scrolling now works as if Mac Mouse Fix was disabled.</source>
+        <target state="translated">capture-toast.scroll.uncaptured.hint</target>
+        <note>First draft: Scrolling now works as if Mac Mouse Fix was disabled.</note>
+      </trans-unit>
+      <trans-unit id="drag-effect.dock-swipe" xml:space="preserve">
+        <source>Spaces &amp; Mission Control</source>
+        <target state="translated">Spaces &amp; Mission Control</target>
+        <note>First draft: Spaces &amp; Mission Control</note>
+      </trans-unit>
+      <trans-unit id="drag-effect.dock-swipe.hint" xml:space="preserve">
+        <source>Move your mouse:
+ - Up to show Mission Control
+ - Down to show Application Windows
+ - Left or Right to move between Spaces
+ 
+Works like swiping with 3 fingers on an Apple Trackpad</source>
+        <target state="translated">Di chuyển chuột:
+ - Hướng lên để truy cập Mission Control
+ - Hướng xuống để truy cập Application Windows
+ - Qua trái hoặc phải để di chuyển giữa các Spaces
+ 
+Hoạt động như vuốt 3 ngón tay trên Apple Trackpad</target>
+        <note>First draft: Move your mouse:
+ - Up to show Mission Control
+ - Down to show Application Windows
+ - Left or Right to move between Spaces
+ 
+Works like swiping with 3 fingers on an Apple Trackpad</note>
+      </trans-unit>
+      <trans-unit id="drag-effect.scroll-swipe" xml:space="preserve">
+        <source>Scroll &amp; Navigate</source>
+        <target state="translated">Cuộn &amp; Điều hướng</target>
+        <note>First draft: Scroll &amp; Navigate</note>
+      </trans-unit>
+      <trans-unit id="drag-effect.scroll-swipe.hint" xml:space="preserve">
+        <source>Scroll freely by moving your mouse in any direction
+ 
+Also Navigate between pages in Safari, delete messages in Mail and more by moving your mouse left and right
+ 
+Works like swiping with 2 fingers on an Apple Trackpad</source>
+        <target state="translated">Lăn tự do bằng cách di chuyển chuột theo các hướng bất kỳ
+ 
+Cũng có thể điều hướng giữa các trang trong Safari, xóa các mẫu tin trong Mail và nhiều thứ khác bằng cách di chuyển chuột qua trái hoặc phải. 
+ 
+Hoạt động như vuốt 2 ngón tay trên Apple Trackpad</target>
+        <note>First draft: Scroll freely by moving your mouse in any direction
+ 
+Also Navigate between pages in Safari, delete messages in Mail and more by moving your mouse left and right
+ 
+Works like swiping with 2 fingers on an Apple Trackpad</note>
+      </trans-unit>
+      <trans-unit id="effect.app-expose" xml:space="preserve">
+        <source>Application Windows</source>
+        <target state="translated">Duyệt các ứng dụng đang mở</target>
+        <note>First draft: Application Windows || Note: Under macOS Sonoma, this feature is called 'App Exposé' in Trackpad settings, but 'Application Windows' in Keyboard Shortcut settings and all other places I found.</note>
+      </trans-unit>
+      <trans-unit id="effect.app-expose.hint" xml:space="preserve">
+        <source>Show all windows of the active app</source>
+        <target state="translated">Hiện các cửa sổ của tất cả ứng dụng đang hoạt động</target>
+        <note>First draft: Show all windows of the active app</note>
+      </trans-unit>
+      <trans-unit id="effect.apple-keys-submenu" xml:space="preserve">
+        <source> Exclusive Keys</source>
+        <target state="translated"> Các phím độc quyền</target>
+        <note>First draft:  Exclusive Keys</note>
+      </trans-unit>
+      <trans-unit id="effect.apple-keys-submenu.hint" xml:space="preserve">
+        <source>Choose keys that are only available on Apple keyboards</source>
+        <target state="translated">Chọn các phím chỉ khả dụng trên Apple keyboard</target>
+        <note>First draft: Choose keys that are only available on Apple keyboards</note>
+      </trans-unit>
+      <trans-unit id="effect.apple-shortcut.hint" xml:space="preserve">
+        <source>Works like pressing '%@' on an Apple keyboard</source>
+        <target state="translated">Hoạt động như nhấn phím '%@' trên Apple keyboard</target>
+        <note>First draft: Works like pressing '%@' on an Apple keyboard</note>
+      </trans-unit>
+      <trans-unit id="effect.back" xml:space="preserve">
+        <source>Back</source>
+        <target state="translated">Quay lại</target>
+        <note>First draft: Back</note>
+      </trans-unit>
+      <trans-unit id="effect.back.hint" xml:space="preserve">
+        <source>Go back one page in Safari and other apps</source>
+        <target state="translated">Quay ngược lại một trang trong Safari hoặc các ứng dụng khác</target>
+        <note>First draft: Go back one page in Safari and other apps</note>
+      </trans-unit>
+      <trans-unit id="effect.desktop" xml:space="preserve">
+        <source>Show Desktop</source>
+        <target state="translated">Hiện Màn hình nền</target>
+        <note>First draft: Show Desktop</note>
+      </trans-unit>
+      <trans-unit id="effect.desktop.hint" xml:space="preserve">
+        <source>Show the desktop</source>
+        <target state="translated">Hiển thị Màn hình nền</target>
+        <note>First draft: Show the desktop</note>
+      </trans-unit>
+      <trans-unit id="effect.forward" xml:space="preserve">
+        <source>Forward</source>
+        <target state="translated">Tiến tới</target>
+        <note>First draft: Forward</note>
+      </trans-unit>
+      <trans-unit id="effect.forward.hint" xml:space="preserve">
+        <source>Go forward one page in Safari and other apps</source>
+        <target state="translated">Tiến tới một trang trong Safari và các ứng dụng khác</target>
+        <note>First draft: Go forward one page in Safari and other apps</note>
+      </trans-unit>
+      <trans-unit id="effect.launchpad" xml:space="preserve">
+        <source>Launchpad</source>
+        <target state="translated">Launchpad</target>
+        <note>First draft: Launchpad</note>
+      </trans-unit>
+      <trans-unit id="effect.launchpad.hint" xml:space="preserve">
+        <source>Open Launchpad</source>
+        <target state="translated">Duyệt danh sách ứng dụng ở Launchpad</target>
+        <note>First draft: Open Launchpad</note>
+      </trans-unit>
+      <trans-unit id="effect.left-space" xml:space="preserve">
+        <source>Move Left a Space</source>
+        <target state="translated">Chuyển sang Space bên trái</target>
+        <note>First draft: Move Left a Space</note>
+      </trans-unit>
+      <trans-unit id="effect.left-space.hint" xml:space="preserve">
+        <source>Move one Space to the left</source>
+        <target state="translated">Di chuyển sang Space bên trái</target>
+        <note>First draft: Move one Space to the left</note>
+      </trans-unit>
+      <trans-unit id="effect.look-up" xml:space="preserve">
+        <source>Look Up &amp; Quick Look</source>
+        <target state="translated">Tra cứu &amp; Xem nhanh</target>
+        <note>First draft: Look Up &amp; Quick Look</note>
+      </trans-unit>
+      <trans-unit id="effect.look-up.hint" xml:space="preserve">
+        <source>Look up words in the Dictionary, Quick Look files in Finder, and more.
+ 
+Works like a Force click on an Apple Trackpad.</source>
+        <target state="translated">Tra cứu từ trong Dictionary, xem nhanh tệp trong Finder, và nhiều hơn.
+ 
+Hoạt động như nhấn, kèm lực trên Apple Trackpad.</target>
+        <note>First draft: Look up words in the Dictionary, Quick Look files in Finder, and more.
+ 
+Works like a Force click on an Apple Trackpad.</note>
+      </trans-unit>
+      <trans-unit id="effect.middle-click" xml:space="preserve">
+        <source>Middle Click</source>
+        <target state="translated">Kích chuột giữa</target>
+        <note>First draft: Middle Click</note>
+      </trans-unit>
+      <trans-unit id="effect.middle-click.hint" xml:space="preserve">
+        <source>Open links in a new tab, paste text in the Terminal, and more.
+ 
+Works like clicking %@ on a standard mouse.</source>
+        <target state="translated">Mở liên kết trong thẻ mới, dán chữ vào Terminal, và nhiều hơn.
+ 
+Hoạt động như kích vào nút %@ trên chuột.</target>
+        <note>First draft: Open links in a new tab, paste text in the Terminal, and more.
+ 
+Works like clicking %@ on a standard mouse.</note>
+      </trans-unit>
+      <trans-unit id="effect.mission-control" xml:space="preserve">
+        <source>Mission Control</source>
+        <target state="translated">Mission Control</target>
+        <note>First draft: Mission Control</note>
+      </trans-unit>
+      <trans-unit id="effect.mission-control.hint" xml:space="preserve">
+        <source>Show Mission Control</source>
+        <target state="translated">Quản lý các ứng dụng đang mở bằng Mission Control</target>
+        <note>First draft: Show Mission Control</note>
+      </trans-unit>
+      <trans-unit id="effect.primary-click" xml:space="preserve">
+        <source>Primary Click</source>
+        <target state="translated">Kích nút chính</target>
+        <note>First draft: Primary Click</note>
+      </trans-unit>
+      <trans-unit id="effect.primary-click.hint" xml:space="preserve">
+        <source>Works like clicking %@ on a standard mouse.</source>
+        <target state="translated">Hoạt động như kích vào nút %@ trên chuột.</target>
+        <note>First draft: Works like clicking %@ on a standard mouse.</note>
+      </trans-unit>
+      <trans-unit id="effect.record-shortcut" xml:space="preserve">
+        <source>Keyboard Shortcut...</source>
+        <target state="translated">Tổ hợp phím tắt...</target>
+        <note>First draft: Keyboard Shortcut...</note>
+      </trans-unit>
+      <trans-unit id="effect.record-shortcut.hint" xml:space="preserve">
+        <source>Type a keyboard shortcut, then use it from your mouse</source>
+        <target state="translated">Gõ tổ hợp phím tắt trên bàn phím, sau đó sử dụng nó từ chuột</target>
+        <note>First draft: Type a keyboard shortcut, then use it from your mouse</note>
+      </trans-unit>
+      <trans-unit id="effect.right-space" xml:space="preserve">
+        <source>Move Right a Space</source>
+        <target state="translated">Chuyển sang Space bên phải</target>
+        <note>First draft: Move Right a Space</note>
+      </trans-unit>
+      <trans-unit id="effect.right-space.hint" xml:space="preserve">
+        <source>Move one Space to the right</source>
+        <target state="translated">Di chuyển sang Space bên phải</target>
+        <note>First draft: Move one Space to the right</note>
+      </trans-unit>
+      <trans-unit id="effect.secondary-click" xml:space="preserve">
+        <source>Secondary Click</source>
+        <target state="translated">Kích nút phụ</target>
+        <note>First draft: Secondary Click</note>
+      </trans-unit>
+      <trans-unit id="effect.secondary-click.hint" xml:space="preserve">
+        <source>Works like clicking %@ on a standard mouse.</source>
+        <target state="translated">Hoạt động như kích vào nút %@ trên chuột.</target>
+        <note>First draft: Works like clicking %@ on a standard mouse.</note>
+      </trans-unit>
+      <trans-unit id="effect.shortcut.hint" xml:space="preserve">
+        <source>Works like pressing '%@' on your keyboard</source>
+        <target state="translated">Hoạt động như kích vào phím '%@' trên bàn phím</target>
+        <note>First draft: Works like pressing '%@' on your keyboard</note>
+      </trans-unit>
+      <trans-unit id="effect.smart-zoom" xml:space="preserve">
+        <source>Smart Zoom</source>
+        <target state="translated">Thu phóng thông minh</target>
+        <note>First draft: Smart Zoom</note>
+      </trans-unit>
+      <trans-unit id="effect.smart-zoom.hint" xml:space="preserve">
+        <source>Zoom in or out in Safari and other apps.
+ 
+Works like a two-finger double tap on an Apple Trackpad.</source>
+        <target state="translated">Phóng to hoặc thu nhỏ trong Safari và các ứng dụng khác.
+ 
+Hoạt động như nhấp bằng hai ngón tay trên Apple Trackpad.</target>
+        <note>First draft: Zoom in or out in Safari and other apps.
+ 
+Works like a two-finger double tap on an Apple Trackpad.</note>
+      </trans-unit>
+      <trans-unit id="enable-timeout-toast" xml:space="preserve">
+        <source>If you have **problems enabling** the app, click&amp;nbsp;[here](https://github.com/noah-nuebling/mac-mouse-fix/discussions/861).</source>
+        <target state="translated">enable-timeout-toast</target>
+        <note>First draft: If you have **problems enabling** the app, click&amp;nbsp;[here](https://github.com/noah-nuebling/mac-mouse-fix/discussions/861).</note>
+      </trans-unit>
+      <trans-unit id="forbidden-capture-toast.1" xml:space="preserve">
+        <source>**Primary Mouse Button** can't be used
+Please try another button</source>
+        <target state="translated">**Nút chính** không thể được áp dụng
+Vui lòng chọn một nút khác</target>
+        <note>First draft: **Primary Mouse Button** can't be used
+Please try another button</note>
+      </trans-unit>
+      <trans-unit id="forbidden-capture-toast.2" xml:space="preserve">
+        <source>**Secondary Mouse Button** can't be used
+Please try another button</source>
+        <target state="translated">**Nút phụ** không thể được áp dụng
+Vui lòng chọn một nút khác</target>
+        <note>First draft: **Secondary Mouse Button** can't be used
+Please try another button</note>
+      </trans-unit>
+      <trans-unit id="free-country" xml:space="preserve">
+        <source>Mac Mouse Fix is currently free in your country (%@)</source>
+        <target state="translated">Mac Mouse Fix đang miễn phí tại quốc gia của bạn (%@)</target>
+        <note>First draft: Mac Mouse Fix is currently free in your country (%@)</note>
+      </trans-unit>
+      <trans-unit id="is-disabled-toast" xml:space="preserve">
+        <source>Mac Mouse Fix was **disabled** in System Settings
+
+To enable Mac Mouse Fix:
+
+1. Go to [Login Items Settings](x-apple.systempreferences:com.apple.LoginItems-Settings.extension)
+2. Switch on 'Mac Mouse Fix.app'</source>
+        <target state="translated">Mac Mouse Fix đã **tắt** trong System Settings
+
+Để mở lại Mac Mouse Fix:
+
+1. Đi đến [Login Items Settings](x-apple.systempreferences:com.apple.LoginItems-Settings.extension)
+2. Bật 'Mac Mouse Fix.app'</target>
+        <note>First draft: Mac Mouse Fix was **disabled** in System Settings
+
+To enable Mac Mouse Fix:
+
+1. Go to [Login Items Settings](x-apple.systempreferences:com.apple.LoginItems-Settings.extension)
+2. Switch on 'Mac Mouse Fix.app'</note>
+      </trans-unit>
+      <trans-unit id="is-strange-helper-alert.body" xml:space="preserve">
+        <source>Mac Mouse Fix can't be enabled because there's __another version__ of Mac Mouse Fix present on your computer
+
+To enable Mac Mouse Fix:
+
+1. Delete the [other version](%@)
+2. Empty the Bin
+3. Restart your Mac
+4. Try again!</source>
+        <target state="translated">Mac Mouse Fix bật lên thất bại vì có __một phiên bản khác__ của Mac Mouse Fix đang chạy
+
+Để bật Mac Mouse Fix:
+
+1. Xóa [phiên bản khác](%@)
+2. Làm trống thùng rác
+3. Khởi động lại máy Mac
+4. Thử lại!</target>
+        <note>First draft: Mac Mouse Fix can't be enabled because there's __another version__ of Mac Mouse Fix present on your computer
+
+To enable Mac Mouse Fix:
+
+1. Delete the [other version](%@)
+2. Empty the Bin
+3. Restart your Mac
+4. Try again!</note>
+      </trans-unit>
+      <trans-unit id="is-strange-helper-alert.title" xml:space="preserve">
+        <source>Enabling Failed</source>
+        <target state="translated">Bật thất bại</target>
+        <note>First draft: Enabling Failed</note>
+      </trans-unit>
+      <trans-unit id="join-list" xml:space="preserve">
+        <source>, </source>
+        <target state="translated">, </target>
+        <note>First draft: ,  || Note: This string joins elements in a list except the second-to-last and last one. || Note: The first draft contains a space after the comma.</note>
+      </trans-unit>
+      <trans-unit id="join-list.last" xml:space="preserve">
+        <source>%@ and %@</source>
+        <target state="translated">%@ và %@</target>
+        <note>First draft: %@ and %@ || Note: This format string joins the second-to-last element and the last elements in a list of items</note>
+      </trans-unit>
+      <trans-unit id="license-button.activate" xml:space="preserve">
+        <source>Activate License</source>
+        <target state="translated">Kích hoạt bản quyền</target>
+        <note>First draft: Activate License</note>
+      </trans-unit>
+      <trans-unit id="license-button.deactivate" xml:space="preserve">
+        <source>Deactivate License</source>
+        <target state="translated">Bất hoạt bản quyền</target>
+        <note>First draft: Deactivate License</note>
+      </trans-unit>
+      <trans-unit id="license-toast.activate" xml:space="preserve">
+        <source>Your license has been **activated**! 🎉</source>
+        <target state="translated">Bản quyền của bạn đã được **kích hoạt**! 🎉</target>
+        <note>First draft: Your license has been **activated**! 🎉</note>
+      </trans-unit>
+      <trans-unit id="license-toast.activation-overload" xml:space="preserve">
+        <source>This license has been activated **%d** times. The maximum is **%d**.
+
+Because of this, the license has been invalidated. This is to prevent piracy. If you have other reasons for activating the license this many times, please excuse the inconvenience.
+
+Just [reach out](mailto:noah.n.public@gmail.com) and I will provide you with a new license! Thanks for understanding.</source>
+        <target state="translated">Bản quyền này đã được kích hoạt **%d** lượt. Số lượt tối đa **%d**.
+
+Vì vậy, bản quyền này không hợp lệ để tránh bị lợi dụng. Nếu bạn có lý do về việc kích hoạt quá nhiều lượt, hãy [liên hệ](mailto:noah.n.public@gmail.com), tôi sẽ cung cấp một khóa kích hoạt mới.
+Xin lỗi về sự bất tiện này, mong bạn thông cảm.</target>
+        <note>First draft: This license has been activated **%d** times. The maximum is **%d**.
+
+Because of this, the license has been invalidated. This is to prevent piracy. If you have other reasons for activating the license this many times, please excuse the inconvenience.
+
+Just [reach out](mailto:noah.n.public@gmail.com) and I will provide you with a new license! Thanks for understanding.</note>
+      </trans-unit>
+      <trans-unit id="license-toast.already-active" xml:space="preserve">
+        <source>This license is **already activated**!</source>
+        <target state="translated">Bản quyền này đã được **kích hoạt từ trước**!</target>
+        <note>First draft: This license is **already activated**!</note>
+      </trans-unit>
+      <trans-unit id="license-toast.deactivate" xml:space="preserve">
+        <source>Your license has been **deactivated**</source>
+        <target state="translated">Bản quyền của bạn đã **bất hoạt** thành công</target>
+        <note>First draft: Your license has been **deactivated**</note>
+      </trans-unit>
+      <trans-unit id="license-toast.free-country" xml:space="preserve">
+        <source>This license __could not be activated__ but Mac Mouse Fix is currently __free in your country__!</source>
+        <target state="translated">Bản quyền này __không thể được kích hoạt__ nhưng Mac Mouse Fix đang __miễn phí tại quốc gia của bạn__!</target>
+        <note>First draft: This license __could not be activated__ but Mac Mouse Fix is currently __free in your country__!</note>
+      </trans-unit>
+      <trans-unit id="license-toast.gumroad-error" xml:space="preserve">
+        <source>**An error with the licensing server occured**
+
+It says:
+
+%@</source>
+        <target state="translated">**Có lỗi xảy ra với máy chủ quản lý bản quyền**
+
+Nó phản hồi rằng:
+
+%@</target>
+        <note>First draft: **An error with the licensing server occured**
+
+It says:
+
+%@</note>
+      </trans-unit>
+      <trans-unit id="license-toast.no-internet" xml:space="preserve">
+        <source>**There is no connection to the internet**
+
+Try activating your license again when your computer is online.</source>
+        <target state="translated">**Hiện không có kết nối internet**
+
+Thử kích hoạt bản quyền của bạn khi kết nối khả dụng.</target>
+        <note>First draft: **There is no connection to the internet**
+
+Try activating your license again when your computer is online.</note>
+      </trans-unit>
+      <trans-unit id="license-toast.unknown-error" xml:space="preserve">
+        <source>**An unknown error occurred:**
+
+%@</source>
+        <target state="translated">**Một lỗi không rõ đã xảy ra:**
+
+%@</target>
+        <note>First draft: **An unknown error occurred:**
+
+%@</note>
+      </trans-unit>
+      <trans-unit id="license-toast.unknown-key" xml:space="preserve">
+        <source>**'%@'** is not a known license key
+
+Please try a different key</source>
+        <target state="translated">Không thể xác định **'%@'** là một khóa kích hoạt
+
+Vui lòng thử một khóa khác</target>
+        <note>First draft: **'%@'** is not a known license key
+
+Please try a different key</note>
+      </trans-unit>
+      <trans-unit id="license-toast.unknown-reason" xml:space="preserve">
+        <source>Activating your license failed for **unknown reasons**
+
+Please write a **Bug Report** [here](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report)</source>
+        <target state="translated">Kích hoạt thất bạn do một **lỗi không xác định**
+
+Vui lòng gửi một **Báo cáo lỗi** [tại đây](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report)</target>
+        <note>First draft: Activating your license failed for **unknown reasons**
+
+Please write a **Bug Report** [here](https://noah-nuebling.github.io/mac-mouse-fix-feedback-assistant/?type=bug-report)</note>
+      </trans-unit>
+      <trans-unit id="macos-scrolling-hint" xml:space="preserve">
+        <source>Set speed under
+[%@ &gt; Mouse &gt; Scrolling Speed](%@)</source>
+        <target state="translated">Thiết lập tốc độ tại 
+[%@ &gt; Chuột &gt; Tốc độ di chuyển](%@)</target>
+        <note>First draft: Set speed under
+[%@ &gt; Mouse &gt; Scrolling Speed](%@)</note>
+      </trans-unit>
+      <trans-unit id="mail-alert.back" xml:space="preserve">
+        <source>Back</source>
+        <target state="translated">Quay lại</target>
+        <note>First draft: Back</note>
+      </trans-unit>
+      <trans-unit id="mail-alert.body" xml:space="preserve">
+        <source>I read and appreciate all emails, even though I can't respond to all</source>
+        <target state="translated">Tôi sẽ đọc và trân trọng tất cả các email gửi về, mặc dù có thể tôi sẽ không phản hồi tất cả</target>
+        <note>First draft: I read and appreciate all emails, even though I can't respond to all</note>
+      </trans-unit>
+      <trans-unit id="mail-alert.send" xml:space="preserve">
+        <source>Write Email</source>
+        <target state="translated">Viết Email</target>
+        <note>First draft: Write Email</note>
+      </trans-unit>
+      <trans-unit id="mail-alert.title" xml:space="preserve">
+        <source>Write an Email?</source>
+        <target state="translated">Gửi email cho tôi?</target>
+        <note>First draft: Write an Email?</note>
+      </trans-unit>
+      <trans-unit id="modifer-key.tool.command" xml:space="preserve">
+        <source>Command (⌘)</source>
+        <target state="translated">Command (⌘)</target>
+        <note>First draft: Command (⌘)</note>
+      </trans-unit>
+      <trans-unit id="modifer-key.tool.control" xml:space="preserve">
+        <source>Control (^)</source>
+        <target state="translated">Control (^)</target>
+        <note>First draft: Control (^)</note>
+      </trans-unit>
+      <trans-unit id="modifer-key.tool.option" xml:space="preserve">
+        <source>Option (⌥)</source>
+        <target state="translated">Option (⌥)</target>
+        <note>First draft: Option (⌥)</note>
+      </trans-unit>
+      <trans-unit id="modifer-key.tool.shift" xml:space="preserve">
+        <source>Shift (⇧)</source>
+        <target state="translated">Shift (⇧)</target>
+        <note>First draft: Shift (⇧)</note>
+      </trans-unit>
+      <trans-unit id="natural-scrolling-hint" xml:space="preserve">
+        <source>Content tracks finger movement</source>
+        <target state="translated">Nội dung di chuyển theo hướng ngón tay của bạn</target>
+        <note>First draft: Content tracks finger movement</note>
+      </trans-unit>
+      <trans-unit id="precise-scrolling-hint" xml:space="preserve">
+        <source>Scroll precisely, even without a keyboard modifier,
+by moving the scroll wheel _slowly_</source>
+        <target state="translated">Cuộn chính xác, dù không kèm theo một phím bổ sung,
+bằng cách di chuyện con lăn _thật chậm_</target>
+        <note>First draft: Scroll precisely, even without a keyboard modifier,
+bymoving the scroll wheel _slowly_ || Note: The line break (
+) is there so the layout of the Scroll tab doesn't become too wide which looks weird. You can set it to your own taste.</note>
+      </trans-unit>
+      <trans-unit id="restore-buttons-alert.back" xml:space="preserve">
+        <source>Cancel</source>
+        <target state="translated">Hủy</target>
+        <note>First draft: Cancel</note>
+      </trans-unit>
+      <trans-unit id="restore-buttons-alert.commit" xml:space="preserve">
+        <source>Restore</source>
+        <target state="translated">Khôi phục</target>
+        <note>First draft: Restore</note>
+      </trans-unit>
+      <trans-unit id="restore-buttons-alert.hint" xml:space="preserve">
+        <source>Your __%@__ mouse says it has __%d__ buttons</source>
+        <target state="translated">Chuột __%@__ của bạn có __%d__ nút</target>
+        <note>First draft: Your __%@__ mouse says it has __%d__ buttons</note>
+      </trans-unit>
+      <trans-unit id="restore-buttons-alert.radio1" xml:space="preserve">
+        <source>Mouse with 3 buttons</source>
+        <target state="translated">Chuột với 3 nút</target>
+        <note>First draft: Mouse with 3 buttons</note>
+      </trans-unit>
+      <trans-unit id="restore-buttons-alert.radio2" xml:space="preserve">
+        <source>Mouse with 5+ buttons</source>
+        <target state="translated">Chuột với 5+ nút</target>
+        <note>First draft: Mouse with 5+ buttons</note>
+      </trans-unit>
+      <trans-unit id="restore-buttons-alert.title" xml:space="preserve">
+        <source>Restore Default for ...</source>
+        <target state="translated">Khôi phục mặc định cho ...</target>
+        <note>First draft: Restore Default for ...</note>
+      </trans-unit>
+      <trans-unit id="restore-default-buttons-popover.body" xml:space="preserve">
+        <source> __Click here__ to load the recommended settings
+for your __%@__ mouse</source>
+        <target state="translated"> __Nhấp vào đây__ để tải cài đặt khuyến nghị
+cho chuột __%@__</target>
+        <note>First draft:  __Click here__ to load the recommended settings
+for your __%@__ mouse || Note: The 
+ linebreak is so the popover doesn't become too wide. You can set it to your taste. || Note: In English, there needs to be a space at the start of this string otherwise the whole string will be bold. This might be a Ventura Bug</note>
+      </trans-unit>
+      <trans-unit id="revive-toast" xml:space="preserve">
+        <source>__Enabled__ Mac Mouse Fix for %1@
+It had been disabled from the Menu Bar %2@</source>
+        <target state="translated">__Đã kích hoạt__ Mac Mouse Fix trong %1@
+Nó đã bị bất hoạt từ thanh menu %2@</target>
+        <note>First draft: __Enabled__ Mac Mouse Fix for %1@
+It had been disabled from the Menu Bar %2@ || Note: %1@ will be replaced by the list of enabled features, %2@ will be replaced by the menubar icon</note>
+      </trans-unit>
+      <trans-unit id="revive-toast.feature-buttons" xml:space="preserve">
+        <source> __Buttons__</source>
+        <target state="translated"> __Nút__</target>
+        <note>First draft: __Buttons__</note>
+      </trans-unit>
+      <trans-unit id="revive-toast.feature-scrolling" xml:space="preserve">
+        <source>__Scrolling__</source>
+        <target state="translated">__Cuộn__</target>
+        <note>First draft: __Scrolling__</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.4-pinch" xml:space="preserve">
+        <source>Desktop &amp; Launchpad</source>
+        <target state="translated">Desktop &amp; Launchpad</target>
+        <note>First draft: Desktop &amp; Launchpad</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.4-pinch.hint" xml:space="preserve">
+        <source>Scroll up for Launchpad and down to show the Desktop
+ 
+Works like Pinching with 4 fingers on an Apple Trackpad</source>
+        <target state="translated">Cuộn lên để hiện Launchpad và  xuống để hiện Desktop
+ 
+Hoạt động như chụm bốn ngón tay trên Apple Trackpad</target>
+        <note>First draft: Scroll up for Launchpad and down to show the Desktop
+ 
+Works like Pinching with 4 fingers on an Apple Trackpad</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.app-switcher" xml:space="preserve">
+        <source>App Switcher</source>
+        <target state="translated">Chuyển ứng dụng</target>
+        <note>First draft: App Switcher</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.app-switcher.hint" xml:space="preserve">
+        <source>Quickly switch between open apps
+ 
+Works like holding Command (⌘) and then pressing Tab (⇥) on your keyboard</source>
+        <target state="translated">Nhanh chóng chuyển đổi giữa các ứng dụng đang mở
+ 
+Hoạt động như giữ phím Command (⌘) và nhấn Tab (⇥) trên bàn phím</target>
+        <note>First draft: Quickly switch between open apps
+ 
+Works like holding Command (⌘) and then pressing Tab (⇥) on your keyboard</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.horizontal" xml:space="preserve">
+        <source>Horizontal Scroll</source>
+        <target state="translated">Cuộn ngang</target>
+        <note>First draft: Horizontal Scroll</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.horizontal.hint" xml:space="preserve">
+        <source>Scroll left and right, navigate between pages in Safari, delete messages in Mail and more
+ 
+Works like swiping horizontally with 2 fingers on an Apple Trackpad</source>
+        <target state="translated">Cuộn trái và phải, điều hướng giữa các trang của Safari, xóa các mẫu tin trong Mail, và nhiều hơn.
+ 
+Hoạt động như vuốt ngang hai ngón tay trên Apple Trackpad</target>
+        <note>First draft: Scroll left and right, navigate between pages in Safari, delete messages in Mail and more
+ 
+Works like swiping horizontally with 2 fingers on an Apple Trackpad</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.precise" xml:space="preserve">
+        <source>Precise Scroll</source>
+        <target state="translated">Cuộn tỉ mỉ</target>
+        <note>First draft: Precise Scroll</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.precise.hint" xml:space="preserve">
+        <source>Scroll small distances and use sensitive UI elements with precision</source>
+        <target state="translated">Cho phép thao tác chính xác các thành phần trên các giao diện nhạy cảm bằng cách cuộn với khoảng cách ngắn.</target>
+        <note>First draft: Scroll small distances and use sensitive UI elements with precision</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.rotate" xml:space="preserve">
+        <source>Rotate</source>
+        <target state="translated">Xoay</target>
+        <note>First draft: Rotate</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.rotate.hint" xml:space="preserve">
+        <source>Rotate content in Apple Maps and other apps
+ 
+Works like twisting with 2 fingers on an Apple Trackpad</source>
+        <target state="translated">Xoay nội dung trên Apple Maps and và các ứng dụng khác
+ 
+Hoạt động như vặn hai ngón tay trên Apple Trackpad</target>
+        <note>First draft: Rotate content in Apple Maps and other apps
+ 
+Works like twisting with 2 fingers on an Apple Trackpad</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.spaces" xml:space="preserve">
+        <source>Move Between Spaces</source>
+        <target state="translated">Di chuyển giữa các Spaces</target>
+        <note>First draft: Move Between Spaces</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.spaces.hint" xml:space="preserve">
+        <source>Scroll up to move left a Space and down to move right a Space
+ 
+Works like swiping horizontally with 3 fingers on an Apple Trackpad</source>
+        <target state="translated">Cuộn lên để di chuyển qua Space bên trái và xuống để di chuyển qua Space bên phải
+ 
+Hoạt động như vuốt ngang ba ngón tay trên Apple Trackpad</target>
+        <note>First draft: Scroll up to move left a Space and down to move right a Space
+ 
+Works like swiping horizontally with 3 fingers on an Apple Trackpad</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.swift" xml:space="preserve">
+        <source>Swift Scroll</source>
+        <target state="translated">Cuộn nhanh</target>
+        <note>First draft: Swift Scroll</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.swift.hint" xml:space="preserve">
+        <source>Scroll long distances with minimal effort</source>
+        <target state="translated">Cuộn nhanh một khoảng dài lên đầu trang hoặc cuối trang</target>
+        <note>First draft: Scroll long distances with minimal effort</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.zoom" xml:space="preserve">
+        <source>Zoom In or Out</source>
+        <target state="translated">Phòng to hoặc thu nhỏ</target>
+        <note>First draft: Zoom In or Out</note>
+      </trans-unit>
+      <trans-unit id="scroll-effect.zoom.hint" xml:space="preserve">
+        <source>Zoom in or out in Safari, Maps and other apps
+ 
+Works like pinching to zoom on an Apple trackpad</source>
+        <target state="translated">Phóng to hoặc thu nhỏ trên Safari, Maps và các ứng dụng khác
+ 
+Hoạt động như chụm hai ngón tay để phóng to trên Apple trackpad</target>
+        <note>First draft: Zoom in or out in Safari, Maps and other apps
+ 
+Works like pinching to zoom on an Apple trackpad</note>
+      </trans-unit>
+      <trans-unit id="system-settings-name" xml:space="preserve">
+        <source>System Settings</source>
+        <target state="translated">Cài đặt hệ thống</target>
+        <note>First draft: System Settings</note>
+      </trans-unit>
+      <trans-unit id="system-settings-name.pre-ventura" xml:space="preserve">
+        <source>System Preferences</source>
+        <target state="translated">Cài đặt hệ thống</target>
+        <note>First draft: System Preferences</note>
+      </trans-unit>
+      <trans-unit id="thanks.01" xml:space="preserve">
+        <source>⭐️ Thank you for buying Mac Mouse Fix!</source>
+        <target state="translated">⭐️ Cảm ơn bạn đã mua Mac Mouse Fix!</target>
+        <note>First draft: ⭐️ Thank you for buying Mac Mouse Fix!</note>
+      </trans-unit>
+      <trans-unit id="thanks.02" xml:space="preserve">
+        <source>🌟 Thanks for purchasing Mac Mouse Fix!</source>
+        <target state="translated">🌟 Cảm ơn bạn đã mua Mac Mouse Fix!</target>
+        <note>First draft: 🌟 Thanks for purchasing Mac Mouse Fix!</note>
+      </trans-unit>
+      <trans-unit id="thanks.03" xml:space="preserve">
+        <source>🚀 Thanks for supporting Mac Mouse Fix!</source>
+        <target state="translated">🚀 Cảm ơn bạn đã ủng hộ Mac Mouse Fix!</target>
+        <note>First draft: 🚀 Thanks for supporting Mac Mouse Fix!</note>
+      </trans-unit>
+      <trans-unit id="thanks.04" xml:space="preserve">
+        <source>🙌 Thank you for buying Mac Mouse Fix!</source>
+        <target state="translated">🙌 Cảm ơn bạn đã mua Mac Mouse Fix!</target>
+        <note>First draft: 🙌 Thanks for buying Mac Mouse Fix!</note>
+      </trans-unit>
+      <trans-unit id="thanks.05" xml:space="preserve">
+        <source>🧠 Great purchasing decision! ;)</source>
+        <target state="translated">🧠 Quả là một sự lựa chọn khôn ngoan! ;)</target>
+        <note>First draft: 🧠 Great purchasing decision! ;)</note>
+      </trans-unit>
+      <trans-unit id="thanks.06" xml:space="preserve">
+        <source>🔥 Awesome taste in mouse fixing software! ;)</source>
+        <target state="translated">🔥 Ứng cử viên tuyệt vời trong những phần mềm điều chỉnh chuột! ;)</target>
+        <note>First draft: 🔥 Awesome taste in mouse fixing software! ;)</note>
+      </trans-unit>
+      <trans-unit id="thanks.07" xml:space="preserve">
+        <source>💙</source>
+        <target state="translated">💙</target>
+        <note>First draft: 💙</note>
+      </trans-unit>
+      <trans-unit id="thanks.08" xml:space="preserve">
+        <source>:) &lt;- My face when I saw you bought Mac Mouse Fix</source>
+        <target state="translated">:) &lt;- Đây là mặt tôi khi bạn mua Mac Mouse Fix</target>
+        <note>First draft: :) &lt;- My face when I saw you bought Mac Mouse Fix</note>
+      </trans-unit>
+      <trans-unit id="thanks.09" xml:space="preserve">
+        <source>👽 Share it with your Spacebook friends!</source>
+        <target state="translated">👽 Chia sẻ nó với 500 anh em của bạn ngoài kia!</target>
+        <note>First draft: 👽 Share it with your Spacebook friends!</note>
+      </trans-unit>
+      <trans-unit id="thanks.10" xml:space="preserve">
+        <source>🏂 Duckgang for life!!</source>
+        <target state="translated">🏂 Phê chữ ê kéo dàiiiii!!</target>
+        <note>First draft: 🏂 Duckgang for life!! || Note: A lot of these are very personal. And weird. They are also super rare. Feel free to change them to anything you feel like to leave a little easter egg!</note>
+      </trans-unit>
+      <trans-unit id="thanks.11" xml:space="preserve">
+        <source>🚜 Watch where you're going :P</source>
+        <target state="translated">🚜 Để xem giờ đi đâu tiếp nào :P</target>
+        <note>First draft: 🚜 Watch where you're going :P</note>
+      </trans-unit>
+      <trans-unit id="thanks.12" xml:space="preserve">
+        <source>🐁 Not these mice, mom!</source>
+        <target state="translated">🐁 Không phải chuột này nhé ;)</target>
+        <note>First draft: 🐁 Not these mice, mom!</note>
+      </trans-unit>
+      <trans-unit id="thanks.13" xml:space="preserve">
+        <source>🐹 We should get him a bow tie.</source>
+        <target state="translated">🐹 Bé chuột này sẽ cần một chiếc nơ đấy</target>
+        <note>First draft: 🐹 We should get him a bow tie.</note>
+      </trans-unit>
+      <trans-unit id="thanks.14" xml:space="preserve">
+        <source>🇹🇷 Ey Kanka, tebrikler tebrikler!</source>
+        <target state="translated">🇻🇳 Người anh em, chúc mừng, chúc mừng nhé!</target>
+        <note>First draft: 🇹🇷 Ey Kanka, tebrikler tebrikler!</note>
+      </trans-unit>
+      <trans-unit id="thanks.15" xml:space="preserve">
+        <source>🥛 Whole milk of course! It's your birthday after all.</source>
+        <target state="translated">🥛 Sữa tươi nguyên "trất" trăm phần trăm.</target>
+        <note>First draft: 🥛 Whole milk of course! It's your birthday after all.</note>
+      </trans-unit>
+      <trans-unit id="thanks.16" xml:space="preserve">
+        <source>🎸 Not John Mayer (yet). Nevertheless mayor of hearts.</source>
+        <target state="translated">🎸 Thưởng bạn một bản rockkkk nhé</target>
+        <note>First draft: 🎸 Not John Mayer (yet). Nevertheless mayor of hearts.</note>
+      </trans-unit>
+      <trans-unit id="thanks.17" xml:space="preserve">
+        <source>💃 1NEIN8NEIN</source>
+        <target state="translated">💃 ILU3000</target>
+        <note>First draft: 💃 1NEIN8NEIN</note>
+      </trans-unit>
+      <trans-unit id="thanks.18" xml:space="preserve">
+        <source>🦄 You may not want to save the world, but you're already saving mine :)</source>
+        <target state="translated">🦄 Chắc bạn không định cứu cả thế giới đâu, nhưng mà bạn đã cứu thế giới của tôi rồi :)</target>
+        <note>First draft: 🦄 You may not want to save the world, but you're already saving mine :)</note>
+      </trans-unit>
+      <trans-unit id="thanks.19" xml:space="preserve">
+        <source>🏜️ Dankeschön, meine Frau...</source>
+        <target state="translated">🏜️ Cảm ơn em, vợ iu của anh...</target>
+        <note>First draft: 🏜️ Dankeschön, meine Frau...</note>
+      </trans-unit>
+      <trans-unit id="thanks.20" xml:space="preserve">
+        <source>🌍 Universal Studios is probably not that great anyways... :)</source>
+        <target state="translated">🌍 Đi đến Universal Studios cũng không tuyệt vời như lúc này... :)</target>
+        <note>First draft: 🌍 Universal Studios is probably not that great anyways... :)</note>
+      </trans-unit>
+      <trans-unit id="thanks.21" xml:space="preserve">
+        <source>🐠 What... are... you?</source>
+        <target state="translated">🐠 Bạn... là... ai?</target>
+        <note>First draft: 🐠 What... are... you?</note>
+      </trans-unit>
+      <trans-unit id="thanks.22" xml:space="preserve">
+        <source>🖤</source>
+        <target state="translated">🖤</target>
+        <note>First draft: 🖤</note>
+      </trans-unit>
+      <trans-unit id="thanks.23" xml:space="preserve">
+        <source>🤍</source>
+        <target state="translated">🤍</target>
+        <note>First draft: 🤍</note>
+      </trans-unit>
+      <trans-unit id="thanks.24" xml:space="preserve">
+        <source>😎 Oh you're using Mac Mouse Fix? You must be pretty cool.</source>
+        <target state="translated">😎 Ủa, bạn đang dùng Mac Mouse Fix hả? Vậy là tôi biết bạn đẹp trai lắm :D</target>
+        <note>First draft: 😎 Oh you're using Mac Mouse Fix? You must be pretty cool.</note>
+      </trans-unit>
+      <trans-unit id="thanks.25" xml:space="preserve">
+        <source>🌏 First the mice, then the world!! &gt;:)</source>
+        <target state="translated">🌏 Sửa xong con chuột, anh sau đi cứu thế giới! &gt;:)</target>
+        <note>First draft: 🌏 First the mice, then the world!! &gt;:)</note>
+      </trans-unit>
+      <trans-unit id="trial-counter.active" xml:space="preserve">
+        <source>Free day **%d/%d**</source>
+        <target state="translated">Bạn đang dùng thử miễn phí **%d/%d** ngày</target>
+        <note>First draft: Free day **%d/%d**</note>
+      </trans-unit>
+      <trans-unit id="trial-counter.expired" xml:space="preserve">
+        <source>Free days are over</source>
+        <target state="translated">Hết hạn dùng thử</target>
+        <note>First draft: Free days are over</note>
+      </trans-unit>
+      <trans-unit id="trial-notif.activate-license-button" xml:space="preserve">
+        <source>Activate License</source>
+        <target state="translated">Kích hoạt bản quyền</target>
+        <note>First draft: Activate License</note>
+      </trans-unit>
+      <trans-unit id="trial-notif.body" xml:space="preserve">
+        <source>Hi there! You've been using Mac Mouse Fix for **%d days** now. I hope you're enjoying it!
+
+If you want to keep using Mac Mouse Fix, you can [buy it now](%@).</source>
+        <target state="translated">Xin chào! Bạn đã sử dụng Mac Mouse Fix được **%d ngày**. Mong rằng bạn sẽ thích nó!
+
+Nếu bạn muốn tiếp tục sử dụng Mac Mouse Fix, bạn có thể [mua ngay](%@).</target>
+        <note>First draft: Hi there! You've been using Mac Mouse Fix for **%d days** now. I hope you're enjoying it!
+
+If you want to keep using Mac Mouse Fix, you can [buy it now](%@).</note>
+      </trans-unit>
+      <trans-unit id="trigger.click.1" xml:space="preserve">
+        <source>Click %@</source>
+        <target state="translated">Kích %@</target>
+        <note>First draft: Click %@ || Note: %@ will be a button name || Example where %@ is 'Button 5': ⌥⌘ Double Click Button 4 + Click Button 5 || Note: Most of the substrings that are used to build the Action Table Trigger Strings (this is one of those substrings) are capitalized in English because it's common to use 'title case' there. In your language, 'title case' might not be a thing, and so you might not want to capitalize these strings. The first letter of the trigger string will be programmatically capitalized in any language.</note>
+      </trans-unit>
+      <trans-unit id="trigger.click.2" xml:space="preserve">
+        <source>Double Click %@</source>
+        <target state="translated">Kích đôi %@</target>
+        <note>First draft: Double Click %@</note>
+      </trans-unit>
+      <trans-unit id="trigger.click.3" xml:space="preserve">
+        <source>Triple Click %@</source>
+        <target state="translated">Kích ba lần %@</target>
+        <note>First draft: Triple Click %@</note>
+      </trans-unit>
+      <trans-unit id="trigger.drag-particle" xml:space="preserve">
+        <source>Drag</source>
+        <target state="translated">kéo</target>
+        <note>First draft: Drag || Note: This substring will be emphasized in drag trigger strings like 'Double Click and Drag %@'. Make sure that spelling and capitalization matches exactly for the emphasis to work.</note>
+      </trans-unit>
+      <trans-unit id="trigger.drag.1" xml:space="preserve">
+        <source>Click and Drag %@</source>
+        <target state="translated">Kích và kéo %@</target>
+        <note>First draft: Click and Drag %@ || Note: %@ will be a button name || example where %@ is 'Button 5': ⌥⌘ Triple Click Button 4 + Click and Drag Button 5</note>
+      </trans-unit>
+      <trans-unit id="trigger.drag.2" xml:space="preserve">
+        <source>Double Click and Drag %@</source>
+        <target state="translated">Kích đôi và kéo %@</target>
+        <note>First draft: Double Click and Drag %@</note>
+      </trans-unit>
+      <trans-unit id="trigger.drag.3" xml:space="preserve">
+        <source>Triple Click and Drag %@</source>
+        <target state="translated">Kích ba lần và kéo %@</target>
+        <note>First draft: Triple Click and Drag %@</note>
+      </trans-unit>
+      <trans-unit id="trigger.drag.flags" xml:space="preserve">
+        <source>and Drag</source>
+        <target state="translated">và kéo</target>
+        <note>First draft: and Drag || Note: This will be used for Drag Actions that only need keyboard modifiers to be activated - not mouse buttons || Example: ⌥⌘ and Drag</note>
+      </trans-unit>
+      <trans-unit id="trigger.hold.1" xml:space="preserve">
+        <source>Hold %@</source>
+        <target state="translated">Giữ %@</target>
+        <note>First draft: Hold %@</note>
+      </trans-unit>
+      <trans-unit id="trigger.hold.2" xml:space="preserve">
+        <source>Double Click and Hold %@</source>
+        <target state="translated">Kích đôi và giữ %@</target>
+        <note>First draft: Double Click and Hold %@</note>
+      </trans-unit>
+      <trans-unit id="trigger.hold.3" xml:space="preserve">
+        <source>Triple Click and Hold %@</source>
+        <target state="translated">Kích ba lần và giữ %@</target>
+        <note>First draft: Triple Click and Hold %@</note>
+      </trans-unit>
+      <trans-unit id="trigger.scroll-particle" xml:space="preserve">
+        <source>Scroll</source>
+        <target state="translated">cuộn</target>
+        <note>First draft: Scroll || Note: This substring will be emphasized in scroll trigger strings like 'Triple Click and Scroll %@'. Make sure that spelling and capitalization matches exactly for the emphasis to work.</note>
+      </trans-unit>
+      <trans-unit id="trigger.scroll.1" xml:space="preserve">
+        <source>Click and Scroll %@</source>
+        <target state="translated">Kích và cuộn %@</target>
+        <note>First draft: Click and Scroll %@</note>
+      </trans-unit>
+      <trans-unit id="trigger.scroll.2" xml:space="preserve">
+        <source>Double Click and Scroll %@</source>
+        <target state="translated">Kích đôi và cuộn %@</target>
+        <note>First draft: Double Click and Scroll %@</note>
+      </trans-unit>
+      <trans-unit id="trigger.scroll.3" xml:space="preserve">
+        <source>Triple Click and Scroll %@</source>
+        <target state="translated">Kích ba lần và cuộn %@</target>
+        <note>First draft: Triple Click and Scroll %@</note>
+      </trans-unit>
+      <trans-unit id="trigger.scroll.flags" xml:space="preserve">
+        <source>and Scroll</source>
+        <target state="translated">và cuộn</target>
+        <note>First draft: and Scroll || Example: ⌥⌘ and Scroll</note>
+      </trans-unit>
+      <trans-unit id="type-shortcut-prompt" xml:space="preserve">
+        <source>Type a Keyboard Shortcut</source>
+        <target state="translated">Gõ một tổ hợp phím tắt</target>
+        <note>First draft: Type a Keyboard Shortcut</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
