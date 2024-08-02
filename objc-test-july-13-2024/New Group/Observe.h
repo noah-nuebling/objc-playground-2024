@@ -9,52 +9,68 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-///
-/// Base Class
-///
+#pragma mark - Typedef
 
-@interface BlockObserver : NSObject
+/// Define shorthand
+///     If we define the shorthands as NSObject onstead of id the type checker will complain when we try to pass in NSObject subclasses to the callbacks. 
+#define NOB id _Nullable // NSObject * _Nullable
+#define OB id _Nonnull // NSObject * _Nonnull
 
-/// Define types
+/// Basic observation callbacks
 typedef id ObservationCallbackBlock;
-typedef void (^ObservationCallbackBlockWithNew)(NSObject *newValue);
-typedef void (^ObservationCallbackBlockWithOldAndNew)(NSObject *oldValue, NSObject *newValue);
+typedef void (^ObservationCallbackBlockWithNew)(OB newValue);
+typedef void (^ObservationCallbackBlockWithOldAndNew)(NOB oldValue, OB newValue);
 
-@end
+/// Observe-latest callbacks
+typedef void (^ObservationCallbackBlockWithLatest)(int updatedValueIndex, ...);
+typedef void (^ObservationCallbackBlockWithLatest2)(int updatedValueIndex, NOB v1, NOB v2);    /// Previously we just passed an array of all the latest values instead of having 9 different methods, but that was a little slower.
+typedef void (^ObservationCallbackBlockWithLatest3)(int updatedValueIndex, NOB v1, NOB v2, NOB v3);
+typedef void (^ObservationCallbackBlockWithLatest4)(int updatedValueIndex, NOB v1, NOB v2, NOB v3, NOB v4);
+typedef void (^ObservationCallbackBlockWithLatest5)(int updatedValueIndex, NOB v1, NOB v2, NOB v3, NOB v4, NOB v5);
+typedef void (^ObservationCallbackBlockWithLatest6)(int updatedValueIndex, NOB v1, NOB v2, NOB v3, NOB v4, NOB v5, NOB v6);
+typedef void (^ObservationCallbackBlockWithLatest7)(int updatedValueIndex, NOB v1, NOB v2, NOB v3, NOB v4, NOB v5, NOB v6, NOB v7);
+typedef void (^ObservationCallbackBlockWithLatest8)(int updatedValueIndex, NOB v1, NOB v2, NOB v3, NOB v4, NOB v5, NOB v6, NOB v7, NOB v8);
+typedef void (^ObservationCallbackBlockWithLatest9)(int updatedValueIndex, NOB v1, NOB v2, NOB v3, NOB v4, NOB v5, NOB v6, NOB v7, NOB v8, NOB v9);
 
-///
-/// NSObject Additions
-///
-
-@interface NSObject (MFBlockObserver)
-- (BlockObserver *)observe:(NSString *)keyPath withBlock:(ObservationCallbackBlockWithNew)block;
-- (void)removeBlockObserver:(BlockObserver *)blockObserver;
-@end
-
-///
-/// Combined Streams
-///
-
-@interface BlockObserver (CombinedValueStreamObservation)
-
-+ (void)removeBlockObservers:(NSArray<BlockObserver *> *)observers;
-
-_Pragma("clang assume_null begin")
-
-typedef void (^ObservationCallbackBlockWithLatestArray)(NSArray *_Nonnull latestValues, int updatedIndex); /// Removed this for performance reasons
-typedef void (^ObservationCallbackBlockWithLatest)(int updatedIndex, ...);
-
-#define NOB NSObject *_Nullable
-typedef void (^ObservationCallbackBlockWithLatest2)(int updatedIndex, NOB v1, NOB v2);
-typedef void (^ObservationCallbackBlockWithLatest3)(int updatedIndex, NOB v1, NOB v2, NOB v3);
-typedef void (^ObservationCallbackBlockWithLatest4)(int updatedIndex, NOB v1, NOB v2, NOB v3, NOB v4);
-typedef void (^ObservationCallbackBlockWithLatest5)(int updatedIndex, NOB v1, NOB v2, NOB v3, NOB v4, NOB v5);
-typedef void (^ObservationCallbackBlockWithLatest6)(int updatedIndex, NOB v1, NOB v2, NOB v3, NOB v4, NOB v5, NOB v6);
-typedef void (^ObservationCallbackBlockWithLatest7)(int updatedIndex, NOB v1, NOB v2, NOB v3, NOB v4, NOB v5, NOB v6, NOB v7);
-typedef void (^ObservationCallbackBlockWithLatest8)(int updatedIndex, NOB v1, NOB v2, NOB v3, NOB v4, NOB v5, NOB v6, NOB v7, NOB v8);
-typedef void (^ObservationCallbackBlockWithLatest9)(int updatedIndex, NOB v1, NOB v2, NOB v3, NOB v4, NOB v5, NOB v6, NOB v7, NOB v8, NOB v9);
+/// Undefine shorthand
+#undef OB
 #undef NOB
 
+#pragma mark - Main Interface
+
+@interface BlockObserver : NSObject
+@end
+
+@interface NSObject (MFBlockObserverInterface)
+
+/// Basic observation
+///     Note this when using:
+///     - CAUTION: If the callbackBlock captures the observedObject or any other object which itself retains the observedObject, that will still create a retain cycle!
+///     - The returned BlockObserver  can be used to cancel the observation prematurely.
+///     > Otherwise the KVO Observation will be automatically cancelled before the observed object is deallocated. You don't need to manually clean up. If you try to manually cancel the observation after the object has been deallocated or the observation has already been stopped, nothing happens.
+///     - If you observe a primitive value such as int or float, it will arrrive in the callback boxed in an NSValue. Use the unboxNSValue() macro to get the underlying primitive.
+- (BlockObserver *)observe:(NSString *)keyPath withBlock:(ObservationCallbackBlockWithNew)block;
+
+/// Basic observation but the first invocation of the block will happen when the observed value is first updated instead of immediately.
+- (BlockObserver *)observeUpdates:(NSString *)keyPath withBlock:(ObservationCallbackBlockWithNew)block;
+@end
+
+@interface BlockObserver (MFBlockObserverInterface)
+
+/// Check state
+- (BOOL)isActive;
+
+/// Cancel observation
+- (void)cancelObservation;
++ (void)cancelBlockObservations:(NSArray<BlockObserver *> *)observers;
+
+/// Observe latest
+///     Note this when using:
+///     - CAUTION: If any of the observed objects are retained inside the callbackBlock -> retain cycle!
+///     - The callbackBlock will be executed on the thread where the underlying value was changed, there's a thread-lock to ensure that the callbackBlock is not executed multiple times at once.
+///     - The returned array of BlockObservers can be used to cancel observation prematurely. If one of the observed objects is deallocated during the observation, the latest value for it will appear as 'nil' in the callback,
+///         unless the value is retained somewhere else. In any case, the latestValue passed into the callback will never updated again.
++ (NSArray<BlockObserver *> *)observeLatest:(NSArray<NSArray *> *)objectsAndKeyPaths withBlock:(ObservationCallbackBlockWithLatest)callback;
 + (NSArray<BlockObserver *> *)observeLatest2:(NSArray<NSArray *> *)objectsAndKeyPaths withBlock:(ObservationCallbackBlockWithLatest2)callback;
 + (NSArray<BlockObserver *> *)observeLatest3:(NSArray<NSArray *> *)objectsAndKeyPaths withBlock:(ObservationCallbackBlockWithLatest3)callback;
 + (NSArray<BlockObserver *> *)observeLatest4:(NSArray<NSArray *> *)objectsAndKeyPaths withBlock:(ObservationCallbackBlockWithLatest4)callback;
@@ -66,36 +82,19 @@ typedef void (^ObservationCallbackBlockWithLatest9)(int updatedIndex, NOB v1, NO
 
 @end
 
-#pragma mark - Macros
+#pragma mark - Convenience Macro
 
 ///
 /// Unbox NSValue
 ///
 
 /// Use like this:
-///     `CGRect unboxed = unboxNSValue(CGRect, someBox)`
-///
-/// Or even like this:
-///     `NSString *unboxed = unboxNSValue(NSString*, notABox)`
-///     (This behaviour could be useful for building macros on top of this one)
-///
-/// Useful for KeyValueObservation change notifiations (since those pass around primitive values boxed inside NSValue)
-///
-/// Note:
-///     The last expression is like the 'return value' in this weird ({}) c syntax 
-///
+///     `CGRect unboxed = unboxNSValue(CGRect, someNSValue)`
 
-#define unboxNSValue_Safe(__unboxedType, __boxedValue) \
-({ \
-    __unboxedType unboxedValue; \
-    if ([__boxedValue isKindOfClass:[NSValue class]]) { \
-        [(id)__boxedValue getValue:&unboxedValue]; \
-    } else { \
-        unboxedValue = (__unboxedType)__boxedValue; \
-    } \
-    \
-    unboxedValue; \
-}) \
+/// Use this inside `ObservationCallbackBlock`s - primitive values like int and float will be passed into the callback boxed in an NSValue.
+///
+/// Explanation:
+///     The last expression is like the 'return value' in this weird ({}) c syntax
 
 #define unboxNSValue(__unboxedType, __boxedValue) \
 ({ \
@@ -103,6 +102,5 @@ typedef void (^ObservationCallbackBlockWithLatest9)(int updatedIndex, NOB v1, NO
     [(id)__boxedValue getValue:&unboxedValue]; \
     unboxedValue; \
 }) \
-
 
 NS_ASSUME_NONNULL_END

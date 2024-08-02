@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 @import ObjectiveC.runtime;
 #import "AppKit/AppKit.h"
-#import "NSString+Steganography.h"
 #import "MFDataClass.h"
 #import "ObserveBenchmarks.h"
 
@@ -70,30 +69,6 @@ int main(int argc, const char * argv[]) {
         NSLog(@"(sel) responds to addSubview: (class) %d", [class respondsToSelector:@selector(addSubview:)]);
         NSLog(@"(sel) responds to addSubview: (meta) %d", [metaclass respondsToSelector:@selector(addSubview:)]);
         NSLog(@"");
-        
-        NSLog(@"------------------");
-        NSLog(@"STEGANOGRAPHY TESTS:");
-        NSLog(@"------------------");
-        
-        NSString *stego = @"abc **[\u200C\u200Bd](\u200B\u200C\u200Dx.com)** fgh";
-        NSString *stego2 = [NSString stringWithFormat:@"%da%@a", 1, stego];
-        NSAttributedString *stego3 = [[NSAttributedString alloc] initWithMarkdownString:stego2 options:nil baseURL:nil error:nil];
-        NSLog(@"stego: %@", stego3);
-        NSLog(@"stegoRaw: %@", stego3.string);
-        NSLog(@"stego chars: %@", [stego3.string UTF32CharacterDescription]);
-        
-        NSLog(@"------------------");
-        NSLog(@"STEGANOGRAPHY TESTS 2:");
-        NSLog(@"------------------");
-        
-        NSString *secretMessage = @"Don't tell anybody";
-        
-        NSLog(@"Secret message decoded: %@", [[secretMessage encodedAsSecretMessage] decodedAsSecretMessage]);
-        NSLog(@"Secret message binary decoded: %@", [NSString stringWithBinaryArray:[secretMessage binaryArray]]);
-        NSLog(@"Secret message quaternary decoded: %@", [NSString stringWithQuaternaryArray:[secretMessage quaternaryArray]]);
-        NSLog(@"Secret message UTF32 decoded: %@", [NSString stringWithUTF32Characters:[secretMessage UTF32Characters]]);
-        
-        NSLog(@"Encoded message: %@", [secretMessage encodedAsSecretMessage]);
         
         NSLog(@"------------------");
         NSLog(@"MFDataClass tests:");

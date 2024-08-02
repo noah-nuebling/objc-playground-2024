@@ -8,7 +8,15 @@
 #ifndef CoolMacros_h
 #define CoolMacros_h
 
-#pragma mark - Macro Magic (unused) (but cool)
+///
+/// Strongify / weakify macros
+///
+
+#define weakify(__var) \
+    __weak typeof(__var) m_weakified_ ## __var = __var;
+
+#define strongify(__var) \
+    typeof(__var) __var = m_weakified_ ##  __var;
 
 ///
 /// Do numbered macros

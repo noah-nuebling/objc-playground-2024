@@ -10,19 +10,19 @@ import Combine
 import QuartzCore
 
 class TestObjectSwift: NSObject {
-    @objc dynamic var value: Int = 0
+    @Published var value: Int = 0
 }
 class TestObjectSwift4: NSObject {
-    @objc dynamic var value1: Int = 0
-    @objc dynamic var value2: Int = 0
-    @objc dynamic var value3: Int = 0
-    @objc dynamic var value4: Int = 0
+    @Published var value1: Int = 0
+    @Published var value2: Int = 0
+    @Published var value3: Int = 0
+    @Published var value4: Int = 0
 }
 
 
 @objc class BlockObserverBenchmarksSwift: NSObject {
     
-    @objc class func runPrimitiveSwiftTests(iterations: Int) -> TimeInterval {
+    @objc class func runPureSwiftTest(iterations: Int) -> TimeInterval {
         
         /// Ts
         let startTime = CACurrentMediaTime()
@@ -50,7 +50,7 @@ class TestObjectSwift4: NSObject {
         let endTime = CACurrentMediaTime()
         
         /// Log
-        print("Primitive swift count: \(valuesFromCallback.count), sum: \(sumFromCallback)")
+        print("pureSwift - count: \(valuesFromCallback.count), sum: \(sumFromCallback)")
         
         /// Return bench time
         return endTime - startTime
@@ -67,14 +67,13 @@ class TestObjectSwift4: NSObject {
         
         /// Setup callback
         let testObject = TestObjectSwift()
-        let cancellable = testObject.publisher(for: \.value)
-            .sink { newValue in
-                valuesFromCallback.append(newValue)
-                sumFromCallback += newValue
-                if (newValue % 2 == 0) {
-                    sumFromCallback <<= 2
-                }
+        let cancellable = testObject.$value.sink(receiveValue: { newValue in
+            valuesFromCallback.append(newValue)
+            sumFromCallback += newValue
+            if (newValue % 2 == 0) {
+                sumFromCallback <<= 2
             }
+        })
         
         /// Change value
         for i in 0..<iterations {
@@ -85,13 +84,13 @@ class TestObjectSwift4: NSObject {
         let endTime = Date()
         
         /// Log
-        print("Combine count: \(valuesFromCallback.count), sum: \(sumFromCallback)")
+        print("Combine - count: \(valuesFromCallback.count), sum: \(sumFromCallback)")
         
         /// Return bench time
         return endTime.timeIntervalSince(startTime)
     }
     
-    @objc class func runPrimitiveSwiftTest_ObserveLatest(iterations: Int) -> TimeInterval {
+    @objc class func runPureSwiftTest_ObserveLatest(iterations: Int) -> TimeInterval {
         
         let startTime = CACurrentMediaTime()
         
@@ -122,7 +121,7 @@ class TestObjectSwift4: NSObject {
         
         let endTime = CACurrentMediaTime()
         
-        print("ObserveLatest Primitive swift sum: \(sumFromCallback)")
+        print("pureSwift - ObserveLatest - sum: \(sumFromCallback)")
         
         return endTime - startTime
     }
@@ -135,10 +134,10 @@ class TestObjectSwift4: NSObject {
         var sumFromCallback = 0
         
         let testObject = TestObjectSwift4()
-        let publisher1 = testObject.publisher(for: \.value1)
-        let publisher2 = testObject.publisher(for: \.value2)
-        let publisher3 = testObject.publisher(for: \.value3)
-        let publisher4 = testObject.publisher(for: \.value4)
+        let publisher1 = testObject.$value1
+        let publisher2 = testObject.$value2
+        let publisher3 = testObject.$value3
+        let publisher4 = testObject.$value4
         
         let combinedPublisher = Publishers.CombineLatest4(
             publisher1,
@@ -163,8 +162,54 @@ class TestObjectSwift4: NSObject {
         
         let endTime = Date()
         
-        print("ObserveLatest Combine sum: \(sumFromCallback)")
+        print("Combine - ObserveLatest - sum: \(sumFromCallback)")
         
         return endTime.timeIntervalSince(startTime)
+    }
+    
+    @objc class func runCombineTest_Strings(iterations: Int) -> TimeInterval {
+        
+        ///
+        /// The checksum for this is correct in Debug builds but alwys 0 in release builds WTF? Combine bug?
+        ///     Either way this is slower than our KVO wrapper even if it doesn't do anything and the checksum is zero 😎
+        ///
+        
+        let startTime = CACurrentMediaTime()
+        var checkSum: Int = 0
+        
+        class TestStringsSwift: NSObject {
+            @Published var string1 = "Hello"
+            @Published var string2 = "World"
+        }
+        
+        let testObject = TestStringsSwift()
+        
+        var cancellables = Set<AnyCancellable>()
+        
+        testObject.$string1.dropFirst()
+            .sink { [weak testObject] newValue in
+                guard let testObject = testObject else { return }
+                guard let lastChar: UInt16 = newValue.utf16.last else { return }
+                
+                testObject.string2.append(String(format:"\(lastChar + 1)"))
+                testObject.string2.append(String(format:"\(lastChar + 2)"))
+            }
+            .store(in: &cancellables)
+        
+        testObject.$string2.dropFirst()
+            .sink { newValue in
+                let lastChar = newValue.utf16.last!
+                checkSum += Int(lastChar)
+            }
+            .store(in: &cancellables)
+        
+        for i in 0..<iterations {
+            testObject.string1.append(String(i))
+        }
+        
+        let endTime = CACurrentMediaTime()
+        print("Combine - strings - count: \(iterations), checksum: \(checkSum)")
+        
+        return endTime - startTime
     }
 }
