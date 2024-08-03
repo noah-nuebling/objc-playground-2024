@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4F0CFFE42C5167D000C5D843 /* MFDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0CFFE32C5167D000C5D843 /* MFDataClass.m */; };
 		4F3A10E32C5D59B70054B89E /* DeallocTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A10E22C5D59B70054B89E /* DeallocTracker.m */; };
-		4F47C1242C5903ED009F6CE7 /* Observe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47C1232C5903ED009F6CE7 /* Observe.m */; };
+		4F47C1242C5903ED009F6CE7 /* BlockObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47C1232C5903ED009F6CE7 /* BlockObserver.m */; };
 		4F47C12A2C59D564009F6CE7 /* ObserveBenchmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F47C1292C59D564009F6CE7 /* ObserveBenchmarks.swift */; };
 		4F47C12D2C59D867009F6CE7 /* ObserveBenchmarks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47C12C2C59D867009F6CE7 /* ObserveBenchmarks.m */; };
 		4F8738082C42B6E0001F95DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8738072C42B6E0001F95DE /* main.m */; };
@@ -37,8 +37,8 @@
 		4F3A10E22C5D59B70054B89E /* DeallocTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeallocTracker.m; sourceTree = "<group>"; };
 		4F3A10E42C5DE4300054B89E /* metamacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
 		4F3A10E52C5E44DF0054B89E /* EXTScope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
-		4F47C1222C5903ED009F6CE7 /* Observe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Observe.h; sourceTree = "<group>"; };
-		4F47C1232C5903ED009F6CE7 /* Observe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Observe.m; sourceTree = "<group>"; };
+		4F47C1222C5903ED009F6CE7 /* BlockObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockObserver.h; sourceTree = "<group>"; };
+		4F47C1232C5903ED009F6CE7 /* BlockObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockObserver.m; sourceTree = "<group>"; };
 		4F47C1252C599779009F6CE7 /* CoolMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoolMacros.h; sourceTree = "<group>"; };
 		4F47C1262C5997C0009F6CE7 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		4F47C1282C59D564009F6CE7 /* objc-test-july-13-2024-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "objc-test-july-13-2024-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -76,15 +76,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4F3A10E62C5E909A0054B89E /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				4F47C1222C5903ED009F6CE7 /* Observe.h */,
-				4F47C1232C5903ED009F6CE7 /* Observe.m */,
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		4F47C1272C599811009F6CE7 /* Moved to Other Repo */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,13 +90,13 @@
 		4F47C12E2C59D8BA009F6CE7 /* Observe */ = {
 			isa = PBXGroup;
 			children = (
+				4F47C1222C5903ED009F6CE7 /* BlockObserver.h */,
+				4F47C1232C5903ED009F6CE7 /* BlockObserver.m */,
 				4F8F47D62C5BA36500245C26 /* KVOMutationSupport.h */,
 				4F8F47D72C5BA36500245C26 /* KVOMutationSupport.m */,
 				4F73BEB42C5A0D1300BB13AF /* ObserveBenchmarks.h */,
 				4F47C12C2C59D867009F6CE7 /* ObserveBenchmarks.m */,
 				4F47C1292C59D564009F6CE7 /* ObserveBenchmarks.swift */,
-				4F3A10E12C5D59B70054B89E /* DeallocTracker.h */,
-				4F3A10E22C5D59B70054B89E /* DeallocTracker.m */,
 			);
 			path = Observe;
 			sourceTree = "<group>";
@@ -134,9 +125,10 @@
 			isa = PBXGroup;
 			children = (
 				4F8738072C42B6E0001F95DE /* main.m */,
-				4F3A10E62C5E909A0054B89E /* New Group */,
 				4F47C12E2C59D8BA009F6CE7 /* Observe */,
 				4F47C1252C599779009F6CE7 /* CoolMacros.h */,
+				4F3A10E12C5D59B70054B89E /* DeallocTracker.h */,
+				4F3A10E22C5D59B70054B89E /* DeallocTracker.m */,
 				4F3A10E42C5DE4300054B89E /* metamacros.h */,
 				4F3A10E52C5E44DF0054B89E /* EXTScope.h */,
 				4F47C1272C599811009F6CE7 /* Moved to Other Repo */,
@@ -250,7 +242,7 @@
 				4F0CFFE42C5167D000C5D843 /* MFDataClass.m in Sources */,
 				4F47C12A2C59D564009F6CE7 /* ObserveBenchmarks.swift in Sources */,
 				4F3A10E32C5D59B70054B89E /* DeallocTracker.m in Sources */,
-				4F47C1242C5903ED009F6CE7 /* Observe.m in Sources */,
+				4F47C1242C5903ED009F6CE7 /* BlockObserver.m in Sources */,
 				4F47C12D2C59D867009F6CE7 /* ObserveBenchmarks.m in Sources */,
 				4F8738082C42B6E0001F95DE /* main.m in Sources */,
 				4F8F47D82C5BA36500245C26 /* KVOMutationSupport.m in Sources */,

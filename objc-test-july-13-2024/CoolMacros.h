@@ -12,30 +12,27 @@
 /// Strongify / weakify macros
 ///
 
-#define wrap(INDEX, CONTEXT, VAR) \
-    CONTEXT __typeof__(VAR) metamacro_concat(VAR, _weak_) = (VAR);
+/// We thought about including EXTScope.h but I really just want @weakify and @strongify.
 
-#define ext_strongify_(INDEX, VAR) \
-    __strong __typeof__(VAR) VAR = metamacro_concat(VAR, _weak_);
+#define weakify(__var) \
+    REQUIRE_AT_PREFIX \
+    __weak typeof(__var) m_weakified_ ## __var = __var;
 
-/// Use EXTScope implementation instead of this
+#define strongify(__var) \
+    REQUIRE_AT_PREFIX \
+    typeof(__var) __var = m_weakified_ ##  __var;
 
-///// We thought about including EXTObjc but I really just want @weakify and @strongify.
-//
-//#define weakify(__var) \
-//    REQUIRE_AT_PREFIX \
-//    __weak typeof(__var) m_weakified_ ## __var = __var;
-//
-//#define strongify(__var) \
-//    REQUIRE_AT_PREFIX \
-//    typeof(__var) __var = m_weakified_ ##  __var;
-//
-/////
-///// Keywordify
-/////     When you add this to the start of a macro, it requires an @ prefix to be invoked
-//
-//#define REQUIRE_AT_PREFIX \
-//    try {} @catch (...) {}
+///
+/// Keywordify
+///     When you add this to the start of a macro, it requires an @ prefix to be invoked
+
+#define REQUIRE_AT_PREFIX \
+    try {} @catch (...) {}
+
+
+///
+/// vvv Weird stuff, doesn't work
+///
 
 ///
 /// Do numbered macros
