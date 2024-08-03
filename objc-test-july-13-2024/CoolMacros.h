@@ -12,11 +12,30 @@
 /// Strongify / weakify macros
 ///
 
-#define weakify(__var) \
-    __weak typeof(__var) m_weakified_ ## __var = __var;
+#define wrap(INDEX, CONTEXT, VAR) \
+    CONTEXT __typeof__(VAR) metamacro_concat(VAR, _weak_) = (VAR);
 
-#define strongify(__var) \
-    typeof(__var) __var = m_weakified_ ##  __var;
+#define ext_strongify_(INDEX, VAR) \
+    __strong __typeof__(VAR) VAR = metamacro_concat(VAR, _weak_);
+
+/// Use EXTScope implementation instead of this
+
+///// We thought about including EXTObjc but I really just want @weakify and @strongify.
+//
+//#define weakify(__var) \
+//    REQUIRE_AT_PREFIX \
+//    __weak typeof(__var) m_weakified_ ## __var = __var;
+//
+//#define strongify(__var) \
+//    REQUIRE_AT_PREFIX \
+//    typeof(__var) __var = m_weakified_ ##  __var;
+//
+/////
+///// Keywordify
+/////     When you add this to the start of a macro, it requires an @ prefix to be invoked
+//
+//#define REQUIRE_AT_PREFIX \
+//    try {} @catch (...) {}
 
 ///
 /// Do numbered macros
@@ -39,11 +58,14 @@
 ///      And so on (up to `myMacro_9`)
 ///
 
-#define doNumberedMacro(__macroPrefix, __args...) \
-    __macroPrefix ## macroPostfix(__args) (__args)
+#define concat(__a, __b) \
+__a ## __b
 
 #define macroPostfix(__args...) \
-    getTenth(__args, ## _9, _8, _7, _6, _5, _4, _3, _2, _1, _0)
+    getTenth(__args, ## 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
+
+#define doNumberedMacro(__macroPrefix, __args...) \
+    concat(__macroPrefix, macroPostfix(__args) (__args))
 
 #define getTenth(__1, __2, __3,__4, __5, __6, __7, __8, __9, __10, __rest...) \
     __10
@@ -69,34 +91,34 @@
 #define forEach(__macro, __list...) \
     doNumberedMacro(_forEach, __macro, __list)
 
-#define _forEach_0() \
+#define _forEach0(...) \
     /// Do Nothing
 
-#define _forEach_1(__macro) \
+#define _forEach1(__macro, ...) \
     /// Do Nothing
 
-#define _forEach_2(__macro, __1) \
+#define _forEach2(__macro, __1, ...) \
     __macro(__1)
 
-#define _forEach_3(__macro, __1, __2) \
+#define _forEach3(__macro, __1, __2, ...) \
     __macro(__1) __macro(__2)
 
-#define _forEach_4(__macro, __1, __2, __3) \
+#define _forEach4(__macro, __1, __2, __3, ...) \
     __macro(__1) __macro(__2) __macro(__3)
 
-#define _forEach_5(__macro, __1, __2, __3, __4) \
+#define _forEach5(__macro, __1, __2, __3, __4, ...) \
     __macro(__1) __macro(__2) __macro(__3) __macro(__4)
 
-#define _forEach_6(__macro, __1, __2, __3, __4, __5) \
+#define _forEach6(__macro, __1, __2, __3, __4, __5, ...) \
     __macro(__1) __macro(__2) __macro(__3) __macro(__4) __macro(__5)
 
-#define _forEach_7(__macro, __1, __2, __3, __4, __5, __6) \
+#define _forEach7(__macro, __1, __2, __3, __4, __5, __6, ...) \
     __macro(__1) __macro(__2) __macro(__3) __macro(__4) __macro(__5) __macro(__6)
 
-#define _forEach_8(__macro, __1, __2, __3, __4, __5, __6, __7) \
+#define _forEach8(__macro, __1, __2, __3, __4, __5, __6, __7, ...) \
     __macro(__1) __macro(__2) __macro(__3) __macro(__4) __macro(__5) __macro(__6) __macro(__7)
 
-#define _forEach_9(__macro, __1, __2, __3, __4, __5, __6, __7, __8) \
+#define _forEach9(__macro, __1, __2, __3, __4, __5, __6, __7, __8, ...) \
     __macro(__1) __macro(__2) __macro(__3) __macro(__4) __macro(__5) __macro(__6) __macro(__7) __macro(__8)
 
 

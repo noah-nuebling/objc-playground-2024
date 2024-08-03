@@ -7,21 +7,22 @@
 
 #import "ObserveBenchmarks.h"
 #import "MFDataClass.h"
-#import "Observe.h"
+#import "BlockObserver.h"
+#import "CoolMacros.h"
 #import "objc_test_july_13_2024-Swift.h"
-#import "EXTScope.h"
 #import "KVOMutationSupport.h"
 @import QuartzCore;
 @import AppKit;
+#import "EXTScope.h"
 
 #define stringf(format, args...) [NSString stringWithFormat:format, args]
 
-MFDataClass(TestObject, (@property (nonatomic) NSInteger value;))
+MFDataClass(TestObject, (MFDataPropPrimitive(NSInteger value)))
 
-MFDataClass(TestObject4, (@property (nonatomic) NSInteger value1;
-                          @property (nonatomic) NSInteger value2;
-                          @property (nonatomic) NSInteger value3;
-                          @property (nonatomic) NSInteger value4;))
+MFDataClass(TestObject4, (MFDataPropPrimitive(NSInteger value1)
+                          MFDataPropPrimitive(NSInteger value2)
+                          MFDataPropPrimitive(NSInteger value3)
+                          MFDataPropPrimitive(NSInteger value4)))
 
 MFDataClass(TestStrings, (MFDataProp(NSMutableString *string1)
                           MFDataProp(NSMutableString *string2)));
@@ -43,10 +44,10 @@ void runBlockObserverBenchmarks(void) {
         
         NSLog(@"Running simple tests with %d iterations", iterations);
         
-            combineTime = [BlockObserverBenchmarksSwift runCombineTestWithIterations:iterations];
-            kvoTime = runKVOTest(iterations);
-            pureObjcTime = runPureObjcTest(iterations);
-            pureSwiftTime = [BlockObserverBenchmarksSwift runPureSwiftTestWithIterations:iterations];
+        combineTime = [BlockObserverBenchmarksSwift runCombineTestWithIterations:iterations];
+        kvoTime = runKVOTest(iterations);
+        pureObjcTime = runPureObjcTest(iterations);
+        pureSwiftTime = [BlockObserverBenchmarksSwift runPureSwiftTestWithIterations:iterations];
         
         NSLog(@"Combine time: %f", combineTime);
         NSLog(@"kvo time: %f", kvoTime);
@@ -58,10 +59,10 @@ void runBlockObserverBenchmarks(void) {
         
         NSLog(@"Running combineLatest tests with %d iterations", iterations);
         
-            combineTime = [BlockObserverBenchmarksSwift runCombineTest_ObserveLatestWithIterations:iterations];
+        combineTime = [BlockObserverBenchmarksSwift runCombineTest_ObserveLatestWithIterations:iterations];
         kvoTime = runKVOTest_ObserveLatest(iterations);
-            pureObjcTime = runPureObjcTest_ObserveLatest(iterations);
-            pureSwiftTime = [BlockObserverBenchmarksSwift runPureSwiftTest_ObserveLatestWithIterations:iterations];
+        pureObjcTime = runPureObjcTest_ObserveLatest(iterations);
+        pureSwiftTime = [BlockObserverBenchmarksSwift runPureSwiftTest_ObserveLatestWithIterations:iterations];
         
         NSLog(@"Combine time: %f", combineTime);
         NSLog(@"kvo time: %f", kvoTime);
@@ -72,10 +73,10 @@ void runBlockObserverBenchmarks(void) {
         iterations = iterations/2;
         
         NSLog(@"Running string manipulation tests with %d iterations", iterations);
-        
-            combineTime = [BlockObserverBenchmarksSwift runCombineTest_StringsWithIterations:iterations];
-            kvoTime = runKVOTest_Strings(iterations);
-            pureObjcTime = runPureObjcTest_Strings(iterations);
+//        
+        combineTime = [BlockObserverBenchmarksSwift runCombineTest_StringsWithIterations:iterations];
+        kvoTime = runKVOTest_Strings(iterations);
+        pureObjcTime = runPureObjcTest_Strings(iterations);
         
         NSLog(@"Combine time: %f", combineTime);
         NSLog(@"kvo time: %f", kvoTime);
@@ -86,15 +87,20 @@ void runBlockObserverBenchmarks(void) {
     
     /// Idle after  autoreleasePool to look at memery graph
     ///     See if there are memory leaks
-    NSLog(@"Idling an a runLoop...");
-    
-    [_memoryTestVariable cancelObservation];
-    CFRunLoopRunInMode(0, 2.0, false);
-    @autoreleasepool {
-        _memoryTestVariable = nil;
+    if ((NO)) {
+        NSLog(@"Idling an a runLoop...");
+        
+        [_memoryTestVariable cancelObservation];
+        CFRunLoopRunInMode(0, 2.0, false);
+        @autoreleasepool {
+            _memoryTestVariable = nil;
+        }
+        CFRunLoopRun();
+    } else {
+        exit(0);
     }
-    CFRunLoopRun();
-//    exit(0);
+
+
 }
 
 NSTimeInterval runPureObjcTest(NSInteger iterations) {
@@ -223,13 +229,12 @@ NSTimeInterval runKVOTest_ObserveLatest(NSInteger iterations) {
                                     @[testObject, @"value2"],
                                     @[testObject, @"value3"],
                                     @[testObject, @"value4"]]
-     
-                        withBlock:^(int updatedIndex, NSObject * _Nullable v1, NSObject * _Nullable v2, NSObject * _Nullable v3, NSObject * _Nullable v4) {
+                        withBlock:^(int updatedIndex, id v0, id v1, id v2, id v3) {
         
-        NSInteger value1 = unboxNSValue(NSInteger, v1);
-        NSInteger value2 = unboxNSValue(NSInteger, v2);
-        NSInteger value3 = unboxNSValue(NSInteger, v3);
-        NSInteger value4 = unboxNSValue(NSInteger, v4);
+        NSInteger value1 = unboxNSValue(NSInteger, v0);
+        NSInteger value2 = unboxNSValue(NSInteger, v1);
+        NSInteger value3 = unboxNSValue(NSInteger, v2);
+        NSInteger value4 = unboxNSValue(NSInteger, v3);
         
         sumFromCallback += value1 + value2 + value3 + value4;
         if ((value1 + value2 + value3 + value4) % 2 == 0) {
@@ -263,14 +268,21 @@ NSTimeInterval runKVOTest_Strings(NSInteger iterations) {
     [testObject.string1 notifyOnMutation:YES];
     [testObject.string2 notifyOnMutation:YES];
     
-    [testObject.string2 observeUpdates:@"self" withBlock:^(NSString * updatedString2) {
+    [testObject.string2 observe:@"self" withBlock:^(NSString * updatedString2) {
+        
+        static BOOL isFirst = YES;
+        if (isFirst) { isFirst = NO; return; }
+        
         uint16_t lastChar = (uint16_t)[updatedString2 characterAtIndex:updatedString2.length - 1];
         checkSum += lastChar;
     }];
     
     @weakify(testObject);
-    _memoryTestVariable = [testObject.string1 observeUpdates:@"self" withBlock:^(NSString *_Nonnull updatedString1) {
+    _memoryTestVariable = [testObject.string1 observe:@"self" withBlock:^(NSString *_Nonnull updatedString1) {
         @strongify(testObject);
+            
+        static BOOL isFirst = YES;
+        if (isFirst) { isFirst = NO; return; }
         
         NSInteger lastIndex = testObject.string1.length - 1;
         uint16_t lastChar = (uint16_t)[updatedString1 characterAtIndex:lastIndex];

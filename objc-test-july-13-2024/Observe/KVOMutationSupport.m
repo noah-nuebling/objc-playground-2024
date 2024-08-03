@@ -9,9 +9,8 @@
 #import "objc/runtime.h"
 
 ///
+/// This code makes mutable objects send a KVO value-change-notification for the keyPath `self` when they are mutated.
 ///
-///
-
 
 @implementation NSObject (MFKVOMutationSupport)
 
@@ -93,6 +92,7 @@ static Class getMutationNotifierClassForClass(Class class) {
         NSDictionary *selectorToBlockFactoryMap = nil;
         
         /// Define macros
+        ///     The way we swizzle with the BlockFactory pattern and macros follows the approach we used for the swizzling code in MMF.
         
             #define UNPACK(args...) \
                 args
@@ -145,7 +145,7 @@ static Class getMutationNotifierClassForClass(Class class) {
             /// Override the 2 mutating NSMutableAttributedString primitive methods.
             ///     See https://developer.apple.com/documentation/foundation/nsmutableattributedstring?language=objc
             ///
-            ///     Update this: This won't work - private class cluster stuff. Need to override all public mutate methods instead.
+            ///     Update this: This won't work - private class cluster stuff. Need to override all public mutating methods instead.
             
             selectorToBlockFactoryMap = @{
                 @"replaceCharactersInRange:withString:": MakeBlockFactory((range, aString), (NSRange range, NSString *aString), kvoCallback),
@@ -163,12 +163,11 @@ static Class getMutationNotifierClassForClass(Class class) {
         #undef MakeBlockFactory
         #undef APPEND_ARGS
         
-        /// Copy class
-        const char *swizzledClassName = [[NSStringFromClass(class) stringByAppendingString:@"_MFMutationObservation"] cStringUsingEncoding:NSUTF8StringEncoding];
+        /// Create new subclass
+        const char *subclassName = [[NSStringFromClass(class) stringByAppendingString:@"_MFMutationObservation"] cStringUsingEncoding:NSUTF8StringEncoding];
+        Class mutationObserverClass = objc_allocateClassPair(class, subclassName, 0); /// There's also `objc_duplicateClass`which is apparently used by KVO, but subclassing seems just as good?
         
-        Class mutationObserverClass = objc_allocateClassPair(class, swizzledClassName, 0); /// There's also `objc_duplicateClass`which is apparently used by KVO, but subclassing seems just as good?
-        
-        /// Replace methods on copied class
+        /// Replace methods on the new subclass
         for (NSString *selectorString in selectorToBlockFactoryMap) {
             
             /// Get method
@@ -178,7 +177,7 @@ static Class getMutationNotifierClassForClass(Class class) {
             const char *types = method_getTypeEncoding(method);
             
             /// Add method
-            ///    This ensures we're not affecting the method of the superclass, which would affect all other subclasses.
+            ///    This ensures we're not affecting the method of the superclass, which would affect all other subclasses that inherit the method.
             Boolean didAddMethod = class_addMethod(mutationObserverClass, selector, originalImplementation, types);
             if (didAddMethod) {
                 method = class_getInstanceMethod(mutationObserverClass, selector);
@@ -195,7 +194,7 @@ static Class getMutationNotifierClassForClass(Class class) {
             method_setImplementation(method, newImplementation);
         }
         
-        /// Register new class
+        /// Register new subclass class
         objc_registerClassPair(mutationObserverClass);
         
         /// Cache

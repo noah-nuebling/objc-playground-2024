@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F0CFFE42C5167D000C5D843 /* MFDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0CFFE32C5167D000C5D843 /* MFDataClass.m */; };
+		4F3A10E32C5D59B70054B89E /* DeallocTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A10E22C5D59B70054B89E /* DeallocTracker.m */; };
 		4F47C1242C5903ED009F6CE7 /* Observe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47C1232C5903ED009F6CE7 /* Observe.m */; };
 		4F47C12A2C59D564009F6CE7 /* ObserveBenchmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F47C1292C59D564009F6CE7 /* ObserveBenchmarks.swift */; };
 		4F47C12D2C59D867009F6CE7 /* ObserveBenchmarks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47C12C2C59D867009F6CE7 /* ObserveBenchmarks.m */; };
@@ -32,6 +33,10 @@
 /* Begin PBXFileReference section */
 		4F0CFFE22C5167D000C5D843 /* MFDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFDataClass.h; sourceTree = "<group>"; };
 		4F0CFFE32C5167D000C5D843 /* MFDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFDataClass.m; sourceTree = "<group>"; };
+		4F3A10E12C5D59B70054B89E /* DeallocTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeallocTracker.h; sourceTree = "<group>"; };
+		4F3A10E22C5D59B70054B89E /* DeallocTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeallocTracker.m; sourceTree = "<group>"; };
+		4F3A10E42C5DE4300054B89E /* metamacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
+		4F3A10E52C5E44DF0054B89E /* EXTScope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
 		4F47C1222C5903ED009F6CE7 /* Observe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Observe.h; sourceTree = "<group>"; };
 		4F47C1232C5903ED009F6CE7 /* Observe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Observe.m; sourceTree = "<group>"; };
 		4F47C1252C599779009F6CE7 /* CoolMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoolMacros.h; sourceTree = "<group>"; };
@@ -42,8 +47,6 @@
 		4F73BEB42C5A0D1300BB13AF /* ObserveBenchmarks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObserveBenchmarks.h; sourceTree = "<group>"; };
 		4F8738042C42B6E0001F95DE /* objc-test-july-13-2024 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objc-test-july-13-2024"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F8738072C42B6E0001F95DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4F8F47CF2C5B8A5600245C26 /* EXTScope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
-		4F8F47D12C5B8E8000245C26 /* metamacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
 		4F8F47D62C5BA36500245C26 /* KVOMutationSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVOMutationSupport.h; sourceTree = "<group>"; };
 		4F8F47D72C5BA36500245C26 /* KVOMutationSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOMutationSupport.m; sourceTree = "<group>"; };
 		4FEA2E3B2C53E2D500C86D67 /* testorr.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testorr.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,12 +76,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4F3A10E02C5D44990054B89E /* New Group */ = {
+		4F3A10E62C5E909A0054B89E /* New Group */ = {
 			isa = PBXGroup;
 			children = (
 				4F47C1222C5903ED009F6CE7 /* Observe.h */,
 				4F47C1232C5903ED009F6CE7 /* Observe.m */,
-				4F47C12C2C59D867009F6CE7 /* ObserveBenchmarks.m */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -100,7 +102,10 @@
 				4F8F47D62C5BA36500245C26 /* KVOMutationSupport.h */,
 				4F8F47D72C5BA36500245C26 /* KVOMutationSupport.m */,
 				4F73BEB42C5A0D1300BB13AF /* ObserveBenchmarks.h */,
+				4F47C12C2C59D867009F6CE7 /* ObserveBenchmarks.m */,
 				4F47C1292C59D564009F6CE7 /* ObserveBenchmarks.swift */,
+				4F3A10E12C5D59B70054B89E /* DeallocTracker.h */,
+				4F3A10E22C5D59B70054B89E /* DeallocTracker.m */,
 			);
 			path = Observe;
 			sourceTree = "<group>";
@@ -129,31 +134,15 @@
 			isa = PBXGroup;
 			children = (
 				4F8738072C42B6E0001F95DE /* main.m */,
-				4F3A10E02C5D44990054B89E /* New Group */,
+				4F3A10E62C5E909A0054B89E /* New Group */,
 				4F47C12E2C59D8BA009F6CE7 /* Observe */,
 				4F47C1252C599779009F6CE7 /* CoolMacros.h */,
+				4F3A10E42C5DE4300054B89E /* metamacros.h */,
+				4F3A10E52C5E44DF0054B89E /* EXTScope.h */,
 				4F47C1272C599811009F6CE7 /* Moved to Other Repo */,
-				4F8F47D02C5B8A5C00245C26 /* External */,
 				4F47C1282C59D564009F6CE7 /* objc-test-july-13-2024-Bridging-Header.h */,
 			);
 			path = "objc-test-july-13-2024";
-			sourceTree = "<group>";
-		};
-		4F8F47D02C5B8A5C00245C26 /* External */ = {
-			isa = PBXGroup;
-			children = (
-				4F8F47D22C5B8E8400245C26 /* extobjc */,
-			);
-			path = External;
-			sourceTree = "<group>";
-		};
-		4F8F47D22C5B8E8400245C26 /* extobjc */ = {
-			isa = PBXGroup;
-			children = (
-				4F8F47CF2C5B8A5600245C26 /* EXTScope.h */,
-				4F8F47D12C5B8E8000245C26 /* metamacros.h */,
-			);
-			path = extobjc;
 			sourceTree = "<group>";
 		};
 		4FEA2E332C53E16200C86D67 /* Frameworks */ = {
@@ -260,6 +249,7 @@
 				4FEA2E462C53E38C00C86D67 /* MFUtils.m in Sources */,
 				4F0CFFE42C5167D000C5D843 /* MFDataClass.m in Sources */,
 				4F47C12A2C59D564009F6CE7 /* ObserveBenchmarks.swift in Sources */,
+				4F3A10E32C5D59B70054B89E /* DeallocTracker.m in Sources */,
 				4F47C1242C5903ED009F6CE7 /* Observe.m in Sources */,
 				4F47C12D2C59D867009F6CE7 /* ObserveBenchmarks.m in Sources */,
 				4F8738082C42B6E0001F95DE /* main.m in Sources */,
@@ -403,6 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LM5Z78756B;
 				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				NEW_SETTING = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "objc-test-july-13-2024/objc-test-july-13-2024-Bridging-Header.h";
@@ -418,6 +409,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LM5Z78756B;
 				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				NEW_SETTING = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "objc-test-july-13-2024/objc-test-july-13-2024-Bridging-Header.h";

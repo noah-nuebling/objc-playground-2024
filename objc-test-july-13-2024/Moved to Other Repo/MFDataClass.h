@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 #define MFDataProp(__typeAndName) \
     @property (nonatomic, strong, readwrite, nullable) __typeAndName;
 
+#define MFDataPropPrimitive(__typeAndName) \
+    @property (nonatomic, assign, readwrite) __typeAndName;
+
 /// Core Macros
 ///     Probably only used by other macros
 
