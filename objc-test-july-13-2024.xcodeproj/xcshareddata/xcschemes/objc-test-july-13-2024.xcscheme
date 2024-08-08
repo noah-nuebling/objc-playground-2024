@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4F8738032C42B6E0001F95DE"
-               BuildableName = "objc-test-july-13-2024"
-               BlueprintName = "objc-test-july-13-2024"
+               BuildableName = "objc_tests"
+               BlueprintName = "objc_tests"
                ReferencedContainer = "container:objc-test-july-13-2024.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,8 +48,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4F8738032C42B6E0001F95DE"
-            BuildableName = "objc-test-july-13-2024"
-            BlueprintName = "objc-test-july-13-2024"
+            BuildableName = "objc_tests"
+            BlueprintName = "objc_tests"
             ReferencedContainer = "container:objc-test-july-13-2024.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -65,8 +65,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4F8738032C42B6E0001F95DE"
-            BuildableName = "objc-test-july-13-2024"
-            BlueprintName = "objc-test-july-13-2024"
+            BuildableName = "objc_tests"
+            BlueprintName = "objc_tests"
             ReferencedContainer = "container:objc-test-july-13-2024.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
