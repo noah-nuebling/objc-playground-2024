@@ -10,18 +10,29 @@
 #import "AppKit/AppKit.h"
 #import "MFDataClass.h"
 #import "ObserveBenchmarks.h"
+#import "AnnotationUtility.h"
 
 MFDataClass(MFAddress, (MFDataProp(NSString *city)
                         MFDataProp(NSString *street)
                         MFDataProp(NSString *zipcode)))
 
 void taskToExecute(void) {
+
+    NSLog(@"------------------");
+    NSLog(@"Tooltip tests");
+    NSLog(@"------------------");
+    
+    NSImage *image = [NSImage imageWithSystemSymbolName:@"playpause" accessibilityDescription:nil];
+    
+    NSObject *target = [[NSObject alloc] init];
+    NSButton *someButton = [NSButton buttonWithTitle:@"someButton" target:target action:@selector(description)];
+    someButton.toolTip = @"MFToolTap";
+    listMethods(someButton);
+    NSLog(@"%@", listMethods([NSClassFromString(@"NSToolTipManager") class]));
     
     NSLog(@"------------------");
     NSLog(@"NSPointerArray tests:");
     NSLog(@"------------------");
-    
-    
     
     NSPointerArray *weakPointerArray = [NSPointerArray weakObjectsPointerArray];
     
