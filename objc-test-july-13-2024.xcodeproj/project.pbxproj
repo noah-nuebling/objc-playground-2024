@@ -34,7 +34,6 @@
 		4F262C532C6347C500773789 /* ObjcTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjcTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3A10E12C5D59B70054B89E /* DeallocTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeallocTracker.h; sourceTree = "<group>"; };
 		4F3A10E22C5D59B70054B89E /* DeallocTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeallocTracker.m; sourceTree = "<group>"; };
-		4F3A10E42C5DE4300054B89E /* metamacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
 		4F3A10E52C5E44DF0054B89E /* EXTScope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
 		4F47C1222C5903ED009F6CE7 /* BlockObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockObserver.h; sourceTree = "<group>"; };
 		4F47C1232C5903ED009F6CE7 /* BlockObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockObserver.m; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 		4F8738072C42B6E0001F95DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4F8F47D62C5BA36500245C26 /* KVOMutationSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVOMutationSupport.h; sourceTree = "<group>"; };
 		4F8F47D72C5BA36500245C26 /* KVOMutationSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOMutationSupport.m; sourceTree = "<group>"; };
+		4F9A073F2C66543100902FB8 /* metamacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
 		4FEA2E3B2C53E2D500C86D67 /* testorr.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testorr.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEA2E442C53E38C00C86D67 /* MFUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFUtils.h; sourceTree = "<group>"; };
 		4FEA2E452C53E38C00C86D67 /* MFUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFUtils.m; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 				4F47C1252C599779009F6CE7 /* CoolMacros.h */,
 				4F3A10E12C5D59B70054B89E /* DeallocTracker.h */,
 				4F3A10E22C5D59B70054B89E /* DeallocTracker.m */,
-				4F3A10E42C5DE4300054B89E /* metamacros.h */,
+				4F9A073F2C66543100902FB8 /* metamacros.h */,
 				4F3A10E52C5E44DF0054B89E /* EXTScope.h */,
 				4F47C1282C59D564009F6CE7 /* objc-test-july-13-2024-Bridging-Header.h */,
 			);
@@ -363,6 +363,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/App/MarkdownParser/cmark/branch-cjk",
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
+					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
+					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -395,6 +397,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/App/MarkdownParser/cmark/branch-cjk",
+					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
+					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;

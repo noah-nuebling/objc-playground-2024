@@ -85,6 +85,10 @@
 ///     Other takeaways:
 ///     - Due to the Benchmarks we made for this I saw that, for simple arithmetic and function calling, pure swift seems to be around 4 - 6x faster than our pure C code!! That's incredible and very unexpected.
 ///         Unfortunately, when you use frameworks or higher level datatypes with Swift, and interoperate with objc, that can sometimes slow things down a lot in unpredictable ways. (See the whole `SWIFT_UNBRIDGED` hassle in MMF., or Combine being 6x slower when used with KVO) Objc/C and its frameworks seem more predictable and consistent to me. But for really low level routines or if you use it right, swift can actually be incredibly fast, which is cool and good to know, and makes me like the language a bit more.
+///
+/// Update:
+///     I just spent a while trying to move MMF to using this, and it's quite a lot of work, definitely a few-days refactor. Also, questionable whether combine would be a better choice than this (Combine API might be a bit shorter / cleaner, and easier to translate from ReactiveSwift, and we'd still be removing a library dependency which should speed up builds. It would be sort of nice to move the UI code away from swift to further improve build times but that would be way too much work! We're stuck with Swift for now.
+
 
 
 
