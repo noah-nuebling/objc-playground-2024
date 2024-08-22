@@ -10,7 +10,8 @@
 #import "AppKit/AppKit.h"
 #import "MFDataClass.h"
 #import "ObserveBenchmarks.h"
-#import "AnnotationUtility.h"
+#import "MFUtils.h"
+#import "MFLinkedList.h"
 
 MFDataClass(MFAddress, (MFDataProp(NSString *city)
                         MFDataProp(NSString *street)
@@ -18,6 +19,29 @@ MFDataClass(MFAddress, (MFDataProp(NSString *city)
 
 void taskToExecute(void) {
 
+    NSLog(@"------------------");
+    NSLog(@"Linked list test");
+    NSLog(@"------------------");
+    
+    MFLinkedList *strList = MFLinkedListCreate(2, (void *)(char *[]){"one", "three"}, kMFLinkedListContentTypeCString);
+    
+    printf("LinkedListtt: %s\n", MFLinkedListGetDescription(strList));
+    MFLinkedListAddNodeWithContent(strList, 1, "two");
+    printf("LinkedListtt: %s\n", MFLinkedListGetDescription(strList));
+    MFLinkedListDeleteNode(strList, 0);
+    printf("LinkedListtt: %s\n", MFLinkedListGetDescription(strList));
+    MFLinkedListFree(&strList);
+    
+    MFLinkedList *intList = MFLinkedListCreate(2, (void *)(int64_t[]){1, 3}, kMFLinkedListContentTypeInt64);
+        
+    printf("intListtt: %s\n", MFLinkedListGetDescription(intList));
+    MFLinkedListAddNodeWithContent(intList, 1, (void *)2);
+    printf("intListtt: %s\n", MFLinkedListGetDescription(intList));
+    MFLinkedListDeleteNode(intList, 0);
+    printf("intListtt: %s\n", MFLinkedListGetDescription(intList));
+    MFLinkedListFree(&intList);
+    
+    
     NSLog(@"------------------");
     NSLog(@"Tooltip tests");
     NSLog(@"------------------");

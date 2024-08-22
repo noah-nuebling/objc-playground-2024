@@ -12,6 +12,9 @@
 		4F47C1242C5903ED009F6CE7 /* BlockObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47C1232C5903ED009F6CE7 /* BlockObserver.m */; };
 		4F47C12A2C59D564009F6CE7 /* ObserveBenchmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F47C1292C59D564009F6CE7 /* ObserveBenchmarks.swift */; };
 		4F47C12D2C59D867009F6CE7 /* ObserveBenchmarks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47C12C2C59D867009F6CE7 /* ObserveBenchmarks.m */; };
+		4F52FA8F2C769084003C2821 /* MFLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 4F52FA8E2C769084003C2821 /* MFLinkedList.c */; };
+		4F52FA902C76AFF2003C2821 /* MFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA2E452C53E38C00C86D67 /* MFUtils.m */; };
+		4F52FA912C76AFF2003C2821 /* MFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA2E452C53E38C00C86D67 /* MFUtils.m */; };
 		4F8738082C42B6E0001F95DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8738072C42B6E0001F95DE /* main.m */; };
 		4F8F47D82C5BA36500245C26 /* KVOMutationSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F47D72C5BA36500245C26 /* KVOMutationSupport.m */; };
 /* End PBXBuildFile section */
@@ -42,6 +45,8 @@
 		4F47C1282C59D564009F6CE7 /* objc-test-july-13-2024-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "objc-test-july-13-2024-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F47C1292C59D564009F6CE7 /* ObserveBenchmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveBenchmarks.swift; sourceTree = "<group>"; };
 		4F47C12C2C59D867009F6CE7 /* ObserveBenchmarks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObserveBenchmarks.m; sourceTree = "<group>"; };
+		4F52FA8D2C769084003C2821 /* MFLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFLinkedList.h; sourceTree = "<group>"; };
+		4F52FA8E2C769084003C2821 /* MFLinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = MFLinkedList.c; sourceTree = "<group>"; };
 		4F73BEB42C5A0D1300BB13AF /* ObserveBenchmarks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObserveBenchmarks.h; sourceTree = "<group>"; };
 		4F8738042C42B6E0001F95DE /* objc_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = objc_tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F8738072C42B6E0001F95DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -170,6 +175,8 @@
 				4F47C1252C599779009F6CE7 /* CoolMacros.h */,
 				4F3A10E12C5D59B70054B89E /* DeallocTracker.h */,
 				4F3A10E22C5D59B70054B89E /* DeallocTracker.m */,
+				4F52FA8D2C769084003C2821 /* MFLinkedList.h */,
+				4F52FA8E2C769084003C2821 /* MFLinkedList.c */,
 				4F9A073F2C66543100902FB8 /* metamacros.h */,
 				4F3A10E52C5E44DF0054B89E /* EXTScope.h */,
 				4F47C1282C59D564009F6CE7 /* objc-test-july-13-2024-Bridging-Header.h */,
@@ -314,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F52FA912C76AFF2003C2821 /* MFUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,10 +329,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F52FA8F2C769084003C2821 /* MFLinkedList.c in Sources */,
 				4F0CFFE42C5167D000C5D843 /* MFDataClass.m in Sources */,
 				4F47C12A2C59D564009F6CE7 /* ObserveBenchmarks.swift in Sources */,
 				4F3A10E32C5D59B70054B89E /* DeallocTracker.m in Sources */,
 				4F47C1242C5903ED009F6CE7 /* BlockObserver.m in Sources */,
+				4F52FA902C76AFF2003C2821 /* MFUtils.m in Sources */,
 				4F47C12D2C59D867009F6CE7 /* ObserveBenchmarks.m in Sources */,
 				4F8738082C42B6E0001F95DE /* main.m in Sources */,
 				4F8F47D82C5BA36500245C26 /* KVOMutationSupport.m in Sources */,
@@ -365,6 +375,7 @@
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
+					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -397,6 +408,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/App/MarkdownParser/cmark/branch-cjk",
+					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
@@ -542,7 +554,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				NEW_SETTING = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "objc-test-july-13-2024/objc-test-july-13-2024-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "CLT/objc-test-july-13-2024-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
 			};
@@ -562,7 +574,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				NEW_SETTING = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "objc-test-july-13-2024/objc-test-july-13-2024-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "CLT/objc-test-july-13-2024-Bridging-Header.h";
 				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
