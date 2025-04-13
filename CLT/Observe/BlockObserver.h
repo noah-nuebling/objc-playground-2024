@@ -72,6 +72,7 @@ typedef void (^ObservationCallbackBlockWithLatest9)(int updatedValueIndex, nulli
 /// Basic observation
 ///     Note this when using:
 ///     - Caution: If the callbackBlock captures the observedObject or any other object which itself retains the observedObject, that will create a retain cycle!
+///         (Use @strongify/@weakify dance to avoid this.)
 ///     - The returned BlockObserver  can be used to cancel the observation prematurely by calling `- cancelObservation` on it.
 ///     - If you observe a primitive value such as int or float, it will arrrive in the callback boxed in an NSValue. Use the unboxNSValue() macro to conveniently get the underlying primitive inside the callback.
 - (BlockObserver *)observe:(NSString *)keyPath withBlock:(ObservationCallbackBlockWithNew)callbackBlock;

@@ -118,7 +118,7 @@ NSTimeInterval runPureObjcTest(NSInteger iterations) {
 
     
     /// Setup callback
-    void (^callback)(NSInteger newValue) = ^(NSInteger newValue){
+    __auto_type callback = ^void (NSInteger newValue) {
         [valuesFromCallback addObject:@(newValue)];
         sumFromCallback += newValue;
         if (newValue % 2 == 0) {
@@ -191,7 +191,7 @@ NSTimeInterval runPureObjcTest_ObserveLatest(NSInteger iterations) {
     NSInteger v3 = 0;
     NSInteger v4 = 0;
     
-    void (^callback)(NSInteger, NSInteger, NSInteger, NSInteger) = ^(NSInteger value1, NSInteger value2, NSInteger value3, NSInteger value4) {
+    __auto_type callback = ^void (NSInteger value1, NSInteger value2, NSInteger value3, NSInteger value4) {
         
         sumFromCallback += value1 + value2 + value3 + value4;
         if ((value1 + value2 + value3 + value4) % 2 == 0) {

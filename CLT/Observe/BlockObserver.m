@@ -9,7 +9,7 @@
 #import "objc/runtime.h"
 #import "CoolMacros.h"
 #import "EXTScope.h"
-#import "pthread.h"
+#import "objc/objc-sync.h"
 
 
 /// I think we can replace any need for reactive frameworks in our app with a very simple custom API providing a thin wrapper around Apple's Key-Value-Observation.
@@ -78,7 +78,7 @@
 ///         > I might want to move away from Swift and write more of the UI Stuff in objc. And this might enable that. Some of the main reasons we use so much swift is that we wanted to use reactive patterns for the UI of MMF, which lead us to include the ReactiveSwift framework and build much of the UI code in Swift. MMF 2 which was pure objc iirc, had much faster build times iirc.
 ///     - BIG CON: This needs to be thread safe. I tried but thread safety is hard. If there are subtle bugs in this, we might make the app less stable vs using an established framework or API.
 ///         Update: I thought about it again and I'm pretty confident this is thread safe now. There are only a small number of paths through which the control flow can enter the core logic of this file:
-///             `addBlockObserver()`, `cancelBlockObservation()`, `[BlockObserver dealloc]`, `observeValueForKeyPath:ofObject:change:context:`, and the callback inside `addBlockObserversForLatestValues()`. If we ensure that all these entry points are thread-safe, which we did, then entire file should be thread safe to use. Maybe I missed something but I think it's not too bad to make this thread safe after all.
+///             `blobs_add_observer()`, `blobs_cancel_observer()`, `[BlockObserver dealloc]`, `observeValueForKeyPath:ofObject:change:context:`, and the callback inside `addBlockObserversForLatestValues()`. If we ensure that all these entry points are thread-safe, which we did, then entire file should be thread safe to use. Maybe I missed something but I think it's not too bad to make this thread safe after all.
 ///
 ///     -> Overall this was a cool experiment. It was fun and I learned a bunch of things. Maybe we can adopt this into MMF at some point, but we should probably only adopt it for a new major release where we can thoroughly test this before rolling it out to non-beta users.
 ///
@@ -88,76 +88,43 @@
 ///
 /// Update:
 ///     I just spent a while trying to move MMF to using this, and it's quite a lot of work, definitely a few-days refactor. Also, questionable whether combine would be a better choice than this (Combine API might be a bit shorter / cleaner, and easier to translate from ReactiveSwift, and we'd still be removing a library dependency which should speed up builds. It would be sort of nice to move the UI code away from swift to further improve build times but that would be way too much work! We're stuck with Swift for now.
+///
+/// Update: [Apr 2025]
+///     - This is sort of a reimplementation of Swift's `observe(_:options:changeHandler:)`, but that only supports Swift keypaths which are super annoying IIRC.
+///         - `observe(_:options:changeHandler:)` Has the observation retain the object, while we have the object retain the observation (aka BlockObserver object). Ours is more convenient, but might be slower (due to weak ref from BlockObserver to observed objc) and perhaps more error-prone regarding retain-cycles.
+///
 
-
-
-
-#pragma mark - BlockObserver class
-
-@interface BlockObserver ()
-
-/// Constants
-/// Notes:
-/// - Retain cycles will occur if `callbackBlock` captures the observed object. This clients need to use weak/strong dance to avoid. (Use @weakify and @strongify)
-/// - weakObservedObject being weak actually makes this noticable slower since we always need to unwrap it and check for nil
-
-@property (weak, nonatomic, readonly)               NSObject *weakObservedObject;
-@property (strong, nonatomic, readonly)             NSString *observedKeyPath;
-@property (assign, nonatomic, readonly)             NSKeyValueObservingOptions observingOptions;
-@property (strong, nonatomic, readonly)             id callbackBlock;
-
-@end
-
-@implementation BlockObserver  {
-    /// State
-    @public BOOL _observationHasBeenAdded;  /// This state mostly exists to validate that we're producing balanced calls to the add/remove methods.
-    @public BOOL _observationHasBeenRemoved;
-    @public __weak NSObject *_weakObservedObject;   /// Making the ivars public bc I just learned that that's possible. Not sure why we're using ivars vs properties. I guess speed?
-}
-
+#pragma mark - Constants
 /// Define context
 ///     Kind of unncecessary. The context in the KVO framework is designed for when a superclass also observes the same keyPath on the same object and that can't happen here.
 static void *_BlockObserverKVOContext = "mfBlockObserverContext";
 
-///
-/// Lifecycle
-///
+#pragma mark - BlockObserver class
+/// [Apr 2025] We try to put as little into this as possible and as much as possible in the `Core C "Glue Code"` below – I think that makes things clearer.
 
-- (instancetype)initWithObject:(NSObject *)observedObject keyPath:(NSString *)keyPath receiveInitialValue:(BOOL)receiveInitialValue receiveOldAndNewValues:(BOOL)receiveBeforeAndAfterValues callback:(id)callback {
+@interface BlockObserver ()
+@end
+
+@implementation BlockObserver  {
     
-    /// Thread safe
-    ///     Since it doesn't interact with any shared mutable state
-    ///     (our ivars aren't shared state yet, since nobody else has a reference to us, as we're just being created.)
+    /// Immutables
+    ///     These shouldn't change after initialization
+    /// Notes:
+    /// - Retain cycles will occur if `callbackBlock` captures the observed object. This clients need to use weak/strong dance to avoid. (Use @weakify and @strongify)
+    /// - weakObservedObject being weak actually makes this noticable slower since we always need to unwrap it and check for nil
+    @public NSObject                    *__weak _weakObservedObject;   /// Making the ivars public bc I just learned that that's possible. Not sure why we're using ivars vs properties. I guess speed?
+    @public NSString                    *_observedKeyPath;
+    @public NSKeyValueObservingOptions  _observingOptions;
+    @public id                          _callbackBlock;
     
-    /// Get self
-    self = [super init];
-    if (!self) return nil;
-    
-    /// Set up options
-    NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew;
-    options = options | (receiveBeforeAndAfterValues ? NSKeyValueObservingOptionOld : 0);
-    options = options | (receiveInitialValue ? NSKeyValueObservingOptionInitial : 0);
-    
-    /// Store args
-    _weakObservedObject = observedObject;
-    _observedKeyPath = keyPath;
-    _observingOptions = options;
-    _callbackBlock = callback;
-    
-    /// Init other state
-    _observationHasBeenAdded = NO;
-    _observationHasBeenRemoved = NO;
-    
-    /// Return self
-    return self;
+    /// Mutables
+    @public BOOL                        _observationCount;              /// This state mostly exists to validate that we're producing balanced calls to the add/remove methods.
 }
 
-///
-/// Handle callback
-///
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    
+        
+    /// Handle KVO callback
+        
     /// Thread safe
     ///     As we're not interacting with any shared mutable state.
     
@@ -165,23 +132,23 @@ static void *_BlockObserverKVOContext = "mfBlockObserverContext";
     
     /// Guard context
     if (context != _BlockObserverKVOContext) {
+        assert(false); /// [Apr 2025] Don't think this can happen?
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
         return;
     }
     
     /// Parse options
-    BOOL receivesOldAndNewValues = (_observingOptions & NSKeyValueObservingOptionNew)
-                                    && (_observingOptions & NSKeyValueObservingOptionOld);
-    /// Handle changed value
+    BOOL receivesOldAndNewValues =  (self->_observingOptions & NSKeyValueObservingOptionNew)  &&
+                                    (self->_observingOptions & NSKeyValueObservingOptionOld)  ;
+    /// Extract new and old values
     NSObject *newValue = change[NSKeyValueChangeNewKey];
     NSObject *oldValue = receivesOldAndNewValues ? change[NSKeyValueChangeOldKey] : nil;
     
     /// Validate
-    
 #if DEBUG
     
     /// Validate options
-    assert(_observingOptions & NSKeyValueObservingOptionNew);
+    assert(self->_observingOptions & NSKeyValueObservingOptionNew);
     
     /// Handle change-kind
     NSKeyValueChange changeKind = [change[NSKeyValueChangeKindKey] unsignedIntegerValue];
@@ -204,66 +171,22 @@ static void *_BlockObserverKVOContext = "mfBlockObserverContext";
 #endif
     
     /// Send callback.
-    if (receivesOldAndNewValues) {
-        ((ObservationCallbackBlockWithOldAndNew)_callbackBlock)(oldValue, newValue);
-    } else {
-        ((ObservationCallbackBlockWithNew)_callbackBlock)(newValue);
-    }
+    if (receivesOldAndNewValues)    ((ObservationCallbackBlockWithOldAndNew)self->_callbackBlock)(oldValue, newValue);
+    else                            ((ObservationCallbackBlockWithNew)self->_callbackBlock)(newValue);
+    
 }
 
-///
-/// Add / remove observer from observed object
-///
+static void blobs_cancel_observer(BlockObserver *blockObserver); /// Forward-declaration
 
-- (void)addObservation {
-    
-    /// Not thread safe
-    ///     Should be balanced with removeObservation calls. (If it's not balanced, we detect that and just do nothing which is also fine.)
-    
-    /// Guard unbalanced calls
-    if (_observationHasBeenRemoved) { assert(false); return; }
-    if (_observationHasBeenAdded) { assert(false); return; }
-    _observationHasBeenAdded = YES;
-    
-    /// Unwrap weak ref
-    NSObject *strongObject = _weakObservedObject;
-    if (strongObject == nil) { assert(false); return; }
-    
-    /// Add observer
-    [strongObject addObserver:self forKeyPath:_observedKeyPath options:_observingOptions context:_BlockObserverKVOContext];
-}
-
-- (void)removeObservation {
-    
-    /// Not thread safe.
-    ///     Should be balanced with addObservation calls
-
-    /// Guard unbalanced calls
-    if (!_observationHasBeenAdded) { assert(false); return; }
-    if (_observationHasBeenRemoved) { assert(false); return; }
-    _observationHasBeenRemoved = YES;
-    
-    /// Unwrap weak ref
-    NSObject *strongObject = _weakObservedObject;
-    if (strongObject == nil) { assert(false); return; }
-    
-    /// Remove observer
-    [strongObject removeObserver:self forKeyPath:_observedKeyPath context:_BlockObserverKVOContext];
-}
 - (void)dealloc {
-    
-    /// Thread safe
     
     /// Remove observation on dealloc
     ///     We don't need to worry about what happens if the observedObject is dealloced before the BlockObserver, since in that case, KVO will automatically remove the observation in macOS 11 Big Sur and later. See SO answer by Rob Mayoff: https://stackoverflow.com/a/18065286/10601702. This is great since we tried doing the same thing using the DeallocTracker and it was quite hacky and I don't think it worked.
-    ///     I'm not even sure that calling `removeObservation` here is necessary. Maybe the system also handles that.
+    ///     I'm not even sure that calling `blobs_cancel_observer()` here is necessary. Maybe the system also handles that. Would kinda make sense.
+    ///
+    /// Note: [Apr 2025] `blobs_cancel_observer()` tries to unwrap weak ref to `_weakObservedObject`. If that fails, it just returns. That makes sense, since in that case, the observed object was already dealloc'ed and therefore the observation has been removed by the system already.
     
-    NSObject *strongObject = _weakObservedObject;
-    if (strongObject == nil) return; /// Observed object was already dealloc'ed and the observation has been removed by the system already.
-    
-    @synchronized (strongObject) {
-        [self removeObservation];
-    }
+    blobs_cancel_observer(self); /// Thread-safe
 }
 
 @end
@@ -271,14 +194,9 @@ static void *_BlockObserverKVOContext = "mfBlockObserverContext";
 #pragma mark - Core C Glue Code
 
 /// Should be thread safe
-///     and therefore all the interface functions should also be threadsafe since they are just wrappers around this.
+///     and therefore all the interface functions below should also be threadsafe since they are just wrappers around this.
 
-static BOOL isBlockObserverActive(BlockObserver *observer) {
-    /// Should be thread safe. I guess the three different base values could change while we're retrieving them, but that shouldn't lead to any invalid results, so it's ok. We are weirdly declaring this here instead of inside the BlockObserver class definition because we want the interface methods below to be strictly simple wrappers around the `Core C Glue Code`, then we just need to ensure the `Core C Glue Code` is thread safe and the whole interface will be safe as well!
-    return observer->_observationHasBeenAdded && !observer->_observationHasBeenRemoved && (observer->_weakObservedObject != nil);
-}
-
-static NSMutableSet *getBlockObserversForObject(NSObject *observableObject) {
+static NSMutableSet *blobs_get_observers(NSObject *observableObject) {
     
     /// Not thread safe
     ///     -> Only call when synced on `observableObject`
@@ -297,24 +215,42 @@ static NSMutableSet *getBlockObserversForObject(NSObject *observableObject) {
     return result;
 }
 
-static BlockObserver *addBlockObserver(NSObject *observableObject, NSString *keyPath, BOOL receiveInitialValue, BOOL receiveOldAndNewValues, ObservationCallbackBlock callback) {
+static BOOL blobs_observer_is_active(BlockObserver *observer) {
+    /// Should be thread safe. I guess the three different base values could change while we're retrieving them, but that shouldn't lead to any invalid results, so it's ok. We are weirdly declaring this here instead of inside the BlockObserver class definition because we want the interface methods below to be strictly simple wrappers around the `Core C Glue Code`, then we just need to ensure the `Core C Glue Code` is thread safe and the whole interface will be safe as well!
+    return  observer->_observationCount > 0     &&
+            (observer->_weakObservedObject != nil);
+}
+
+static BlockObserver *blobs_add_observer(NSObject *observableObject, NSString *keyPath, BOOL receiveInitialValue, BOOL receiveOldAndNewValues, ObservationCallbackBlock callback) {
     
     /// Thread safe
     
     @synchronized (observableObject) {
         
-        /// Create blockObserver
-        BlockObserver *blockObserver = [[BlockObserver alloc] initWithObject:observableObject keyPath:keyPath receiveInitialValue:receiveInitialValue receiveOldAndNewValues:receiveOldAndNewValues callback:callback];
-        
-        /// Validate
-        assert(![getBlockObserversForObject(observableObject) containsObject:blockObserver]);
+        /// Create & init blockObserver
+        BlockObserver *blockObserver = [[BlockObserver alloc] init];
+        ({
+            /// Set up options
+            NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew;
+            options = options | (receiveOldAndNewValues ? NSKeyValueObservingOptionOld      : 0);
+            options = options | (receiveInitialValue    ? NSKeyValueObservingOptionInitial  : 0);
+            
+            /// Store args
+            blockObserver->_weakObservedObject  = observableObject;
+            blockObserver->_observedKeyPath     = keyPath;
+            blockObserver->_observingOptions    = options;
+            blockObserver->_callbackBlock       = callback;
+            
+            /// Init other state
+            blockObserver->_observationCount = 1;
+        });
         
         /// Add blockObserver to object
         ///     Now it is retained and the client won't have to retain it for the observation to stay active.
-        [getBlockObserversForObject(observableObject) addObject:blockObserver];
+        [blobs_get_observers(observableObject) addObject:blockObserver];
         
         /// Start the blockObserver
-        [blockObserver addObservation];
+        [observableObject addObserver:blockObserver forKeyPath:blockObserver->_observedKeyPath options:blockObserver->_observingOptions context:_BlockObserverKVOContext];
         
         /// Return blockObserver
         ///     Primarily intended as a handle to let the client cancel the observation
@@ -322,39 +258,76 @@ static BlockObserver *addBlockObserver(NSObject *observableObject, NSString *key
     }
 }
 
-static void cancelBlockObservation(BlockObserver *blockObserver) {
+static void blobs_cancel_observer(BlockObserver *blockObserver) {
     
     /// Thread safe
     
     /// Get & unwrap observedObject
-    NSObject *strongObservedObject = blockObserver.weakObservedObject;
+    NSObject *strongObservedObject = blockObserver->_weakObservedObject;
     if (strongObservedObject == nil) {
         return; /// If the observedObject is already nil it will already have stopped the observation and released the blockObserver already.
     }
     
     @synchronized (strongObservedObject) {
         
-        /// Stop observation
-        ///     In case the blockObserver is not dealloced after being released we stop its observation manually.
-        [blockObserver removeObservation];
+        /// Guard multiple cancelations
+        if (blockObserver->_observationCount <= 0)      { assert(false); return; }
+        blockObserver->_observationCount -= 1;
+        
+        /// Remove observer
+        [strongObservedObject removeObserver:blockObserver forKeyPath:blockObserver->_observedKeyPath context:_BlockObserverKVOContext];
         
         /// Release the blockObserver
         ///     It should then normally be dealloced, unless its retained by an outsider.
-        [getBlockObserversForObject(strongObservedObject) removeObject:blockObserver];
+        ///     [Apr 2025] The deallocation will cause this function to be called *again* which is a bit inefficient. Maybe we could use a recursion tracking (with `static __thread` variable) to speed that up?
+        [blobs_get_observers(strongObservedObject) removeObject:blockObserver];
     }
 }
 
-static void cancelObservations(NSArray<BlockObserver *> *blockObservers) {
-
+static void blobs_cancel_observers(NSArray<BlockObserver *> *blockObservers) {
+    
+    /// Thread safe
+    
     for (BlockObserver *observer in blockObservers) {
-        cancelBlockObservation(observer);
+        blobs_cancel_observer(observer);
     }
 }
+
+#pragma mark - Main Interface
+
+/// This is a pure wrapper around the `Core C Glue Code` functions defined above.
+///     Since that is thread safe, this should also be thread safe.
+
+@implementation NSObject (MFBlockObservationInterface)
+
+- (BlockObserver *)observe:(NSString *)keyPath withBlock:(ObservationCallbackBlockWithNew)callbackBlock {
+    BOOL receiveInitialValue = YES;
+    BOOL receiveOldAndNewValues = NO;
+    return blobs_add_observer(self, keyPath, receiveInitialValue, receiveOldAndNewValues, callbackBlock);
+}
+
+- (BlockObserver *)observe:(NSString *)keyPath receiveInitialValue:(BOOL)receiveInitialValue receiveOldAndNewValues:(BOOL)receiveOldAndNewValues withBlock:(ObservationCallbackBlock)callbackBlock {
+    return blobs_add_observer(self, keyPath, receiveInitialValue, receiveOldAndNewValues, callbackBlock);
+}
+
+@end
+
+@implementation BlockObserver (MFBlockObservationInterface)
+
+- (BOOL)observationIsActive                                         { return blobs_observer_is_active(self); }
+- (void)cancelObservation                                           { blobs_cancel_observer(self); }
++ (void)cancelObservations:(NSArray<BlockObserver *> *)observers    { blobs_cancel_observers(observers); }
+
+@end
+
+#pragma mark - ObserveLatest
+
+#pragma mark Core implementation
 
 static NSArray<BlockObserver *> *addBlockObserversForLatestValues(NSArray<NSObject *> *objects, NSArray<NSString *> *keyPaths, ObservationCallbackBlockWithLatest callbackBlock) {
     
     /// Thread safety:
-    ///     The core function we call, addBlockObserver() is thread safe, the only shared state we handle - the latestValueCache - is locked with a mutex, so thread safe.
+    ///     The core function we call, `blobs_add_observer()` is thread safe, the only shared state we handle - the latestValueCache - is locked with a mutex, so thread safe.
     ///         What happens inside the callbackBlock is not our responsibility.
     ///
     /// Memory safety:
@@ -364,106 +337,86 @@ static NSArray<BlockObserver *> *addBlockObserversForLatestValues(NSArray<NSObje
     /// Why use 9 local variables for the latestValueCache?
     ///     - Using an NSArray won't let us reference the values weakly, leading to unavoidable retain cycles in some scenarios (When one of the latest values retains one of the observedObjects)
     ///     - Using an NSPointerArray lets us reference latestValues weakly. But using it made performance measurably worse. (IIRC)
+    ///     - Update: [Apr 2025] Cleaned things up by using C array instead. (Had to wrap it in struct, see below.)
+    
+    /// Declare convenience macros
+    ///     TODO: Replace these with macros from our mac-mouse-fix utility headers
+    #define arrcount(arr) \
+        (sizeof(arr)/sizeof((arr)[0]))
+    #define loopc(varname, count) \
+        for (int64_t varname = 0; varname < count; varname++)
     
     /// Constants
-    int indexForWhichToReceiveInitialCallback = 0;
+    const int indexForWhichToReceiveInitialCallback = 0;
+    const int nmax = 9;
     
     /// Extract
     int n = (int)objects.count;
     
     /// Validate
     assert(keyPaths.count == objects.count);
-    assert(n <= 9);
+    assert(n <= nmax);
     
     /// Declare result
     NSMutableArray<BlockObserver *> *observers = [NSMutableArray array];
     
-    /// Create & fill cache
-    #define MakeCacheVariable(an_index) \
-        __block __weak id m_weakLatestValue ## an_index = \
-            (an_index >= n || an_index == indexForWhichToReceiveInitialCallback) ? nil : [objects[0] valueForKeyPath:keyPaths[0]];
+    /// Create cache
+    ///     Trick: wrap stack array in struct to make clang capture it in the block. (It doesn't allow capturing arrays directly for 'performance reasons' – See: https://lists.llvm.org/pipermail/cfe-dev/2013-June/030246.html)
+    typedef struct { __weak id _[nmax]; } LatestValueCache;
+    __block LatestValueCache latestValueCache;
     
-    MakeCacheVariable(0);
-    MakeCacheVariable(1);
-    MakeCacheVariable(2);
-    MakeCacheVariable(3);
-    MakeCacheVariable(4);
-    MakeCacheVariable(5);
-    MakeCacheVariable(6);
-    MakeCacheVariable(7);
-    MakeCacheVariable(8);
+    /// Init cache
+    loopc(i, nmax)
+        latestValueCache._[i] = (i >= n || i == indexForWhichToReceiveInitialCallback) ?
+                                nil :
+                                [objects[i] valueForKeyPath:keyPaths[i]];
     
-    #undef MakeCacheVariable
+    /// Create mutex token for cache access
+    __block id cache_sync_token = @"the_sync_token";
     
-    /// Create mutex for cache access
-    __block pthread_mutex_t cacheLock;
-    pthread_mutex_init(&cacheLock, NULL);
-    
-    for (int i = 0; i < n; i++) {
+    loopc(i, n) {
         
         /// Iterate objects
         
-        /// Only receive initialValue on one object
-        ///     So the `callbackBlock` doesn't receive the same initial values n times.
+        /// Define params
+        ///     Note: Only receive initialValue on one object, so the `callbackBlock` doesn't receive the same initial values n times.
         BOOL doReceiveInitialValue = i == indexForWhichToReceiveInitialCallback;
         BOOL receiveOldAndNewValues = NO;
         
         /// Create observer
-        BlockObserver *blockObserver = addBlockObserver(objects[i], keyPaths[i], doReceiveInitialValue, receiveOldAndNewValues, ^(NSObject *newValue) {
+        BlockObserver *blockObserver = blobs_add_observer(objects[i], keyPaths[i], doReceiveInitialValue, receiveOldAndNewValues, ^void (NSObject *newValue) {
             
-            /// Note: If we capture any of the `objects` here that's a retain cycle!
+            /// Note: If we capture any of the `objects` here (or in `callbackBlock`) that's a retain cycle!
             
             /// Acquire lock
-            pthread_mutex_lock(&cacheLock);
+            objc_sync_enter(cache_sync_token);
             
             /// Update cache
             ///     On  concurrency: We want to lock cache updates and retrievals to avoid race conditions, however, we don't want to lock around the callbackBlock invocation since depending on what the callback code does it could cause deadlocks.
-            if      (i == 0) m_weakLatestValue0 = newValue;
-            else if (i == 1) m_weakLatestValue1 = newValue;
-            else if (i == 2) m_weakLatestValue2 = newValue;
-            else if (i == 3) m_weakLatestValue3 = newValue;
-            else if (i == 4) m_weakLatestValue4 = newValue;
-            else if (i == 5) m_weakLatestValue5 = newValue;
-            else if (i == 6) m_weakLatestValue6 = newValue;
-            else if (i == 7) m_weakLatestValue7 = newValue;
-            else if (i == 8) m_weakLatestValue8 = newValue;
-            else assert(false);
-
+            latestValueCache._[i] = newValue;
+        
             /// Retrieve cache
             ///     Get a local, strong ref to each cache variable while we still have the lock
-            #define RetrieveCacheVariable(__index) \
-                __strong id m_retrievedLatestValue ## __index = (__index >= n) ? nil : m_weakLatestValue ## __index
-            
-            RetrieveCacheVariable(0);
-            RetrieveCacheVariable(1);
-            RetrieveCacheVariable(2);
-            RetrieveCacheVariable(3);
-            RetrieveCacheVariable(4);
-            RetrieveCacheVariable(5);
-            RetrieveCacheVariable(6);
-            RetrieveCacheVariable(7);
-            RetrieveCacheVariable(8);
-            
-            #undef RetrieveCacheVariable
+            __strong id retrievedLatestValues[n];
+            loopc(j, n)
+                retrievedLatestValues[j] = latestValueCache._[j];
             
             /// Release lock
             ///     Note: We could invoke the callbackBlock while we still hold the lock, then we could skip the cache-retrieval step, possibly speeding things up a bit. But that could lead to deadlocks depending on what the callbackBlock code does.
-            pthread_mutex_unlock(&cacheLock);
+            objc_sync_exit(cache_sync_token);
             
             /// Call the callback
             #define getCache(__index) \
-                m_retrievedLatestValue ## __index
-            
-            if      (n == 2) ((ObservationCallbackBlockWithLatest2)callbackBlock)(i, getCache(0), getCache(1));
-            else if (n == 3) ((ObservationCallbackBlockWithLatest3)callbackBlock)(i, getCache(0), getCache(1), getCache(2));
-            else if (n == 4) ((ObservationCallbackBlockWithLatest4)callbackBlock)(i, getCache(0), getCache(1), getCache(2), getCache(3));
-            else if (n == 5) ((ObservationCallbackBlockWithLatest5)callbackBlock)(i, getCache(0), getCache(1), getCache(2), getCache(3), getCache(4));
-            else if (n == 6) ((ObservationCallbackBlockWithLatest6)callbackBlock)(i, getCache(0), getCache(1), getCache(2), getCache(3), getCache(4), getCache(5));
-            else if (n == 7) ((ObservationCallbackBlockWithLatest7)callbackBlock)(i, getCache(0), getCache(1), getCache(2), getCache(3), getCache(4), getCache(5), getCache(6));
-            else if (n == 8) ((ObservationCallbackBlockWithLatest8)callbackBlock)(i, getCache(0), getCache(1), getCache(2), getCache(3), getCache(4), getCache(5), getCache(6), getCache(7));
-            else if (n == 9) ((ObservationCallbackBlockWithLatest9)callbackBlock)(i, getCache(0), getCache(1), getCache(2), getCache(3), getCache(4), getCache(5), getCache(6), getCache(7), getCache(8));
+                retrievedLatestValues[__index]
+            if      (n == 2) ((ObservationCallbackBlockWithLatest2)callbackBlock)((int)i, getCache(0), getCache(1));
+            else if (n == 3) ((ObservationCallbackBlockWithLatest3)callbackBlock)((int)i, getCache(0), getCache(1), getCache(2));
+            else if (n == 4) ((ObservationCallbackBlockWithLatest4)callbackBlock)((int)i, getCache(0), getCache(1), getCache(2), getCache(3));
+            else if (n == 5) ((ObservationCallbackBlockWithLatest5)callbackBlock)((int)i, getCache(0), getCache(1), getCache(2), getCache(3), getCache(4));
+            else if (n == 6) ((ObservationCallbackBlockWithLatest6)callbackBlock)((int)i, getCache(0), getCache(1), getCache(2), getCache(3), getCache(4), getCache(5));
+            else if (n == 7) ((ObservationCallbackBlockWithLatest7)callbackBlock)((int)i, getCache(0), getCache(1), getCache(2), getCache(3), getCache(4), getCache(5), getCache(6));
+            else if (n == 8) ((ObservationCallbackBlockWithLatest8)callbackBlock)((int)i, getCache(0), getCache(1), getCache(2), getCache(3), getCache(4), getCache(5), getCache(6), getCache(7));
+            else if (n == 9) ((ObservationCallbackBlockWithLatest9)callbackBlock)((int)i, getCache(0), getCache(1), getCache(2), getCache(3), getCache(4), getCache(5), getCache(6), getCache(7), getCache(8));
             else assert(false);
-            
             #undef getCache
         });
         
@@ -475,36 +428,9 @@ static NSArray<BlockObserver *> *addBlockObserversForLatestValues(NSArray<NSObje
     return observers;
 }
 
-#pragma mark - Interface
+#pragma mark Interface
 
-/// This is a pure wrapper around the `Core C Glue Code` functions defined above.
-///     Since that is thread safe, this should also be thread safe.
-
-@implementation NSObject (MFBlockObservationInterface)
-
-- (BlockObserver *)observe:(NSString *)keyPath withBlock:(ObservationCallbackBlockWithNew)callbackBlock {
-    BOOL receiveInitialValue = YES;
-    BOOL receiveOldAndNewValues = NO;
-    return addBlockObserver(self, keyPath, receiveInitialValue, receiveOldAndNewValues, callbackBlock);
-}
-
-- (BlockObserver *)observe:(NSString *)keyPath receiveInitialValue:(BOOL)receiveInitialValue receiveOldAndNewValues:(BOOL)receiveOldAndNewValues withBlock:(ObservationCallbackBlock)callbackBlock {
-    return addBlockObserver(self, keyPath, receiveInitialValue, receiveOldAndNewValues, callbackBlock);
-}
-
-@end
-
-@implementation BlockObserver (MFBlockObservationInterface)
-
-- (BOOL)observationIsActive {
-    return isBlockObserverActive(self);
-}
-- (void)cancelObservation {
-    cancelBlockObservation(self);
-}
-+ (void)cancelObservations:(NSArray<BlockObserver *> *)observers {
-    cancelObservations(observers);
-}
+@implementation BlockObserver (MFBlockObservationInterface_LatestValues)
 
 + (NSArray<BlockObserver *> *)observeLatest:(NSArray<NSArray *> *)objectsAndKeyPaths onQueue:(dispatch_queue_t _Nullable)dispatchQueue withBlock:(ObservationCallbackBlockWithLatest)callbackBlock {
     
@@ -526,29 +452,13 @@ static NSArray<BlockObserver *> *addBlockObserversForLatestValues(NSArray<NSObje
     return addBlockObserversForLatestValues(objects, keyPaths, callbackBlock);
 }
 
-+ (NSArray<BlockObserver *> *)observeLatest2:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest2)callbackBlock {
-    return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock];
-}
-+ (NSArray<BlockObserver *> *)observeLatest3:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest3)callbackBlock {
-    return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock];
-}
-+ (NSArray<BlockObserver *> *)observeLatest4:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest4)callbackBlock {
-    return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock];
-}
-+ (NSArray<BlockObserver *> *)observeLatest5:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest5)callbackBlock {
-    return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock];
-}
-+ (NSArray<BlockObserver *> *)observeLatest6:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest6)callbackBlock {
-    return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock];
-}
-+ (NSArray<BlockObserver *> *)observeLatest7:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest7)callbackBlock {
-    return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock];
-}
-+ (NSArray<BlockObserver *> *)observeLatest8:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest8)callbackBlock {
-    return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock];
-}
-+ (NSArray<BlockObserver *> *)observeLatest9:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest9)callbackBlock {
-    return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock];
-}
++ (NSArray<BlockObserver *> *)observeLatest2:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest2)callbackBlock { assert(objectsAndKeypaths.count == 2); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *)observeLatest3:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest3)callbackBlock { assert(objectsAndKeypaths.count == 3); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *)observeLatest4:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest4)callbackBlock { assert(objectsAndKeypaths.count == 4); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *)observeLatest5:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest5)callbackBlock { assert(objectsAndKeypaths.count == 5); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *)observeLatest6:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest6)callbackBlock { assert(objectsAndKeypaths.count == 6); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *)observeLatest7:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest7)callbackBlock { assert(objectsAndKeypaths.count == 7); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *)observeLatest8:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest8)callbackBlock { assert(objectsAndKeypaths.count == 8); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *)observeLatest9:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest9)callbackBlock { assert(objectsAndKeypaths.count == 9); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
 
 @end
