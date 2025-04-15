@@ -340,13 +340,13 @@ static void mfobs_cancel_observers(NSArray<MFObserver *> *_Nonnull mfobservers) 
 
 @implementation NSObject (MFBlockObservationInterface)
 
-- (MFObserver *_Nonnull)observe:(NSString *_Nonnull)keyPath block:(MFObserver_CallbackBlock_New _Nonnull)callbackBlock {
+- (MFObserver *_Nonnull)mf_observe:(NSString *_Nonnull)keyPath block:(MFObserver_CallbackBlock_New _Nonnull)callbackBlock {
     BOOL receiveInitialValue = YES;
     BOOL receiveOldAndNewValues = NO;
     return mfobs_add_observer(self, keyPath, receiveInitialValue, receiveOldAndNewValues, callbackBlock);
 }
 
-- (MFObserver *_Nonnull)observe:(NSString *_Nonnull)keyPath immediate:(BOOL)receiveInitialValue withOld:(BOOL)receiveOldAndNewValues block:(MFObserver_CallbackBlock _Nonnull)callbackBlock {
+- (MFObserver *_Nonnull)mf_observe:(NSString *_Nonnull)keyPath immediate:(BOOL)receiveInitialValue withOld:(BOOL)receiveOldAndNewValues block:(MFObserver_CallbackBlock _Nonnull)callbackBlock {
     /// Null-safety
     if (!keyPath.length) return (id)nil;
     if (!callbackBlock) return (id)nil;

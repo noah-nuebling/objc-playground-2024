@@ -157,7 +157,7 @@ NSTimeInterval runKVOTest(NSInteger iterations) {
     
     /// Setup callback
     TestObject *testObject = [[TestObject alloc] init];
-    [testObject observe:@"value" block:^(NSObject * _Nonnull newValueBoxed) {
+    [testObject mf_observe:@"value" block:^(NSObject * _Nonnull newValueBoxed) {
         NSInteger newValue = unboxNSValue(NSInteger, newValueBoxed);
         [valuesFromCallback addObject:newValueBoxed];
         sumFromCallback += newValue;
@@ -271,7 +271,7 @@ NSTimeInterval runKVOTest_Strings(NSInteger iterations) {
     [testObject.string1 notifyOnMutation:YES];
     [testObject.string2 notifyOnMutation:YES];
     
-    [testObject.string2 observe:@"self" block:^(NSString * updatedString2) {
+    [testObject.string2 mf_observe:@"self" block:^(NSString * updatedString2) {
         
         static BOOL isFirst = YES;
         if (isFirst) { isFirst = NO; return; }
@@ -281,7 +281,7 @@ NSTimeInterval runKVOTest_Strings(NSInteger iterations) {
     }];
     
     @weakify(testObject);
-    _memoryTestVariable = [testObject.string1 observe:@"self" block:^(NSString *_Nonnull updatedString1) {
+    _memoryTestVariable = [testObject.string1 mf_observe:@"self" block:^(NSString *_Nonnull updatedString1) {
         @strongify(testObject);
             
         static BOOL isFirst = YES;

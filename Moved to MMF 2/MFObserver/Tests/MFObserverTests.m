@@ -126,7 +126,7 @@ void mfobserver_cleanup_tests(void) {
             @autoreleasepool {
                 __auto_type testObject = [[TestObject_KVORuleBreaker alloc] init];
                 
-                observer = [testObject observe:@"theValue" block:^(id  _Nonnull newValueNS) {
+                observer = [testObject mf_observe:@"theValue" block:^(id  _Nonnull newValueNS) {
                     NSInteger newValue = unboxNSValue(NSInteger, newValueNS);
                     mflog("theValue changed to: %ld", newValue);
                 }];
@@ -152,7 +152,7 @@ void mfobserver_cleanup_tests(void) {
     ({
         __auto_type testObject = [[TestObject_KVORuleBreaker alloc] init];
         
-        MFObserver *__observer_storage observer = [testObject observe:@"theValue" block:^(id  _Nonnull newValueNS) {
+        MFObserver *__observer_storage observer = [testObject mf_observe:@"theValue" block:^(id  _Nonnull newValueNS) {
             NSInteger newValue = unboxNSValue(NSInteger, newValueNS);
             mflog("theValue changed to: %ld", newValue);
         }];

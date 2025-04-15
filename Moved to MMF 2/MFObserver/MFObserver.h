@@ -14,7 +14,7 @@
 ///
 ///    Simple observation:
 ///         ```
-///         MFObserver *buttonObserver = [button observe:@"value" block:^void (NSString *newValue) {
+///         MFObserver *buttonObserver = [button mf_observe:@"value" block:^void (NSString *newValue) {
 ///             otherValue = [newValue stringByAppendingString: @"Hello from KVO block!"];
 ///             self.something = value;
 ///         }];
@@ -43,7 +43,7 @@
 ///
 ///     (API Notes:)
 ///         [Apr 2025] You can also ignore the `MFObserver *` return value and your callback block will still be called. (The `MFObserver *` will be retained by the observee)
-///             (I believe this is different to Swift's KVO wrapper `observe(_:options:changeHandler:)`, where the caller has to retain the return-value (I think))
+///             (I believe this is different to Swift's KVO wrapper `mf_observe(_:options:changeHandler:)`, where the caller has to retain the return-value (I think))
 ///
 /// API design discussion: `nullability`: [Apr 2025]
 ///     - We're trying to make an interface where: If the caller breaks nullability (by passing in nil to a `_Nonnull` arg), then the method/function may break nullability, too (by returning nil).
@@ -112,14 +112,14 @@ avail
     ///         (Use @strongify/@weakify dance to avoid this.)
     ///     - The returned MFObserver can be used to cancel the observation prematurely by calling `- cancel` on it.
     ///     - If you observe a primitive value such as int or float, it will arrrive in the callback boxed in an NSValue. Use the unboxNSValue() macro to conveniently get the underlying primitive inside the callback.
-    - (MFObserver *_Nonnull)observe:(NSString *_Nonnull)keyPath block:(MFObserver_CallbackBlock_New _Nonnull)callbackBlock;
+    - (MFObserver *_Nonnull)mf_observe:(NSString *_Nonnull)keyPath block:(MFObserver_CallbackBlock_New _Nonnull)callbackBlock;
 
     /// Basic observation with some extra options.
     /// The default options are:
     ///     - immediate: YES which means the callback will immediately fire upon creation with the current value of self.keyPath, instead of first firing on the first *change* of self.keyPath after you call this method.
     ///     - withOld: NO which means that, inside the callbackBlock, you only receive the updated value - not the previous values - of self.keyPath.
     ///         > Use MFObserver_CallbackBlock_OldAndNew as the callbackBlock's type if you set this option to YES.
-    - (MFObserver *_Nonnull)observe:(NSString *_Nonnull)keyPath immediate:(BOOL)receiveInitialValue withOld:(BOOL)receiveOldAndNewValues block:(MFObserver_CallbackBlock _Nonnull)callbackBlock;
+    - (MFObserver *_Nonnull)mf_observe:(NSString *_Nonnull)keyPath immediate:(BOOL)receiveInitialValue withOld:(BOOL)receiveOldAndNewValues block:(MFObserver_CallbackBlock _Nonnull)callbackBlock;
 
 @end
 
