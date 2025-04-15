@@ -9,7 +9,7 @@
 #import "objc/runtime.h"
 #import "AppKit/AppKit.h"
 #import "MFDataClass.h"
-#import "ObserveBenchmarks.h"
+#import "ObservationBenchmarks.h"
 #import "MFUtils.h"
 #import "MFLinkedList.h"
 #import "MFObserverTests.h"

@@ -10,11 +10,11 @@
 ///
 /// This file provides a simple block-based API for observing Key-Value-Observation-compliant objects.
 /// We used to call it 'BlockObserver' but renamed to 'MFObserver' [Apr 2025]
-/// It consists of 4 core methods:
+/// It consists of 4 core methods: [Apr 2025]
 ///
 ///    Simple observation:
 ///         ```
-///         MFObserver *buttonObserver = [button observe: @"value" block: ^void (NSString *newValue) {
+///         MFObserver *buttonObserver = [button observe:@"value" block:^void (NSString *newValue) {
 ///             otherValue = [newValue stringByAppendingString: @"Hello from KVO block!"];
 ///             self.something = value;
 ///         }];
@@ -28,7 +28,7 @@
 ///    Observe latest:
 ///         ```
 ///         NSArray *observers = [MFObserver observeLatest2:@[@[button, @"value"], @[slider, @"doubleValue"]]
-///                                                  block: ^(int updatedValueIndex, NSValue *v0, NSValue *v1)
+///                                                   block:^void (int updatedValueIndex, NSValue *v0, NSValue *v1)
 ///         {
 ///             int buttonValue = unboxNSValue(int, v0);
 ///             double sliderValue = unboxNSValue(int, v1);
@@ -41,7 +41,11 @@
 ///         [MFObserver cancelObservers:observers];
 ///         ```
 ///
-/// API design discussion: `nullability`:
+///     (API Notes:)
+///         [Apr 2025] You can also ignore the `MFObserver *` return value and your callback block will still be called. (The `MFObserver *` will be retained by the observee)
+///             (I believe this is different to Swift's KVO wrapper `observe(_:options:changeHandler:)`, where the caller has to retain the return-value (I think))
+///
+/// API design discussion: `nullability`: [Apr 2025]
 ///     - We're trying to make an interface where: If the caller breaks nullability (by passing in nil to a `_Nonnull` arg), then the method/function may break nullability, too (by returning nil).
 ///         But as long as the caller 'adheres' to the declared nullability, the function's return value will also adhere to its declared nullability.
 ///         -> This way the interface should be *extremely* 'safe' both for
@@ -50,14 +54,14 @@
 ///     - Is this overengineered?
 ///         Yes absolutely. I'm treating this like I'm trying to design some production libary, while in reality, not even *I* am probably going to use this. Aghghghg. I've wasted so much time on this. I hope I learned something at least.
 ///
-/// Caution:
+/// Caution: [Apr 2025]
 ///     To ensure correctness, users (me) need to pay special attention to
 ///         - thread-safety
 ///         - retain-cycles
 ///         - macOS-Version (Might be unsafe to use pre macOS 11 Big Sur)
 ///         -> More info about all these below and in the implementation.
 ///
-/// @strongify/@weakify dance example:
+/// @strongify/@weakify dance example: [Apr 2025]
 ///         To prevent retain cycles you must avoid strongly referencing the observed objects in the callback. Here's an example:
 ///         ```
 ///         @weakify(nsBox, nsButton)

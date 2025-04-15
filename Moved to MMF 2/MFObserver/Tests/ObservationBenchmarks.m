@@ -5,7 +5,7 @@
 //  Created by Noah Nübling on 31.07.24.
 //
 
-#import "ObserveBenchmarks.h"
+#import "ObservationBenchmarks.h"
 #import "MFDataClass.h"
 #import "MFObserver.h"
 #import "CoolMacros.h"

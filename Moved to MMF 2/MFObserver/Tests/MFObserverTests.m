@@ -13,7 +13,7 @@
 ///     Everything seems to work as expected!
 ///     Observers as well as observations get cleaned up, regardless of whether the observation is invalidated due to the observee being deallocated, or by manual cancellation of the observation.
 ///     This works even though the observee (`TestObject_KVORuleBreaker` instance) breaks the condition under which KVO automatically cleans up observations, which are described in the macOS 10.13 release notes. (See src [1])
-///         -> Based on that, it seems that newer macOS versions (probably macOS 11) have removed these restrictions on KVO's auto-cleanup entirely.
+///         -> Based on that, it seems that newer macOS versions (probably macOS 11+) have removed these restrictions on KVO's auto-cleanup entirely.
 ///             This is also supported by this quote from the macOS 11 release notes (See src [1]):
 ///                 > Instances of NSKeyValueObservation, produced by the Swift `NSObject.observe(_:changeHandler:)` method, take
 ///                 > advantage of integration with this bookkeeping so they now invalidate automatically when the observed object is released, **regardless of how the object implements its KVO behavior.**
@@ -22,14 +22,14 @@
 /// Detailed thoughts on supporting older macOS versions:
 ///     - What exactly do we know about KVO auto-cleanup in different macOS versions?
 ///         Knowledge: Our tests tell us that in 15.4, it works in all cases we tested, and at least one of the 2 edge cases (src [1]) that the 10.13 release notes warned about, *do* work now. (Didn't test the other one, cause I didn't understand it.)
-///         Speculation: Based on the tests and src [1], my interpretation is that KVO auto-cleanup, was introduced in macOS 10.13 – where it would apply in all except certain edge-cases – and then improved in macOS 11, where it started to apply in all cases. I haven't found anything pointing to the behavior chaning between macOS 11 and macOS 15.4 (which we tested.)
+///         Speculation: Based on the tests and src [1], my interpretation is that KVO auto-cleanup, was introduced in macOS 10.13 – where it would apply in all except certain edge-cases – and then improved in macOS 11, where it started to apply in all cases. I haven't found anything pointing to the behavior changing between macOS 11 and macOS 15.4 (which we tested.)
 ///
 ///     - Could we make things work, even if KVO doesn't clean up on observee dealloc?
 ///         (This should only be necessary pre-macOS 11. Since MMF only offically supports macOS 11+, we shouldn't waste any more time on this.)
 ///
 ///         - This would pose a significant challenge because we'd have to hook into the -dealloc method of the observee. (We tried to do this in `DeallocTracker.m`)
 ///             - We architected things such that the observee retains the observer. If we'd done it the other way around, this would be simpler, since we'd only have to hook into the -dealloc method of the observer (whose code we control) (That's because the observee would never get -dealloc'd before the observer, which retains it.)
-///                 But even then, I'm not sure things would be safe, since I don't know what the order of operations is during object-deallocation.
+///                 But even then, I'm not sure things would be safe, since I don't know what the order of operations is during object-deallocation. (IIRC I researched this at some point and couldn't find anything)
 ///             - I'm not sure the DeallocTracker is safe, or would cause the observation to be removed too late (See below – observation must perhaps be removed *before* -dealloc is called....)
 ///         - I even heard that removal of observation has to happen *before*, not while, dealloc is called, to prevent crashes (See comments on src [1])
 ///             - In this case, I think it might be impossible to safely tie the removal of the observation to the lifecyle of the observer/observee at all. (Which is one of the main goals of `MFObserver.m`)
@@ -45,7 +45,7 @@
 ///
 /// Other thoughts/mental model:
 ///     - It makes sense that observee dealloc would auto-cancel the observation, since observees hold references to all their observations inside -[NSObject observationInfo] (Tested [Apr 2025], macOS 15.4)
-///     - Observers don't have a standardized way of referencing the observations AFAIK, but that's ok since we control the observer's code directly, so we can just manually cancel the observation.
+///     - Observers don't have a standardized way of referencing the observations they are involved in AFAIK, but that's ok since we control the observer's code directly, so we can just manually cancel the observation.
 ///
 /// Sources:
 ///     [1] SO Answer by Rob Mayoff: https://stackoverflow.com/a/18065286/10601702
