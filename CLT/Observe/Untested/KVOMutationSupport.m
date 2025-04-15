@@ -15,8 +15,6 @@
 ///     I haven't tested this much, I'm not sure this is safe.
 ///     E.g. – we isa swizzle – will there be interference if multiple modules try to isa-swizzle the object? (IIRC KVO will also isa-swizzle if automaticallyNotifiesObserversForKey: returns YES.)
 
-#if 0 /// Disabling cause untested - not sure if safe
-
 @implementation NSObject (MFKVOMutationSupport)
 
 ///
@@ -233,4 +231,3 @@ static Boolean isSubclass(Class subclass, Class superclass) {
 
 @end
 
-#endif

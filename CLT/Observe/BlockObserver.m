@@ -63,7 +63,7 @@
 ///
 /// Technical details:
 ///     On thread safety and use of `@synchronized`:
-///         We use `@synchronized(observedObject)`in 3 places and `pthread_mutex` in 1 place inside this implementation to ensure thread-safety. All functions and methods exposed through the interface should be thread safe.
+///         We use `@synchronized(observedObject)`in 2 places and `objc_sync_enter` in 1 place inside this implementation to ensure thread-safety. All functions and methods exposed through the interface should be thread safe.
 ///         Generally, when making things thread-safe I was thinking about:
 ///             What are the shared mutable resources, and how can we ensure that when they are being mutated, nothing else is accessing or trying to mutate them at the same time. It also helps to think about the big-picture control flow - we don't need to do finegrained locking and unlocking everywhere, if we can just ensure that, when the control flow enters Observe.m, then, before any shared state encapsulated by Observe.m is mutated or read, a lock is always acquired - then we're good! Since the control flow and interface for Obseve.m is relatively simple, that makes things relatively managable. Deadlocks can be avoided by ensuring that you never try to acquire another lock while you already hold a lock. (so you probably shouldn't invoke a callback with foreign code while holding your lock, since it might try to acquire further locks).
 ///
@@ -72,27 +72,68 @@
 ///     - It's available in objc which I like writing more than swift.
 ///     - It's usually slightly faster than combine but in the same ballpark.  For performance critical things, you'd still want to use simple function calls since they are much faster, and for UI stuff the performance difference doesn't matter.
 ///         - Actually, when using Combine as a wrapper for kvo, using `someObject.publisher(for:<keyPath>)`, then Combine is around 3-6x slower than our code in our tests, but for UI Stuff this still probably doesn't matter.
+///         - Using swift's more lower-level wrapper around KVO `observe(_:options:changeHandler:)` is also much much slower in our tests.
 ///     - I wrote it and control it so I might understand how to use it better.
-///     - I have a general dislike for Swift and all this fancy magic abstraction stuff. But this doesn't really matter, I could get used to either.
+///     - I have a general dislike for Swift. But I should be pragmatic. It's a useful too.
 ///     - The build times for MMF 3 are quite slow. And I suspect that swift is a big factor in that.
 ///         > I might want to move away from Swift and write more of the UI Stuff in objc. And this might enable that. Some of the main reasons we use so much swift is that we wanted to use reactive patterns for the UI of MMF, which lead us to include the ReactiveSwift framework and build much of the UI code in Swift. MMF 2 which was pure objc iirc, had much faster build times iirc.
 ///     - BIG CON: This needs to be thread safe. I tried but thread safety is hard. If there are subtle bugs in this, we might make the app less stable vs using an established framework or API.
 ///         Update: I thought about it again and I'm pretty confident this is thread safe now. There are only a small number of paths through which the control flow can enter the core logic of this file:
-///             `blobs_add_observer()`, `blobs_cancel_observer()`, `[BlockObserver dealloc]`, `observeValueForKeyPath:ofObject:change:context:`, and the callback inside `addBlockObserversForLatestValues()`. If we ensure that all these entry points are thread-safe, which we did, then entire file should be thread safe to use. Maybe I missed something but I think it's not too bad to make this thread safe after all.
+///             `blobs_add_observer()`, `blobs_cancel_observer()`, `[BlockObserver dealloc]`, `observeValueForKeyPath:ofObject:change:context:`, and the callback inside `blobs_observe_latest_values()`. If we ensure that all these entry points are thread-safe, which we did, then entire file should be thread safe to use. Maybe I missed something but I think it's not too bad to make this thread safe after all.
 ///
 ///     -> Overall this was a cool experiment. It was fun and I learned a bunch of things. Maybe we can adopt this into MMF at some point, but we should probably only adopt it for a new major release where we can thoroughly test this before rolling it out to non-beta users.
 ///
 ///     Other takeaways:
-///     - Due to the Benchmarks we made for this I saw that, for simple arithmetic and function calling, pure swift seems to be around 4 - 6x faster than our pure C code!! That's incredible and very unexpected.
-///         Unfortunately, when you use frameworks or higher level datatypes with Swift, and interoperate with objc, that can sometimes slow things down a lot in unpredictable ways. (See the whole `SWIFT_UNBRIDGED` hassle in MMF., or Combine being 6x slower when used with KVO) Objc/C and its frameworks seem more predictable and consistent to me. But for really low level routines or if you use it right, swift can actually be incredibly fast, which is cool and good to know, and makes me like the language a bit more.
+///         - Due to the Benchmarks we made for this I saw that, for simple arithmetic and function calling, pure swift seems to be around 4 - 6x faster than our pure C code!! That's incredible and very unexpected.
+///             Unfortunately, when you use frameworks or higher level datatypes with Swift, and interoperate with objc, that can sometimes slow things down a lot in unpredictable ways. (See the whole `SWIFT_UNBRIDGED` hassle in MMF., or Combine being 6x slower when used with KVO) Objc/C and its frameworks seem more predictable and consistent to me. But for really low level routines or if you use it right, swift can actually be incredibly fast, which is cool and good to know, and makes me like the language a bit more.
+///
+///     Update: [Apr 2025]
+///         After working on/thinking through the code again, and writing some tests confirming the memory management works as expected, I'm very confident that this is production-ready.
+///         This API is probably the best tradeoff between performance and convenience out of any available observation APIs for Swift/objc.
+///         I'm still not sure if this was a massive waste of time though, because the increased performance may not ever matter, and it's not really more convenient or powerful than the alternatives.
+///             Currently, in MMF, we're using ReactiveSwift, which is probably a bit more convenient, but likely slower (src [3], haven't tested) and also probably increases bundle size and build-times somewhat.
+///             But still, moving over from ReactiveSwift is probably a waste of time.
+///
+/// Technical discussion: `Lifetime-management`: [Apr 2025]
+///     Terminology:
+///         observee         -> observed object
+///         observer          -> BlockObserver instance observing the object
+///         observation     -> The record that the KVO machinery stores about the observer <-> observee connection (See `-[NSObject observationInfo]`)
+///     Goals:
+///         - We want to automatically manage the lifetime of the **observation**, such that
+///             the observation is created, when the observer is created
+///             the observation is removed, when the observer is 'canceled' by the user, or when either the observer or the observee is deallocated.
+///         - We want to automatically manage the lifetime of the **observer**, such that
+///             the observer is created when the the user starts observing a keypath on an object
+///             the observer is kept alive by the observee, which holds a reference to it. This reference is removed if the observer is 'canceled' or the observee is deallocated. If there are additional, external references to the observer, it could outlive the observee.
+///         - We are not trying to manage/change the lifetime of the **observee**. We avoid any owning references to it, to avoid retain-cycles.
+///     Problem:
+///         The tricky part here is trying to remove the observation upon deallocation of observer/observee. Some sources say (Comments on src [1]) that removing the observation inside a -dealloc method is too late and can cause crashes.
+///         Think-through: (... the cases where observer/observee gets deallocated, and we wanna remove the observation in their -dealloc methods)
+///             There are two cases:
+///                 1. observee is dealloc'd *before* the observer        (~observee > ~observer)
+///                 2. observee is dealloc'd *after*    the observer        (~observer > ~observee)
+///                 Let's think about what we need to do when the *observer* (whose code we control) is deallocated in these 2 cases:
+///                     1.  (~observee > ~observer)
+///                         - In this case, we don't need to do anything, because the observation is automatically removed by KVO when the observee was dealloc'd (Tested and confirmed this, see below)
+///                     2. (~observer > ~observee)
+///                         - In this case, we *also* don't need to do anything because this can only happen, if the observer was already manually 'canceled' (which removed the observation). If the observer wasn't canceled, the observer is retained by the observee, preventing its deallocation.
+///                 -> Therefore, we don't ever have to remove the observation inside of a -dealloc method – which means we're safe from those weird crashes that src [1] warned us about.
+///     Tests:
+///         Tested and confirmed that observation is automatically removed by KVO when observee is deallocated. See `BlockObserverTests.m`.
+///             - (I have reason to believe that this only works on macOS 11+, and that older versions could experience leaks or crashes in some situations. See the comments by the tests.)
 ///
 /// Update:
 ///     I just spent a while trying to move MMF to using this, and it's quite a lot of work, definitely a few-days refactor. Also, questionable whether combine would be a better choice than this (Combine API might be a bit shorter / cleaner, and easier to translate from ReactiveSwift, and we'd still be removing a library dependency which should speed up builds. It would be sort of nice to move the UI code away from swift to further improve build times but that would be way too much work! We're stuck with Swift for now.
 ///
 /// Update: [Apr 2025]
 ///     - This is sort of a reimplementation of Swift's `observe(_:options:changeHandler:)`, but that only supports Swift keypaths which are super annoying IIRC.
-///         - `observe(_:options:changeHandler:)` Has the observation retain the object, while we have the object retain the observation (aka BlockObserver object). Ours is more convenient, but might be slower (due to weak ref from BlockObserver to observed objc) and perhaps more error-prone regarding retain-cycles.
+///         - I'm not sure about the ownership semantics of `observe(_:options:changeHandler:)` (I doesn't have a documentation page.) – Our implementation has the observee retain the observer.
 ///
+/// Sources:
+///     [1] SO Answer by Rob Mayoff: https://stackoverflow.com/a/18065286/10601702
+///     [2] Apple Developer Forums – is there documentation for `observe(_:options:changeHandler:)`? https://developer.apple.com/forums/thread/768796
+///     [3] GitHub Issue about bad performance of ReactiveSwift compared to Rx and Combine: https://github.com/ReactiveCocoa/ReactiveSwift/issues/751
 
 #pragma mark - Constants
 /// Define context
@@ -118,10 +159,10 @@ static void *_BlockObserverKVOContext = "mfBlockObserverContext";
     @public id                          _callbackBlock;
     
     /// Mutables
-    @public BOOL                        _observationCount;              /// This state mostly exists to validate that we're producing balanced calls to the add/remove methods.
+    @public int                         _observationCount;              /// This state mostly exists to validate that we're producing balanced calls to the add/remove methods.
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+- (void)observeValueForKeyPath:(NSString *_Nullable)keyPath ofObject:(id _Nullable)object change:(NSDictionary *_Nullable)change context:(void *_Nullable)context {
         
     /// Handle KVO callback
         
@@ -132,7 +173,7 @@ static void *_BlockObserverKVOContext = "mfBlockObserverContext";
     
     /// Guard context
     if (context != _BlockObserverKVOContext) {
-        assert(false); /// [Apr 2025] Don't think this can happen?
+        assert(false); /// [Apr 2025] Don't think this can happen? I guess if BlockObserver is subclassed?
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
         return;
     }
@@ -141,8 +182,8 @@ static void *_BlockObserverKVOContext = "mfBlockObserverContext";
     BOOL receivesOldAndNewValues =  (self->_observingOptions & NSKeyValueObservingOptionNew)  &&
                                     (self->_observingOptions & NSKeyValueObservingOptionOld)  ;
     /// Extract new and old values
-    NSObject *newValue = change[NSKeyValueChangeNewKey];
-    NSObject *oldValue = receivesOldAndNewValues ? change[NSKeyValueChangeOldKey] : nil;
+    NSObject *_Nullable newValue = change[NSKeyValueChangeNewKey];
+    NSObject *_Nullable oldValue = receivesOldAndNewValues ? change[NSKeyValueChangeOldKey] : nil;
     
     /// Validate
 #if DEBUG
@@ -171,22 +212,16 @@ static void *_BlockObserverKVOContext = "mfBlockObserverContext";
 #endif
     
     /// Send callback.
-    if (receivesOldAndNewValues)    ((ObservationCallbackBlockWithOldAndNew)self->_callbackBlock)(oldValue, newValue);
-    else                            ((ObservationCallbackBlockWithNew)self->_callbackBlock)(newValue);
+    if (receivesOldAndNewValues)    ((ObservationCallbackBlockWithOldAndNew)self->_callbackBlock)(oldValue, (id)newValue);
+    else                            ((ObservationCallbackBlockWithNew)self->_callbackBlock)((id)newValue);
     
 }
 
-static void blobs_cancel_observer(BlockObserver *blockObserver); /// Forward-declaration
+static void blobs_cancel_observer(BlockObserver *_Nonnull blockObserver); /// Forward-declaration
 
 - (void)dealloc {
-    
-    /// Remove observation on dealloc
-    ///     We don't need to worry about what happens if the observedObject is dealloced before the BlockObserver, since in that case, KVO will automatically remove the observation in macOS 11 Big Sur and later. See SO answer by Rob Mayoff: https://stackoverflow.com/a/18065286/10601702. This is great since we tried doing the same thing using the DeallocTracker and it was quite hacky and I don't think it worked.
-    ///     I'm not even sure that calling `blobs_cancel_observer()` here is necessary. Maybe the system also handles that. Would kinda make sense.
-    ///
-    /// Note: [Apr 2025] `blobs_cancel_observer()` tries to unwrap weak ref to `_weakObservedObject`. If that fails, it just returns. That makes sense, since in that case, the observed object was already dealloc'ed and therefore the observation has been removed by the system already.
-    
-    blobs_cancel_observer(self); /// Thread-safe
+    if ((0)) /// Not necessary – see our discussion on `Lifetime-management` at the top of the file [Apr 2025]
+        blobs_cancel_observer(self); /// Thread-safe
 }
 
 @end
@@ -196,7 +231,7 @@ static void blobs_cancel_observer(BlockObserver *blockObserver); /// Forward-dec
 /// Should be thread safe
 ///     and therefore all the interface functions below should also be threadsafe since they are just wrappers around this.
 
-static NSMutableSet *blobs_get_observers(NSObject *observableObject) {
+static NSMutableSet *_Nonnull blobs__get_observers(NSObject *_Nonnull observableObject) {
     
     /// Not thread safe
     ///     -> Only call when synced on `observableObject`
@@ -204,36 +239,39 @@ static NSMutableSet *blobs_get_observers(NSObject *observableObject) {
     
     static const char *key = "mfBlockObservers";
     
-    NSMutableSet *result = objc_getAssociatedObject(observableObject, key);
-    if (result != nil) {
-        return result;
-    } else {
-        result = [NSMutableSet set];
-        objc_setAssociatedObject(observableObject, key, result, OBJC_ASSOCIATION_RETAIN_NONATOMIC); /// Nonatomic since we're already synchronizing.
-    }
+    NSMutableSet *_Nullable result = objc_getAssociatedObject(observableObject, key);
+    if (result) return (id)result;
+
+    result = [NSMutableSet set];
+    objc_setAssociatedObject(observableObject, key, result, OBJC_ASSOCIATION_RETAIN_NONATOMIC); /// Nonatomic since we're already synchronizing.
     
-    return result;
+    return (id)result;
 }
 
-static BOOL blobs_observer_is_active(BlockObserver *observer) {
-    /// Should be thread safe. I guess the three different base values could change while we're retrieving them, but that shouldn't lead to any invalid results, so it's ok. We are weirdly declaring this here instead of inside the BlockObserver class definition because we want the interface methods below to be strictly simple wrappers around the `Core C Glue Code`, then we just need to ensure the `Core C Glue Code` is thread safe and the whole interface will be safe as well!
-    return  observer->_observationCount > 0     &&
-            (observer->_weakObservedObject != nil);
+static BOOL blobs_observer_is_active(BlockObserver *_Nullable observer) {
+    /// [Apr 2025] Not thread safe
+    ///     -> in the sense that it might give slightly outdated/premature result when called during state-transitions.
+    /// - This is currently only used for debugging and the slight race-conditions don't matter.
+    /// - If the caller needs this to be absolutely thread-safe they can perhaps wrap calling this (and using its result) with `@synchronized (observableObject)`. (Since that's the lock we use for mutating state in here as of [Apr 2025])
+    return  observer                                &&
+            observer->_observationCount > 0         &&
+            (observer->_weakObservedObject != nil   );
 }
 
-static BlockObserver *blobs_add_observer(NSObject *observableObject, NSString *keyPath, BOOL receiveInitialValue, BOOL receiveOldAndNewValues, ObservationCallbackBlock callback) {
+static BlockObserver *_Nonnull blobs_add_observer(NSObject *_Nonnull observableObject, NSString *keyPath, BOOL receiveInitialValue, BOOL receiveOldAndNewValues, ObservationCallbackBlock _Nonnull callback) {
     
     /// Thread safe
     
     @synchronized (observableObject) {
         
         /// Create & init blockObserver
-        BlockObserver *blockObserver = [[BlockObserver alloc] init];
+        BlockObserver *_Nonnull blockObserver = [[BlockObserver alloc] init];
         ({
             /// Set up options
-            NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew;
-            options = options | (receiveOldAndNewValues ? NSKeyValueObservingOptionOld      : 0);
-            options = options | (receiveInitialValue    ? NSKeyValueObservingOptionInitial  : 0);
+            NSKeyValueObservingOptions options = 0;
+            options |= NSKeyValueObservingOptionNew;
+            options |= (receiveOldAndNewValues ? NSKeyValueObservingOptionOld      : 0);
+            options |= (receiveInitialValue    ? NSKeyValueObservingOptionInitial  : 0);
             
             /// Store args
             blockObserver->_weakObservedObject  = observableObject;
@@ -247,7 +285,8 @@ static BlockObserver *blobs_add_observer(NSObject *observableObject, NSString *k
         
         /// Add blockObserver to object
         ///     Now it is retained and the client won't have to retain it for the observation to stay active.
-        [blobs_get_observers(observableObject) addObject:blockObserver];
+        ///     Thread-safety: [Apr 2025] This definitely has to be locked to be safe. I'm not sure the other stuff has to be locked.
+        [blobs__get_observers(observableObject) addObject:blockObserver];
         
         /// Start the blockObserver
         [observableObject addObserver:blockObserver forKeyPath:blockObserver->_observedKeyPath options:blockObserver->_observingOptions context:_BlockObserverKVOContext];
@@ -258,20 +297,18 @@ static BlockObserver *blobs_add_observer(NSObject *observableObject, NSString *k
     }
 }
 
-static void blobs_cancel_observer(BlockObserver *blockObserver) {
+static void blobs_cancel_observer(BlockObserver *_Nonnull blockObserver) {
     
     /// Thread safe
     
     /// Get & unwrap observedObject
     NSObject *strongObservedObject = blockObserver->_weakObservedObject;
-    if (strongObservedObject == nil) {
-        return; /// If the observedObject is already nil it will already have stopped the observation and released the blockObserver already.
-    }
+    if (!strongObservedObject) return; /// If the observedObject is already nil that means its deallocated or currently deallocating, which will make KVO cancel the observation (see notes for more) [Apr 2025]
     
     @synchronized (strongObservedObject) {
         
         /// Guard multiple cancelations
-        if (blockObserver->_observationCount <= 0)      { assert(false); return; }
+        if (blockObserver->_observationCount <= 0) { return; }
         blockObserver->_observationCount -= 1;
         
         /// Remove observer
@@ -280,11 +317,11 @@ static void blobs_cancel_observer(BlockObserver *blockObserver) {
         /// Release the blockObserver
         ///     It should then normally be dealloced, unless its retained by an outsider.
         ///     [Apr 2025] The deallocation will cause this function to be called *again* which is a bit inefficient. Maybe we could use a recursion tracking (with `static __thread` variable) to speed that up?
-        [blobs_get_observers(strongObservedObject) removeObject:blockObserver];
+        [blobs__get_observers(strongObservedObject) removeObject:blockObserver];
     }
 }
 
-static void blobs_cancel_observers(NSArray<BlockObserver *> *blockObservers) {
+static void blobs_cancel_observers(NSArray<BlockObserver *> *_Nonnull blockObservers) {
     
     /// Thread safe
     
@@ -297,16 +334,22 @@ static void blobs_cancel_observers(NSArray<BlockObserver *> *blockObservers) {
 
 /// This is a pure wrapper around the `Core C Glue Code` functions defined above.
 ///     Since that is thread safe, this should also be thread safe.
+///
+///     Interfaces return nil, only if passed nil (which can only happen from objc) – This way interface should be safe from both objc and Swift – See top of file for more.
+///     The `Core C Glue Code` actually adheres to nullability, and never expects to receive nil, if args are declared `_Nonnull`
 
 @implementation NSObject (MFBlockObservationInterface)
 
-- (BlockObserver *)observe:(NSString *)keyPath withBlock:(ObservationCallbackBlockWithNew)callbackBlock {
+- (BlockObserver *_Nonnull)observe:(NSString *_Nonnull)keyPath withBlock:(ObservationCallbackBlockWithNew _Nonnull)callbackBlock {
     BOOL receiveInitialValue = YES;
     BOOL receiveOldAndNewValues = NO;
     return blobs_add_observer(self, keyPath, receiveInitialValue, receiveOldAndNewValues, callbackBlock);
 }
 
-- (BlockObserver *)observe:(NSString *)keyPath receiveInitialValue:(BOOL)receiveInitialValue receiveOldAndNewValues:(BOOL)receiveOldAndNewValues withBlock:(ObservationCallbackBlock)callbackBlock {
+- (BlockObserver *_Nonnull)observe:(NSString *_Nonnull)keyPath receiveInitialValue:(BOOL)receiveInitialValue receiveOldAndNewValues:(BOOL)receiveOldAndNewValues withBlock:(ObservationCallbackBlock _Nonnull)callbackBlock {
+    /// Null-safety
+    if (!keyPath.length) return (id)nil;
+    if (!callbackBlock) return (id)nil;
     return blobs_add_observer(self, keyPath, receiveInitialValue, receiveOldAndNewValues, callbackBlock);
 }
 
@@ -314,9 +357,10 @@ static void blobs_cancel_observers(NSArray<BlockObserver *> *blockObservers) {
 
 @implementation BlockObserver (MFBlockObservationInterface)
 
-- (BOOL)observationIsActive                                         { return blobs_observer_is_active(self); }
-- (void)cancelObservation                                           { blobs_cancel_observer(self); }
-+ (void)cancelObservations:(NSArray<BlockObserver *> *)observers    { blobs_cancel_observers(observers); }
+- (void)cancelObservation                                                   { blobs_cancel_observer(self); }
++ (void)cancelObservations:(NSArray<BlockObserver *> *_Nonnull)observers    { if (!observers) return; return blobs_cancel_observers(observers); }
+
+- (BOOL)_isActive                                                           { return blobs_observer_is_active(self); }
 
 @end
 
@@ -324,7 +368,7 @@ static void blobs_cancel_observers(NSArray<BlockObserver *> *blockObservers) {
 
 #pragma mark Core implementation
 
-static NSArray<BlockObserver *> *addBlockObserversForLatestValues(NSArray<NSObject *> *objects, NSArray<NSString *> *keyPaths, ObservationCallbackBlockWithLatest callbackBlock) {
+static NSArray<BlockObserver *> *_Nonnull blobs_observe_latest_values(NSArray<NSObject *> *_Nonnull objects, NSArray<NSString *> *_Nonnull keyPaths, ObservationCallbackBlockWithLatest _Nonnull callbackBlock) {
     
     /// Thread safety:
     ///     The core function we call, `blobs_add_observer()` is thread safe, the only shared state we handle - the latestValueCache - is locked with a mutex, so thread safe.
@@ -362,8 +406,8 @@ static NSArray<BlockObserver *> *addBlockObserversForLatestValues(NSArray<NSObje
     
     /// Create cache
     ///     Trick: wrap stack array in struct to make clang capture it in the block. (It doesn't allow capturing arrays directly for 'performance reasons' – See: https://lists.llvm.org/pipermail/cfe-dev/2013-June/030246.html)
-    typedef struct { __weak id _[nmax]; } LatestValueCache;
-    __block LatestValueCache latestValueCache;
+    typedef struct { __weak id _Nullable _[nmax]; } LatestValueCache;
+    __block LatestValueCache latestValueCache = {0}; /// Init all values to nil
     
     /// Init cache
     loopc(i, nmax)
@@ -372,6 +416,7 @@ static NSArray<BlockObserver *> *addBlockObserversForLatestValues(NSArray<NSObje
                                 [objects[i] valueForKeyPath:keyPaths[i]];
     
     /// Create mutex token for cache access
+    ///     [Apr 2025] We used `pthread_mutex` before, but I'm not sure when to clean that up, since the lock should be 'owned' by all n BlockObservers.
     __block id cache_sync_token = @"the_sync_token";
     
     loopc(i, n) {
@@ -384,11 +429,12 @@ static NSArray<BlockObserver *> *addBlockObserversForLatestValues(NSArray<NSObje
         BOOL receiveOldAndNewValues = NO;
         
         /// Create observer
-        BlockObserver *blockObserver = blobs_add_observer(objects[i], keyPaths[i], doReceiveInitialValue, receiveOldAndNewValues, ^void (NSObject *newValue) {
+        BlockObserver *_Nonnull blockObserver = blobs_add_observer(objects[i], keyPaths[i], doReceiveInitialValue, receiveOldAndNewValues, ^void (NSObject *newValue) {
             
             /// Note: If we capture any of the `objects` here (or in `callbackBlock`) that's a retain cycle!
             
             /// Acquire lock
+            ///     On locking: [Apr 2025] I'm not 100% sure this lock is necessary, since each latestValue is stored kinda 'independently' (They each have their own address in our C-array cache.)
             objc_sync_enter(cache_sync_token);
             
             /// Update cache
@@ -397,9 +443,8 @@ static NSArray<BlockObserver *> *addBlockObserversForLatestValues(NSArray<NSObje
         
             /// Retrieve cache
             ///     Get a local, strong ref to each cache variable while we still have the lock
-            __strong id retrievedLatestValues[n];
-            loopc(j, n)
-                retrievedLatestValues[j] = latestValueCache._[j];
+            __strong id _Nonnull retrievedLatestValues[n];
+            loopc(j, n) retrievedLatestValues[j] = latestValueCache._[j];
             
             /// Release lock
             ///     Note: We could invoke the callbackBlock while we still hold the lock, then we could skip the cache-retrieval step, possibly speeding things up a bit. But that could lead to deadlocks depending on what the callbackBlock code does.
@@ -432,33 +477,37 @@ static NSArray<BlockObserver *> *addBlockObserversForLatestValues(NSArray<NSObje
 
 @implementation BlockObserver (MFBlockObservationInterface_LatestValues)
 
-+ (NSArray<BlockObserver *> *)observeLatest:(NSArray<NSArray *> *)objectsAndKeyPaths onQueue:(dispatch_queue_t _Nullable)dispatchQueue withBlock:(ObservationCallbackBlockWithLatest)callbackBlock {
++ (NSArray<BlockObserver *> *_Nonnull)_observeLatest:(NSArray<NSArray *> *_Nonnull)objectsAndKeyPaths withBlock:(ObservationCallbackBlockWithLatest _Nonnull)callbackBlock {
+    
+    /// Null-safety
+    ///     If caller breaks nullability, we break nullability. See notes above for more.
+    if (!objectsAndKeyPaths)    return (id)nil;
+    if (!callbackBlock)         return (id)nil;
     
     /// Parse input
-    
     NSMutableArray *objects = [NSMutableArray array];
     NSMutableArray *keyPaths = [NSMutableArray array];
 
-    for (NSArray *objectAndKeyPath in objectsAndKeyPaths) {
+    for (NSArray *x in objectsAndKeyPaths) {
         
-        assert(objectAndKeyPath.count == 2);
-        assert([objectAndKeyPath[1] isKindOfClass:[NSString class]]); /// KeyPaths need to be strings
-        
-        [objects addObject:objectAndKeyPath[0]];
-        [keyPaths addObject:objectAndKeyPath[1]];
+        assert(x.count == 2);
+        assert([x[1] isKindOfClass:[NSString class]]); /// KeyPaths need to be strings
+
+        [objects addObject:x[0]];
+        [keyPaths addObject:x[1]];
     }
     
     /// Call core
-    return addBlockObserversForLatestValues(objects, keyPaths, callbackBlock);
+    return blobs_observe_latest_values(objects, keyPaths, callbackBlock);
 }
 
-+ (NSArray<BlockObserver *> *)observeLatest2:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest2)callbackBlock { assert(objectsAndKeypaths.count == 2); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
-+ (NSArray<BlockObserver *> *)observeLatest3:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest3)callbackBlock { assert(objectsAndKeypaths.count == 3); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
-+ (NSArray<BlockObserver *> *)observeLatest4:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest4)callbackBlock { assert(objectsAndKeypaths.count == 4); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
-+ (NSArray<BlockObserver *> *)observeLatest5:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest5)callbackBlock { assert(objectsAndKeypaths.count == 5); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
-+ (NSArray<BlockObserver *> *)observeLatest6:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest6)callbackBlock { assert(objectsAndKeypaths.count == 6); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
-+ (NSArray<BlockObserver *> *)observeLatest7:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest7)callbackBlock { assert(objectsAndKeypaths.count == 7); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
-+ (NSArray<BlockObserver *> *)observeLatest8:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest8)callbackBlock { assert(objectsAndKeypaths.count == 8); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
-+ (NSArray<BlockObserver *> *)observeLatest9:(NSArray<NSArray *> *)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest9)callbackBlock { assert(objectsAndKeypaths.count == 9); return [self observeLatest:objectsAndKeypaths onQueue:nil withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *_Nonnull)observeLatest2:(NSArray<NSArray *> *_Nonnull)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest2 _Nonnull)callbackBlock { assert(objectsAndKeypaths.count == 2); return [self _observeLatest:objectsAndKeypaths withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *_Nonnull)observeLatest3:(NSArray<NSArray *> *_Nonnull)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest3 _Nonnull)callbackBlock { assert(objectsAndKeypaths.count == 3); return [self _observeLatest:objectsAndKeypaths withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *_Nonnull)observeLatest4:(NSArray<NSArray *> *_Nonnull)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest4 _Nonnull)callbackBlock { assert(objectsAndKeypaths.count == 4); return [self _observeLatest:objectsAndKeypaths withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *_Nonnull)observeLatest5:(NSArray<NSArray *> *_Nonnull)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest5 _Nonnull)callbackBlock { assert(objectsAndKeypaths.count == 5); return [self _observeLatest:objectsAndKeypaths withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *_Nonnull)observeLatest6:(NSArray<NSArray *> *_Nonnull)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest6 _Nonnull)callbackBlock { assert(objectsAndKeypaths.count == 6); return [self _observeLatest:objectsAndKeypaths withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *_Nonnull)observeLatest7:(NSArray<NSArray *> *_Nonnull)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest7 _Nonnull)callbackBlock { assert(objectsAndKeypaths.count == 7); return [self _observeLatest:objectsAndKeypaths withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *_Nonnull)observeLatest8:(NSArray<NSArray *> *_Nonnull)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest8 _Nonnull)callbackBlock { assert(objectsAndKeypaths.count == 8); return [self _observeLatest:objectsAndKeypaths withBlock:callbackBlock]; }
++ (NSArray<BlockObserver *> *_Nonnull)observeLatest9:(NSArray<NSArray *> *_Nonnull)objectsAndKeypaths withBlock:(ObservationCallbackBlockWithLatest9 _Nonnull)callbackBlock { assert(objectsAndKeypaths.count == 9); return [self _observeLatest:objectsAndKeypaths withBlock:callbackBlock]; }
 
 @end

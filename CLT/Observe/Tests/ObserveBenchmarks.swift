@@ -9,6 +9,10 @@ import Foundation
 import Combine
 import QuartzCore
 
+
+class TestObjectKVO: NSObject {
+    @objc dynamic var value: Int = 0
+}
 class TestObjectSwift: NSObject {
     @Published var value: Int = 0
 }
@@ -54,6 +58,42 @@ class TestObjectSwift4: NSObject {
         
         /// Return bench time
         return endTime - startTime
+    }
+    
+    @objc class func runSwiftKVOTest(iterations: Int) -> TimeInterval {
+            /// Ts
+        let startTime = Date()
+        
+        /// MutableData
+        var valuesFromCallback = [Int]()
+        var sumFromCallback = 0
+        
+        do {
+            /// Setup callback
+            let testObject = TestObjectKVO()
+            let cancellable = testObject.observe(\.value, options: [.new, .initial]) { testObject, change in
+                let newValue = change.newValue!
+                valuesFromCallback.append(newValue)
+                sumFromCallback += newValue
+                if (newValue % 2 == 0) {
+                    sumFromCallback <<= 2
+                }
+            }
+            
+            /// Change value
+            for i in 0..<iterations {
+                testObject.value = i
+            }
+        } /// Do block might cause testObject & its observation to be destroyed here, making it easier to analyze assembly
+        
+        /// Ts
+        let endTime = Date()
+        
+        /// Log
+        print("SwiftKVO - count: \(valuesFromCallback.count), sum: \(sumFromCallback)")
+        
+        /// Return bench time
+        return endTime.timeIntervalSince(startTime)
     }
     
     @objc class func runCombineTest(iterations: Int) -> TimeInterval {

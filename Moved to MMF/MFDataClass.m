@@ -6,7 +6,7 @@
 //
 
 #import "MFDataClass.h"
-@import ObjectiveC.runtime;
+#import "objc/runtime.h"
 
 @implementation MFDataClassBase
 
@@ -104,7 +104,7 @@
         objc_property_t property = properties[i];
         const char *propName = property_getName(property);
         if (propName) {
-            [result addObject:[NSString stringWithUTF8String:propName]];
+            [result addObject:(id)[NSString stringWithUTF8String:propName]];
         }
     }
     

@@ -13,6 +13,7 @@
 ///
 
 /// We thought about including EXTScope.h but I really just want @weakify and @strongify.
+///     Update: [Apr 2025] Still better to just use EXTScope.h - it's the standard. 
 
 #define weakify(__var) \
     REQUIRE_AT_PREFIX \

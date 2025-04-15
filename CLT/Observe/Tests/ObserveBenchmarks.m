@@ -11,8 +11,8 @@
 #import "CoolMacros.h"
 #import "objc_tests-Swift.h"
 #import "KVOMutationSupport.h"
-@import QuartzCore;
-@import AppKit;
+#import "QuartzCore/QuartzCore.h"
+#import "AppKit/AppKit.h"
 #import "EXTScope.h"
 
 #define stringf(format, args...) [NSString stringWithFormat:format, args]
@@ -39,6 +39,7 @@ void runBlockObserverBenchmarks(void) {
         
         CFTimeInterval combineTime = NAN;
         CFTimeInterval kvoTime = NAN;
+        CFTimeInterval swiftKVOTime = NAN;
         CFTimeInterval pureObjcTime = NAN;
         CFTimeInterval pureSwiftTime = NAN;
         
@@ -46,14 +47,16 @@ void runBlockObserverBenchmarks(void) {
         
         combineTime = [BlockObserverBenchmarksSwift runCombineTestWithIterations:iterations];
         kvoTime = runKVOTest(iterations);
+        swiftKVOTime = [BlockObserverBenchmarksSwift runSwiftKVOTestWithIterations:iterations];
         pureObjcTime = runPureObjcTest(iterations);
         pureSwiftTime = [BlockObserverBenchmarksSwift runPureSwiftTestWithIterations:iterations];
         
         NSLog(@"Combine time: %f", combineTime);
         NSLog(@"kvo time: %f", kvoTime);
+        NSLog(@"swiftKVO time: %f", swiftKVOTime);
         NSLog(@"pure objc time: %f", pureObjcTime);
         NSLog(@"pure swift time: %f", pureSwiftTime);
-        NSLog(@"pureSwift is %.2fx faster than pureObjc. pureObjc is %.2fx faster than kvo. kvo is %.2fx faster than Combine", pureObjcTime  / pureSwiftTime , kvoTime / pureObjcTime , combineTime / kvoTime);
+        NSLog(@"pureSwift is %.2fx faster than pureObjc. pureObjc is %.2fx faster than kvo. kvo is %.2fx faster than Combine. Combine is %.2fx faster than SwiftKVO", 1/(pureSwiftTime/pureObjcTime) , 1/(pureObjcTime/kvoTime), 1/(kvoTime/combineTime), 1/(combineTime/swiftKVOTime));
         
         iterations = iterations / 4;
         

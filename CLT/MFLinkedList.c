@@ -341,7 +341,7 @@ char *MFLinkedListGetDescription(MFLinkedList *list) {
         /// Append content
         char *ogResult = result;
         if (contentType == kMFLinkedListContentTypeInt64) {
-            asprintf(&result, "%s%lld", result, (int64_t)node->content);
+            asprintf(&result, "%s%lld", result, (int64_t)node->content); /// [Apr 2025] Pretty sure this leaks memory.... Don't think I ever tried to run this code at all.
         } else if (contentType == kMFLinkedListContentTypeCString) {
             asprintf(&result, "%s%s", result, (char *)node->content);
         } else {

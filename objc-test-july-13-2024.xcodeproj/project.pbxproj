@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4F0CFFE42C5167D000C5D843 /* MFDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0CFFE32C5167D000C5D843 /* MFDataClass.m */; };
+		4F22A69B2DACDF6200304EBD /* BlockObserverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22A69A2DACDF6200304EBD /* BlockObserverTests.m */; };
+		4F22A6A02DAD377000304EBD /* Xcode Nullability Settings.md in Resources */ = {isa = PBXBuildFile; fileRef = 4F22A69F2DAD377000304EBD /* Xcode Nullability Settings.md */; };
+		4F2D552F2DABF8BE00B142DD /* FileProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2D552E2DABF8BE00B142DD /* FileProvider.framework */; };
 		4F3A10E32C5D59B70054B89E /* DeallocTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A10E22C5D59B70054B89E /* DeallocTracker.m */; };
 		4F47C1242C5903ED009F6CE7 /* BlockObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47C1232C5903ED009F6CE7 /* BlockObserver.m */; };
 		4F47C12A2C59D564009F6CE7 /* ObserveBenchmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F47C1292C59D564009F6CE7 /* ObserveBenchmarks.swift */; };
@@ -34,7 +37,11 @@
 /* Begin PBXFileReference section */
 		4F0CFFE22C5167D000C5D843 /* MFDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFDataClass.h; sourceTree = "<group>"; };
 		4F0CFFE32C5167D000C5D843 /* MFDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFDataClass.m; sourceTree = "<group>"; };
+		4F22A6992DACDF6200304EBD /* BlockObserverTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockObserverTests.h; sourceTree = "<group>"; };
+		4F22A69A2DACDF6200304EBD /* BlockObserverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockObserverTests.m; sourceTree = "<group>"; };
+		4F22A69F2DAD377000304EBD /* Xcode Nullability Settings.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Xcode Nullability Settings.md"; sourceTree = "<group>"; };
 		4F262C532C6347C500773789 /* ObjcTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjcTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F2D552E2DABF8BE00B142DD /* FileProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileProvider.framework; path = System/Library/PrivateFrameworks/FileProvider.framework; sourceTree = SDKROOT; };
 		4F3A10E12C5D59B70054B89E /* DeallocTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeallocTracker.h; sourceTree = "<group>"; };
 		4F3A10E22C5D59B70054B89E /* DeallocTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeallocTracker.m; sourceTree = "<group>"; };
 		4F3A10E52C5E44DF0054B89E /* EXTScope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
@@ -104,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F2D552F2DABF8BE00B142DD /* FileProvider.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +125,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F22A69C2DAD272A00304EBD /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4F22A6992DACDF6200304EBD /* BlockObserverTests.h */,
+				4F22A69A2DACDF6200304EBD /* BlockObserverTests.m */,
+				4F73BEB42C5A0D1300BB13AF /* ObserveBenchmarks.h */,
+				4F47C12C2C59D867009F6CE7 /* ObserveBenchmarks.m */,
+				4F47C1292C59D564009F6CE7 /* ObserveBenchmarks.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		4F22A69D2DAD27B900304EBD /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				4F3A10E12C5D59B70054B89E /* DeallocTracker.h */,
+				4F3A10E22C5D59B70054B89E /* DeallocTracker.m */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
 		4F47C1272C599811009F6CE7 /* Moved to MMF */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,13 +161,12 @@
 		4F47C12E2C59D8BA009F6CE7 /* Observe */ = {
 			isa = PBXGroup;
 			children = (
+				4F22A69F2DAD377000304EBD /* Xcode Nullability Settings.md */,
 				4F47C1222C5903ED009F6CE7 /* BlockObserver.h */,
 				4F47C1232C5903ED009F6CE7 /* BlockObserver.m */,
-				4F8F47D62C5BA36500245C26 /* KVOMutationSupport.h */,
-				4F8F47D72C5BA36500245C26 /* KVOMutationSupport.m */,
-				4F73BEB42C5A0D1300BB13AF /* ObserveBenchmarks.h */,
-				4F47C12C2C59D867009F6CE7 /* ObserveBenchmarks.m */,
-				4F47C1292C59D564009F6CE7 /* ObserveBenchmarks.swift */,
+				4FBC82772DADB07F00354981 /* Untested */,
+				4F22A69D2DAD27B900304EBD /* Old */,
+				4F22A69C2DAD272A00304EBD /* Tests */,
 			);
 			path = Observe;
 			sourceTree = "<group>";
@@ -173,8 +201,6 @@
 				4F8738072C42B6E0001F95DE /* main.m */,
 				4F47C12E2C59D8BA009F6CE7 /* Observe */,
 				4F47C1252C599779009F6CE7 /* CoolMacros.h */,
-				4F3A10E12C5D59B70054B89E /* DeallocTracker.h */,
-				4F3A10E22C5D59B70054B89E /* DeallocTracker.m */,
 				4F52FA8D2C769084003C2821 /* MFLinkedList.h */,
 				4F52FA8E2C769084003C2821 /* MFLinkedList.c */,
 				4F9A073F2C66543100902FB8 /* metamacros.h */,
@@ -184,9 +210,19 @@
 			path = CLT;
 			sourceTree = "<group>";
 		};
+		4FBC82772DADB07F00354981 /* Untested */ = {
+			isa = PBXGroup;
+			children = (
+				4F8F47D62C5BA36500245C26 /* KVOMutationSupport.h */,
+				4F8F47D72C5BA36500245C26 /* KVOMutationSupport.m */,
+			);
+			path = Untested;
+			sourceTree = "<group>";
+		};
 		4FEA2E332C53E16200C86D67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F2D552E2DABF8BE00B142DD /* FileProvider.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -304,6 +340,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F22A6A02DAD377000304EBD /* Xcode Nullability Settings.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +373,7 @@
 				4F47C1242C5903ED009F6CE7 /* BlockObserver.m in Sources */,
 				4F52FA902C76AFF2003C2821 /* MFUtils.m in Sources */,
 				4F47C12D2C59D867009F6CE7 /* ObserveBenchmarks.m in Sources */,
+				4F22A69B2DACDF6200304EBD /* BlockObserverTests.m in Sources */,
 				4F8738082C42B6E0001F95DE /* main.m in Sources */,
 				4F8F47D82C5BA36500245C26 /* KVOMutationSupport.m in Sources */,
 			);
@@ -356,7 +394,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = App/ObjcTests.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -376,8 +413,10 @@
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
+					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
+					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
+					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nuebling.objc-test-app.ObjcTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -392,7 +431,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = App/ObjcTests.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -412,8 +450,10 @@
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
+					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
+					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
+					"$(PROJECT_DIR)/Moved\\ to\\ MMF/MarkdownParser/cmark/branch-cjk",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nuebling.objc-test-app.ObjcTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -428,11 +468,14 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NULL_DEREFERENCE = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_OBJC_ATSYNC = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -444,9 +487,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES_ERROR;
+				CLANG_WARN_NULLABLE_TO_NONNULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES_AGGRESSIVE;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -475,12 +520,15 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "\"-Dnil=((id\\ _Nullable)__DARWIN_NULL)\"";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				WARNING_CFLAGS = "";
 			};
 			name = Debug;
 		};
@@ -490,11 +538,14 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NULL_DEREFERENCE = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_OBJC_ATSYNC = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -506,9 +557,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES_ERROR;
+				CLANG_WARN_NULLABLE_TO_NONNULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES_AGGRESSIVE;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -532,18 +585,20 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "\"-Dnil=((id\\ _Nullable)__DARWIN_NULL)\"";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = NDEBUG;
+				SWIFT_VERSION = 5.0;
+				WARNING_CFLAGS = "";
 			};
 			name = Release;
 		};
 		4F87380C2C42B6E0001F95DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LM5Z78756B;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -551,19 +606,19 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/objc-test-july-13-2024/MarkdownParser/cmark/branch-cjk",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				NEW_SETTING = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CLT/objc-test-july-13-2024-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 6.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Debug;
 		};
 		4F87380D2C42B6E0001F95DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LM5Z78756B;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -571,11 +626,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/objc-test-july-13-2024/MarkdownParser/cmark/branch-cjk",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				NEW_SETTING = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CLT/objc-test-july-13-2024-Bridging-Header.h";
-				SWIFT_VERSION = 6.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Release;
 		};
