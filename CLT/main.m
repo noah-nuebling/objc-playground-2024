@@ -12,7 +12,7 @@
 #import "ObserveBenchmarks.h"
 #import "MFUtils.h"
 #import "MFLinkedList.h"
-#import "BlockObserverTests.h"
+#import "MFObserverTests.h"
 
 MFDataClass(MFAddress, (MFDataProp(NSString *city)
                         MFDataProp(NSString *street)
@@ -21,19 +21,19 @@ MFDataClass(MFAddress, (MFDataProp(NSString *city)
 void taskToExecute(void) {
 
     NSLog(@"------------------");
-    NSLog(@"BlockObserver Bench:");
+    NSLog(@"MFObserver Bench:");
     NSLog(@"------------------");
     
     if ((0)) {
-        runBlockObserverBenchmarks();
+        runMFObserverBenchmarks();
     }
     
     NSLog(@"------------------");
-    NSLog(@"BlockObserver Tests:");
+    NSLog(@"MFObserver Tests:");
     NSLog(@"------------------");
     
     if ((1)) {
-        blockobserver_cleanup_tests();
+        mfobserver_cleanup_tests();
     }
 
     NSLog(@"------------------");
@@ -184,7 +184,7 @@ int main(int argc, const char * argv[]) {
         
                 /// Create an NSTimer and schedule it on the run loop
                 NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2.0
-                                                                  target:[NSBlockOperation blockOperationWithBlock:^{
+                                                                  target:[NSBlockOperation blockOperationWithBlock: ^{
                     taskToExecute();
                     /// Stop the run loop after the task is executed
 //                    CFRunLoopStop(CFRunLoopGetCurrent());

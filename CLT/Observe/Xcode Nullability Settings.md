@@ -1,7 +1,7 @@
 # Xcode Nullability Settings
 
 Goal of this investigation [Apr 2025]
-    We wanna make BlockObserver.m null-safe for Swift
+    We wanna make MFObserver.m null-safe for Swift
     Usually, for objc code we just write `if (!arg) return nil;` if we don't wanna handle nil-args. But this would lead to everything being optional in Swift which is not what you want I guess.
     Therefore, in the objc code, we wanna ensure that functions/methods that have a `_Nonnull` return value never return nil – unless you pass nil to a`_Nonnull` arg - that will make things safe and non-optional for Swift, while still being safe when objc passes nil. 
     But this is not super trivial, so we wanted to know what help we can get from the compiler to enforce `_Nonnull` inside objc code.

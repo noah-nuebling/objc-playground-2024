@@ -1,5 +1,5 @@
 //
-//  BlockObserverBenchmarks.swift
+//  MFObserverBenchmarks.swift
 //  objc-test-july-13-2024
 //
 //  Created by Noah Nübling on 31.07.24.
@@ -24,7 +24,7 @@ class TestObjectSwift4: NSObject {
 }
 
 
-@objc class BlockObserverBenchmarksSwift: NSObject {
+@objc class ObservationBenchmarksSwift: NSObject {
     
     @objc class func runPureSwiftTest(iterations: Int) -> TimeInterval {
         

@@ -1,5 +1,5 @@
 //
-//  BlockObserverBenchmarks.h
+//  ObservationBenchmarks.h
 //  objc-test-july-13-2024
 //
 //  Created by Noah Nübling on 31.07.24.
@@ -9,9 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BlockObserverBenchmarks : NSObject
+@interface ObservationBenchmarks : NSObject
 
-void runBlockObserverBenchmarks(void);
+void runMFObserverBenchmarks(void);
 
 @end
 

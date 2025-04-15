@@ -1,5 +1,5 @@
 //
-//  BlockObserverTests.m
+//  MFObserverTests.m
 //  objc_tests
 //
 //  Created by Noah Nübling on 14.04.25.
@@ -32,7 +32,7 @@
 ///                 But even then, I'm not sure things would be safe, since I don't know what the order of operations is during object-deallocation.
 ///             - I'm not sure the DeallocTracker is safe, or would cause the observation to be removed too late (See below – observation must perhaps be removed *before* -dealloc is called....)
 ///         - I even heard that removal of observation has to happen *before*, not while, dealloc is called, to prevent crashes (See comments on src [1])
-///             - In this case, I think it might be impossible to safely tie the removal of the observation to the lifecyle of the observer/observee at all. (Which is one of the main goals of `BlockObserver.m`)
+///             - In this case, I think it might be impossible to safely tie the removal of the observation to the lifecyle of the observer/observee at all. (Which is one of the main goals of `MFObserver.m`)
 ///             - However, since Swift has `observe(_:options:changeHandler:)`, (which I think was introduced in 10.10, before the auto-observation cleanup of 10.13 – but there's not doc page for it so I'm not sure) does something very similar to this, I feel like it should be possible to make this safe. But I'm unsure.
 ///                 - Src [1] also mentions how, since macOS 11, the Swift implementation 'integrates with the KVO bookkeeping' to 'invalidate automatically when the observed object is released'. I don't know if that means there's some private 'bookkeeping' APIs it interacts with. I did some very minimal assembly-stepping but couldn't find anything special. But based on the KVO cleanup tests we did, It sounds like we could pretty easily replicate this behavior by simply declaring the observer 'invalid' when the weak observer->observee ptr is nil (?)
 ///         - Memory-leak problem: If we try to hook into observee dealloc, and we have a weak ptr to the observee, this ptr would already be nil'ed out in our hook, making it so we can't successfully call KVO's `removeObserver:` method. So we'd have to use an unmanaged pointer to the observee instead.
@@ -51,8 +51,8 @@
 ///     [1] SO Answer by Rob Mayoff: https://stackoverflow.com/a/18065286/10601702
 ///     [2] Apple Developer Forums – is there documentation for `observe(_:options:changeHandler:)`? https://developer.apple.com/forums/thread/768796
 
-#import "BlockObserverTests.h"
-#import "BlockObserver.h"
+#import "MFObserverTests.h"
+#import "MFObserver.h"
 
 /// Create KVORuleBreaker object
 /// The 'rule' that this breaks is that it returns NO from `+automaticallyNotifiesObserversForKey:` [Apr 2025]
@@ -109,9 +109,9 @@ static CFDictionaryRef _MFKVO_GlobalObservationInfoDict(void) {
     
 }
 
-void blockobserver_cleanup_tests(void) {
+void mfobserver_cleanup_tests(void) {
 
-    #define _mflog(msg...) NSLog(@"BlockObserver.m: LoadTests: " msg)
+    #define _mflog(msg...) NSLog(@"MFObserver.m: LoadTests: " msg)
     
     #define __observer_storage __weak /*__strong*/ /// The tests seems to work as expected with strong and weak storage.
     
@@ -121,12 +121,12 @@ void blockobserver_cleanup_tests(void) {
     
     #define mflog(msg...) _mflog("observee cleanup: " msg)
     ({
-        BlockObserver *__observer_storage observer;
+        MFObserver *__observer_storage observer;
         ({
             @autoreleasepool {
                 __auto_type testObject = [[TestObject_KVORuleBreaker alloc] init];
                 
-                observer = [testObject observe:@"theValue" withBlock:^(id  _Nonnull newValueNS) {
+                observer = [testObject observe:@"theValue" block:^(id  _Nonnull newValueNS) {
                     NSInteger newValue = unboxNSValue(NSInteger, newValueNS);
                     mflog("theValue changed to: %ld", newValue);
                 }];
@@ -152,7 +152,7 @@ void blockobserver_cleanup_tests(void) {
     ({
         __auto_type testObject = [[TestObject_KVORuleBreaker alloc] init];
         
-        BlockObserver *__observer_storage observer = [testObject observe:@"theValue" withBlock:^(id  _Nonnull newValueNS) {
+        MFObserver *__observer_storage observer = [testObject observe:@"theValue" block:^(id  _Nonnull newValueNS) {
             NSInteger newValue = unboxNSValue(NSInteger, newValueNS);
             mflog("theValue changed to: %ld", newValue);
         }];
@@ -162,7 +162,7 @@ void blockobserver_cleanup_tests(void) {
         testObject.theValue = 3;
         
         mflog("pre cancellation - observer: %@, isactive: %d, observations: %@", observer, [observer _isActive], CFAutorelease(CFCopyDescription(_MFKVO_GlobalObservationInfoDict())));
-        [observer cancelObservation];
+        [observer cancel];
         mflog("post cancellation - observer: %@, isactive: %d, observations: %@", observer, [observer _isActive], CFAutorelease(CFCopyDescription(_MFKVO_GlobalObservationInfoDict())));
         
         testObject.theValue = 4; /// There should be no callback for this one.

@@ -1,5 +1,5 @@
 //
-//  BlockObserverTests.h
+//  MFObserverTests.h
 //  objc_tests
 //
 //  Created by Noah Nübling on 14.04.25.
@@ -7,8 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BlockObserverTests : NSObject
+@interface MFObserverTests : NSObject
 
-void blockobserver_cleanup_tests(void);
+void mfobserver_cleanup_tests(void);
 
 @end
