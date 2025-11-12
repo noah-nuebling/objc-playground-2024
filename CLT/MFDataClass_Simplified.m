@@ -6,6 +6,7 @@
 //
 
 /// 'Jul 6 2025] The MFDataClass implementation we have in MMF is totally overengineered to do NSSecureCoding automatically. What would a simplified version look like?
+/// [Nov 2025] Implemented this again in `playground-oct-2025 > MFSimpleDataClass.m`
 
 #import <Foundation/Foundation.h>
 #import "objc/runtime.h"
